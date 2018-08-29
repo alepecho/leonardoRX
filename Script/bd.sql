@@ -41,16 +41,16 @@ CREATE TABLE Medico(
 	IdMedico int identity(1,1) primary key,
 	CodMedico int unique,
 	IdEspecialidad int,
-	IdPersona int,
+	IdUsuario int,
 	FOREIGN KEY (IdEspecialidad) REFERENCES Especialidad(IdEspecialidad),
-	FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona)
+	FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
 );
 
 CREATE TABLE Radiologo(
 	IdRadiologo int identity(1,1) primary key,
 	CodRadiologo int unique,
-	IdPersona int,
-	FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona)
+	IdUsuario int,
+	FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
 );
 
 CREATE TABLE Sector(
@@ -69,21 +69,20 @@ CREATE TABLE Paciente(
 	FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona)
 );
 
-
-
 CREATE TABLE RegionEstudio(
 	IdRegion int identity(1,1) primary key,
 	CodRegion int unique,
 	Nombre varchar(50)
 );
 
-
 CREATE TABLE Usuario(
 	IdUsuario int identity(1,1) primary key,
 	NombreUsuario varchar(20) unique,
 	Contrasenna varchar(20),
 	IdNivel int,
-	FOREIGN KEY (IdNivel) REFERENCES NivelUsuario(IdNivel)
+	IdPersona int,
+	FOREIGN KEY (IdNivel) REFERENCES NivelUsuario(IdNivel),
+	FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona)
 );
 
 CREATE TABLE RegistroResultados(
@@ -92,20 +91,16 @@ CREATE TABLE RegistroResultados(
 	fechaEstudio date,
 	Hallazgos varchar(1000),
 	Conclusiones varchar(1000),
-	IdPersona int,
+	IdPaciente int,
 	IdMedico int,
 	IdRadiologo int,
 	IdRegion int,
-	IdSector int,
-	IdCentro int,
 	IdUsuario int,
 	IdTipoConsulta int,
-	FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona),
+	FOREIGN KEY (IdPaciente) REFERENCES Paciente(IdPaciente),
 	FOREIGN KEY (IdMedico) REFERENCES Medico(IdMedico),
 	FOREIGN KEY (IdRadiologo) REFERENCES Radiologo(IdRadiologo),
 	FOREIGN KEY (IdRegion) REFERENCES RegionEstudio(IdRegion),
-	FOREIGN KEY (IdSector) REFERENCES Sector(IdSector),
-	FOREIGN KEY (IdCentro) REFERENCES CentroSalud(IdCentro),
 	FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
 	FOREIGN KEY (IdTipoConsulta) REFERENCES TipoConsulta(IdTipoConsulta)
 );
