@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LeonardoModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="LeonardoModelStoreContainer">
+    <EntitySet Name="Usuario" EntityType="LeonardoModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Identificacion" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="25" />
+    <Property Name="Apellido1" Type="varchar" Nullable="false" MaxLength="25" />
+    <Property Name="Apellido2" Type="varchar" Nullable="false" MaxLength="25" />
+    <Property Name="NombreUsuario" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="IdNivel" Type="int" Nullable="false" />
+  </EntityType>
+</Schema>
