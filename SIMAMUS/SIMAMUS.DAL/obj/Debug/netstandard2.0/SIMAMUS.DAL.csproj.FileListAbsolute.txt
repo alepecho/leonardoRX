@@ -1,6 +1,0 @@
-C:\Users\aramiras.GMEDICA\Documents\Proyecto RX\leonardoRX\SIMAMUS\SIMAMUS.DAL\bin\Debug\netstandard2.0\SIMAMUS.DAL.deps.json
-C:\Users\aramiras.GMEDICA\Documents\Proyecto RX\leonardoRX\SIMAMUS\SIMAMUS.DAL\bin\Debug\netstandard2.0\SIMAMUS.DAL.dll
-C:\Users\aramiras.GMEDICA\Documents\Proyecto RX\leonardoRX\SIMAMUS\SIMAMUS.DAL\obj\Debug\netstandard2.0\SIMAMUS.DAL.csprojAssemblyReference.cache
-C:\Users\aramiras.GMEDICA\Documents\Proyecto RX\leonardoRX\SIMAMUS\SIMAMUS.DAL\obj\Debug\netstandard2.0\SIMAMUS.DAL.csproj.CoreCompileInputs.cache
-C:\Users\aramiras.GMEDICA\Documents\Proyecto RX\leonardoRX\SIMAMUS\SIMAMUS.DAL\obj\Debug\netstandard2.0\SIMAMUS.DAL.AssemblyInfoInputs.cache
-C:\Users\aramiras.GMEDICA\Documents\Proyecto RX\leonardoRX\SIMAMUS\SIMAMUS.DAL\obj\Debug\netstandard2.0\SIMAMUS.DAL.AssemblyInfo.cs

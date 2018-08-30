@@ -1,0 +1,12 @@
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.Entities\bin\Debug\SIMAMUS.Entities.dll.config
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.Entities\bin\Debug\SIMAMUS.Entities.dll
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.Entities\bin\Debug\SIMAMUS.Entities.pdb
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.Entities\bin\Debug\EntityFramework.dll
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.Entities\bin\Debug\EntityFramework.xml
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.Entities\obj\Debug\SIMAMUS.Entities.csprojAssemblyReference.cache
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.Entities\obj\Debug\SIMAMUS.Entities.csproj.CoreCompileInputs.cache
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.Entities\obj\Debug\SIMAMUS.Entities.csproj.CopyComplete
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.Entities\obj\Debug\SIMAMUS.Entities.dll
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.Entities\obj\Debug\SIMAMUS.Entities.pdb

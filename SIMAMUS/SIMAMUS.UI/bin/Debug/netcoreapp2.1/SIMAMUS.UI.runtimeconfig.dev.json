@@ -1,9 +1,0 @@
-{
-  "runtimeOptions": {
-    "additionalProbingPaths": [
-      "C:\\Users\\aramiras.GMEDICA\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\aramiras.GMEDICA\\.nuget\\packages",
-      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-    ]
-  }
-}

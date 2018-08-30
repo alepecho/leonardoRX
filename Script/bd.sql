@@ -1,6 +1,6 @@
 CREATE TABLE Sexo(
 	IdSexo int identity(1,1) primary key,
-	descripcion varchar(50)
+	Descripcion varchar(50)
 );
 
 CREATE TABLE Persona(

@@ -1,0 +1,6 @@
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.DATOS\bin\Debug\SIMAMUS.DATOS.dll
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.DATOS\bin\Debug\SIMAMUS.DATOS.pdb
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.DATOS\obj\Debug\SIMAMUS.DATOS.csprojAssemblyReference.cache
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.DATOS\obj\Debug\SIMAMUS.DATOS.csproj.CoreCompileInputs.cache
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.DATOS\obj\Debug\SIMAMUS.DATOS.dll
+C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.DATOS\obj\Debug\SIMAMUS.DATOS.pdb
