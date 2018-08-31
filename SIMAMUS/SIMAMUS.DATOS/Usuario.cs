@@ -8,10 +8,10 @@ namespace SIMAMUS.DATOS
 {
     public class Usuario
     {
-        public Int32 IdUsuario { get; set; }
+        public int IdUsuario { get; set; }
         public String NombreUsuario { get; set; }
         public String Contrasenna { get; set; }
-        public Int32 IdNivel { get; set; }
-        public Int32 IdPersona { get; set; }
+        public int IdNivel { get; set; }
+        public int IdPersona { get; set; }
     }
 }

@@ -51,91 +51,86 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CentroSalud.cs">
-      <DependentUpon>Simamus.tt</DependentUpon>
+      <DependentUpon>EF_SIMAMUS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF_SIMAMUS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EF_SIMAMUS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF_SIMAMUS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EF_SIMAMUS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF_SIMAMUS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EF_SIMAMUS.edmx</DependentUpon>
     </Compile>
     <Compile Include="Especialidad.cs">
-      <DependentUpon>Simamus.tt</DependentUpon>
+      <DependentUpon>EF_SIMAMUS.tt</DependentUpon>
     </Compile>
     <Compile Include="Medico.cs">
-      <DependentUpon>Simamus.tt</DependentUpon>
+      <DependentUpon>EF_SIMAMUS.tt</DependentUpon>
     </Compile>
     <Compile Include="NivelUsuario.cs">
-      <DependentUpon>Simamus.tt</DependentUpon>
+      <DependentUpon>EF_SIMAMUS.tt</DependentUpon>
     </Compile>
     <Compile Include="Paciente.cs">
-      <DependentUpon>Simamus.tt</DependentUpon>
+      <DependentUpon>EF_SIMAMUS.tt</DependentUpon>
     </Compile>
     <Compile Include="Persona.cs">
-      <DependentUpon>Simamus.tt</DependentUpon>
+      <DependentUpon>EF_SIMAMUS.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Radiologo.cs">
-      <DependentUpon>Simamus.tt</DependentUpon>
+      <DependentUpon>EF_SIMAMUS.tt</DependentUpon>
     </Compile>
     <Compile Include="RegionEstudio.cs">
-      <DependentUpon>Simamus.tt</DependentUpon>
+      <DependentUpon>EF_SIMAMUS.tt</DependentUpon>
     </Compile>
     <Compile Include="RegistroResultados.cs">
-      <DependentUpon>Simamus.tt</DependentUpon>
+      <DependentUpon>EF_SIMAMUS.tt</DependentUpon>
     </Compile>
     <Compile Include="Sector.cs">
-      <DependentUpon>Simamus.tt</DependentUpon>
+      <DependentUpon>EF_SIMAMUS.tt</DependentUpon>
     </Compile>
     <Compile Include="Sexo.cs">
-      <DependentUpon>Simamus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Simamus.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Simamus.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Simamus.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Simamus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Simamus.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Simamus.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>Simamus.tt</DependentUpon>
+      <DependentUpon>EF_SIMAMUS.tt</DependentUpon>
     </Compile>
     <Compile Include="TipoConsulta.cs">
-      <DependentUpon>Simamus.tt</DependentUpon>
+      <DependentUpon>EF_SIMAMUS.tt</DependentUpon>
     </Compile>
     <Compile Include="Usuario.cs">
-      <DependentUpon>Simamus.tt</DependentUpon>
+      <DependentUpon>EF_SIMAMUS.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Simamus.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Simamus.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="packages.config" />
-    <None Include="Simamus.edmx.diagram">
-      <DependentUpon>Simamus.edmx</DependentUpon>
+    <EntityDeploy Include="EF_SIMAMUS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EF_SIMAMUS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EF_SIMAMUS.edmx.diagram">
+      <DependentUpon>EF_SIMAMUS.edmx</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Simamus.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Simamus.Context.cs</LastGenOutput>
-      <DependentUpon>Simamus.edmx</DependentUpon>
-    </Content>
-    <Content Include="Simamus.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Simamus.edmx</DependentUpon>
-      <LastGenOutput>Simamus.cs</LastGenOutput>
-    </Content>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EF_SIMAMUS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EF_SIMAMUS.edmx</DependentUpon>
+      <LastGenOutput>EF_SIMAMUS.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EF_SIMAMUS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EF_SIMAMUS.edmx</DependentUpon>
+      <LastGenOutput>EF_SIMAMUS.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

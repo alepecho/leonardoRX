@@ -37,6 +37,16 @@ CREATE TABLE TipoConsulta(
 	NombreConsulta varchar(25) unique
 );
 
+CREATE TABLE Usuario(
+	IdUsuario int identity(1,1) primary key,
+	NombreUsuario varchar(20) unique,
+	Contrasenna varchar(20),
+	IdNivel int,
+	IdPersona int,
+	FOREIGN KEY (IdNivel) REFERENCES NivelUsuario(IdNivel),
+	FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona)
+);
+
 CREATE TABLE Medico(
 	IdMedico int identity(1,1) primary key,
 	CodMedico int unique,
@@ -75,16 +85,6 @@ CREATE TABLE RegionEstudio(
 	Nombre varchar(50)
 );
 
-CREATE TABLE Usuario(
-	IdUsuario int identity(1,1) primary key,
-	NombreUsuario varchar(20) unique,
-	Contrasenna varchar(20),
-	IdNivel int,
-	IdPersona int,
-	FOREIGN KEY (IdNivel) REFERENCES NivelUsuario(IdNivel),
-	FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona)
-);
-
 CREATE TABLE RegistroResultados(
 	IdRegistro int identity(1,1) primary key,
 	fechaRegistro date,
@@ -104,3 +104,5 @@ CREATE TABLE RegistroResultados(
 	FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
 	FOREIGN KEY (IdTipoConsulta) REFERENCES TipoConsulta(IdTipoConsulta)
 );
+
+ALTER AUTHORIZATION ON DATABASE::SIMAMUS TO [LEO-PC\lbren];

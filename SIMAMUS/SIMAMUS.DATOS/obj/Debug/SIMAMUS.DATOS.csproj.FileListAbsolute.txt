@@ -4,3 +4,9 @@ C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.DATOS\obj\Debug\SI
 C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.DATOS\obj\Debug\SIMAMUS.DATOS.csproj.CoreCompileInputs.cache
 C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.DATOS\obj\Debug\SIMAMUS.DATOS.dll
 C:\Users\aramiras\Documents\Github\leonardoRX\SIMAMUS\SIMAMUS.DATOS\obj\Debug\SIMAMUS.DATOS.pdb
+C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.DATOS\bin\Debug\SIMAMUS.DATOS.dll
+C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.DATOS\bin\Debug\SIMAMUS.DATOS.pdb
+C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.DATOS\obj\Debug\SIMAMUS.DATOS.csprojAssemblyReference.cache
+C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.DATOS\obj\Debug\SIMAMUS.DATOS.csproj.CoreCompileInputs.cache
+C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.DATOS\obj\Debug\SIMAMUS.DATOS.dll
+C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.DATOS\obj\Debug\SIMAMUS.DATOS.pdb
