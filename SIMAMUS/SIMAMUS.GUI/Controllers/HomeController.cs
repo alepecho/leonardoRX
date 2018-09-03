@@ -16,7 +16,7 @@ namespace SIMAMUS.GUI.Controllers
         {
             if (Session["usuario"] == null)
             {
-                return RedirectToAction("Index","Usuario");
+                return RedirectToAction("Index", "Usuario");
             }
             int idUsuario = (int)Session["usuario"];
             Usuario usr = db.Usuario.Where(x => x.IdUsuario == idUsuario).First();

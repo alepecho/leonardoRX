@@ -2,10 +2,9 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Gestion de Personas</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -32,6 +31,12 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CentroSalud.NombreCentro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sector.Nombre)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Sexo.Descripcion)
@@ -61,6 +66,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CentroSalud.NombreCentro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sector.Nombre)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Sexo.Descripcion)

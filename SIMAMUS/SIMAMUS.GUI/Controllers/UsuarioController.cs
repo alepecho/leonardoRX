@@ -31,7 +31,7 @@ namespace SIMAMUS.GUI.Controllers
                 if (usu.NombreUsuario == usuario.NombreUsuario && usu.Contrasenna == usuario.Contrasenna)
                 {
                     System.Web.HttpContext.Current.Session["usuario"] = usu.IdUsuario;
-                    return RedirectToAction("Index","Home");
+                    return RedirectToAction("Index", "Home");
                 }
             }
 

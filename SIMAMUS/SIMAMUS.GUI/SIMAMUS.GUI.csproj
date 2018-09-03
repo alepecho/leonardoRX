@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8417B9C5-C635-4EDB-A59C-BE0A692CCD41}</ProjectGuid>
+    <ProjectGuid>{B37503F3-D04B-49A9-A546-6736DCBDC312}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -157,64 +157,63 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
-    <Compile Include="Controllers\SexoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CentroSalud.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>SIMAMUSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Especialidad.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>SIMAMUSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Medico.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>SIMAMUSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NivelUsuario.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>SIMAMUSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Persona.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>SIMAMUSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Radiologo.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>SIMAMUSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RegionEstudio.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>SIMAMUSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RegistroResultados.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>SIMAMUSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sector.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>SIMAMUSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sexo.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>SIMAMUSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SIMAMUSEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SIMAMUSEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SIMAMUSEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SIMAMUSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SIMAMUSEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SIMAMUSEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>SIMAMUSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoConsulta.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>SIMAMUSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>SIMAMUSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -227,27 +226,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model1.Context.tt">
+    <Content Include="Models\SIMAMUSEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <LastGenOutput>SIMAMUSEntities.Context.cs</LastGenOutput>
+      <DependentUpon>SIMAMUSEntities.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <Content Include="Models\SIMAMUSEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>SIMAMUSEntities.edmx</DependentUpon>
+      <LastGenOutput>SIMAMUSEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Models\SIMAMUSEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>SIMAMUSEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Models\SIMAMUSEntities.edmx.diagram">
+      <DependentUpon>SIMAMUSEntities.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -279,11 +278,6 @@
     <Content Include="Views\Usuario\Details.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
-    <Content Include="Views\Sexo\Create.cshtml" />
-    <Content Include="Views\Sexo\Delete.cshtml" />
-    <Content Include="Views\Sexo\Details.cshtml" />
-    <Content Include="Views\Sexo\Edit.cshtml" />
-    <Content Include="Views\Sexo\Index.cshtml" />
     <Content Include="Views\Usuario\IndexError.cshtml" />
     <Content Include="Views\Persona\Create.cshtml" />
     <Content Include="Views\Persona\Delete.cshtml" />
@@ -326,9 +320,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>3185</DevelopmentServerPort>
+          <DevelopmentServerPort>2305</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:3185/</IISUrl>
+          <IISUrl>http://localhost:2305/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
