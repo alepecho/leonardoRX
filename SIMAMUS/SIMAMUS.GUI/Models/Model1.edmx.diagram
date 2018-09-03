@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a237d98a8f364b45afd7da3e8c81ba6f" Name="Diagram1">
+        <EntityTypeShape EntityType="SIMAMUSModel.CentroSalud" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAMUSModel.Especialidad" Width="1.5" PointX="8.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAMUSModel.Medico" Width="1.5" PointX="10.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAMUSModel.NivelUsuario" Width="1.5" PointX="6" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAMUSModel.Persona" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAMUSModel.Radiologo" Width="1.5" PointX="10.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAMUSModel.RegionEstudio" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAMUSModel.RegistroResultados" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAMUSModel.Sector" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAMUSModel.Sexo" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAMUSModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAMUSModel.TipoConsulta" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAMUSModel.Usuario" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="SIMAMUSModel.FK__Persona__IdCentr__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAMUSModel.FK__Medico__IdEspeci__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAMUSModel.FK__Medico__IdUsuari__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAMUSModel.FK__RegistroR__IdMed__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAMUSModel.FK__Usuario__IdNivel__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAMUSModel.FK__Persona__IdSecto__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAMUSModel.FK__Persona__IdSexo__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAMUSModel.FK__RegistroR__IdPer__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAMUSModel.FK__Usuario__IdPerso__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAMUSModel.FK__Radiologo__IdUsu__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAMUSModel.FK__RegistroR__IdRad__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAMUSModel.FK__RegistroR__IdReg__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAMUSModel.FK__RegistroR__IdTip__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAMUSModel.FK__RegistroR__IdUsu__5FB337D6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

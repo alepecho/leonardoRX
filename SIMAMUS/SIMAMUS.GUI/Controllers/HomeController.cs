@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMAMUS.GUI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,18 @@ namespace SIMAMUS.GUI.Controllers
 {
     public class HomeController : Controller
     {
+
+        private SIMAMUSEntities db = new SIMAMUSEntities();
+
         public ActionResult Index()
         {
+            if (Session["usuario"] == null)
+            {
+                return RedirectToAction("Index","Usuario");
+            }
+            int idUsuario = (int)Session["usuario"];
+            Usuario usr = db.Usuario.Where(x => x.IdUsuario == idUsuario).First();
+            ViewBag.Usuario = usr;
             return View();
         }
 

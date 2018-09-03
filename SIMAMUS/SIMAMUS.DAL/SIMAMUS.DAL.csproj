@@ -53,16 +53,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SIMAMUS.DATOS\SIMAMUS.DATOS.csproj">
-      <Project>{7869262E-4585-41ED-A92C-5335A5AACF18}</Project>
-      <Name>SIMAMUS.DATOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SIMAMUS.Entities\SIMAMUS.Entities.csproj">
-      <Project>{ab05d22e-1ba5-44fe-9814-116af10a96d2}</Project>
-      <Name>SIMAMUS.Entities</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>

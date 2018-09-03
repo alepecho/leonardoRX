@@ -1,95 +1,177 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using SIMAMUS.DAL.Interfaces;
-using SIMAMUS.DAL.Metodos;
-using SIMAMUS.DATOS;
+using SIMAMUS.GUI.Models;
 
 namespace SIMAMUS.GUI.Controllers
 {
     public class UsuarioController : Controller
     {
-        MUsuario usuario = new MUsuario();
+        private SIMAMUSEntities db = new SIMAMUSEntities();
 
         // GET: Usuario
         public ActionResult Index()
         {
-            List<DATOS.Usuario> usuarios = usuario.ListarUsuarios();
-            return View(usuarios);
+            return View();
         }
 
-        // GET: Usuario/Details/5
-        public ActionResult Details(int id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index([Bind(Include = "NombreUsuario,Contrasenna")] Usuario usuario)
+        {
+            List<Usuario> iUsuarios = db.Usuario.ToList();
+
+            foreach (Usuario usu in iUsuarios)
+            {
+                if (usu.NombreUsuario == usuario.NombreUsuario && usu.Contrasenna == usuario.Contrasenna)
+                {
+                    System.Web.HttpContext.Current.Session["usuario"] = usu.IdUsuario;
+                    return RedirectToAction("Index","Home");
+                }
+            }
+
+            return RedirectToAction("IndexError", "Usuario");
+        }
+
+        public ActionResult IndexError()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult IndexError([Bind(Include = "NombreUsuario,Contrasenna")] Usuario usuario)
+        {
+            List<Usuario> iUsuarios = db.Usuario.ToList();
+
+            foreach (Usuario usu in iUsuarios)
+            {
+                if (usu.NombreUsuario == usuario.NombreUsuario && usu.Contrasenna == usuario.Contrasenna)
+                {
+                    System.Web.HttpContext.Current.Session["usuario"] = usu.IdUsuario;
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            return View(usuario);
+        }
+
+
+        // GET: Usuario/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Usuario usuario = db.Usuario.Find(id);
+            if (usuario == null)
+            {
+                return HttpNotFound();
+            }
+            return View(usuario);
         }
 
         // GET: Usuario/Create
         public ActionResult Create()
         {
+            ViewBag.IdNivel = new SelectList(db.NivelUsuario, "IdNivel", "Descripcion");
+            ViewBag.IdPersona = new SelectList(db.Persona, "IdPersona", "Nombre");
             return View();
         }
 
         // POST: Usuario/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "IdUsuario,NombreUsuario,Contrasenna,IdNivel,IdPersona")] Usuario usuario)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                db.Usuario.Add(usuario);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            ViewBag.IdNivel = new SelectList(db.NivelUsuario, "IdNivel", "Descripcion", usuario.IdNivel);
+            ViewBag.IdPersona = new SelectList(db.Persona, "IdPersona", "Nombre", usuario.IdPersona);
+            return View(usuario);
         }
 
         // GET: Usuario/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Usuario usuario = db.Usuario.Find(id);
+            if (usuario == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.IdNivel = new SelectList(db.NivelUsuario, "IdNivel", "Descripcion", usuario.IdNivel);
+            ViewBag.IdPersona = new SelectList(db.Persona, "IdPersona", "Nombre", usuario.IdPersona);
+            return View(usuario);
         }
 
         // POST: Usuario/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "IdUsuario,NombreUsuario,Contrasenna,IdNivel,IdPersona")] Usuario usuario)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                db.Entry(usuario).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            ViewBag.IdNivel = new SelectList(db.NivelUsuario, "IdNivel", "Descripcion", usuario.IdNivel);
+            ViewBag.IdPersona = new SelectList(db.Persona, "IdPersona", "Nombre", usuario.IdPersona);
+            return View(usuario);
         }
 
         // GET: Usuario/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Usuario usuario = db.Usuario.Find(id);
+            if (usuario == null)
+            {
+                return HttpNotFound();
+            }
+            return View(usuario);
         }
 
         // POST: Usuario/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            Usuario usuario = db.Usuario.Find(id);
+            db.Usuario.Remove(usuario);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-                return RedirectToAction("Index");
-            }
-            catch
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                return View();
+                db.Dispose();
             }
+            base.Dispose(disposing);
         }
     }
 }

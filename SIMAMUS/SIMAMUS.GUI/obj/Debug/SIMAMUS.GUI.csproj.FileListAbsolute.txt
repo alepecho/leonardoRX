@@ -49,6 +49,8 @@ C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\roslyn\vbc.rsp
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\roslyn\VBCSCompiler.exe
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\Antlr3.Runtime.dll
+C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\EntityFramework.dll
+C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\EntityFramework.SqlServer.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\Microsoft.AI.DependencyCollector.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -60,8 +62,6 @@ C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\Microsoft.AspNet.
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\Newtonsoft.Json.dll
-C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\SIMAMUS.DAL.dll
-C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\SIMAMUS.DATOS.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\System.Diagnostics.DiagnosticSource.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\System.Web.Helpers.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\System.Web.Mvc.dll
@@ -71,11 +71,8 @@ C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\System.Web.WebPag
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\System.Web.WebPages.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\System.Web.WebPages.Razor.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\WebGrease.dll
-C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\SIMAMUS.Entities.dll
-C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\EntityFramework.dll
-C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\SIMAMUS.DAL.pdb
-C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\SIMAMUS.DAL.dll.config
-C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\SIMAMUS.DATOS.pdb
+C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\EntityFramework.xml
+C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\EntityFramework.SqlServer.xml
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\System.Web.Helpers.xml
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\System.Web.Mvc.xml
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\System.Web.Optimization.xml
@@ -91,9 +88,6 @@ C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\Microsoft.AI.Depe
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\Microsoft.AI.Web.xml
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\SIMAMUS.Entities.pdb
-C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\SIMAMUS.Entities.dll.config
-C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\EntityFramework.xml
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\es\System.Web.Helpers.resources.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\es\System.Web.Mvc.resources.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\es\System.Web.Optimization.resources.dll
@@ -101,7 +95,6 @@ C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\es\System.Web.Raz
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\es\System.Web.WebPages.resources.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\obj\Debug\SIMAMUS.GUI.csprojAssemblyReference.cache
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\obj\Debug\SIMAMUS.GUI.csproj.CoreCompileInputs.cache
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\obj\Debug\SIMAMUS.GUI.csproj.CopyComplete
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\obj\Debug\SIMAMUS.GUI.dll
