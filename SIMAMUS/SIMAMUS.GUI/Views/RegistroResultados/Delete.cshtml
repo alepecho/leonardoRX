@@ -1,0 +1,104 @@
+﻿@model SIMAMUS.GUI.Models.RegistroResultados
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>RegistroResultados</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaRegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaRegistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaEstudio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaEstudio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hallazgos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hallazgos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Conclusiones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Conclusiones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.IdMedico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medico.IdMedico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Persona.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Persona.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Radiologo.IdRadiologo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Radiologo.IdRadiologo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegionEstudio.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegionEstudio.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoConsulta.NombreConsulta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoConsulta.NombreConsulta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.NombreUsuario)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

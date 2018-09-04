@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using SIMAMUS.GUI.Models;
 
 namespace SIMAMUS.GUI.Controllers
@@ -20,11 +21,11 @@ namespace SIMAMUS.GUI.Controllers
             return View();
         }
 
+        //[ValidateAntiForgeryToken]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Index([Bind(Include = "NombreUsuario,Contrasenna")] Usuario usuario)
+        public ActionResult Index(Usuario model, string returnUrl/*[Bind(Include = "NombreUsuario,Contrasenna")] Usuario usuario*/)
         {
-            List<Usuario> iUsuarios = db.Usuario.ToList();
+            /*List<Usuario> iUsuarios = db.Usuario.ToList();
 
             foreach (Usuario usu in iUsuarios)
             {
@@ -33,9 +34,42 @@ namespace SIMAMUS.GUI.Controllers
                     System.Web.HttpContext.Current.Session["usuario"] = usu.IdUsuario;
                     return RedirectToAction("Index", "Home");
                 }
-            }
+            }*/
 
-            return RedirectToAction("IndexError", "Usuario");
+            var dataItem = db.Usuario.Where(x => x.NombreUsuario == model.NombreUsuario && x.Contrasenna == model.Contrasenna).First();
+            if (dataItem != null)
+            {
+                FormsAuthentication.SetAuthCookie(dataItem.NombreUsuario, false);
+                if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/") 
+                    && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                {
+                    return Redirect(returnUrl);
+                }
+                else
+                {
+                    if (dataItem.IdNivel == 1)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index2", "Home");
+                    }
+                }
+            }
+            else{
+                ModelState.AddModelError("", "Usuario o contraseña invalidos");
+                return View();
+            }
+            //return RedirectToAction("IndexError", "Usuario");
+        }
+
+
+        [Authorize]
+        public ActionResult Salir()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Usuario");
         }
 
         public ActionResult IndexError()

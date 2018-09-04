@@ -1,10 +1,15 @@
 ﻿@{
     ViewBag.Title = "Home Page";
     SIMAMUS.GUI.Models.Usuario usr = ViewBag.Usuario;
-    string nombre = "Bienvenid@, " + usr.NombreUsuario;
+    //string nombre = "Bienvenid@, " + usr.NombreUsuario;
 }
 
-<h1>@nombre</h1>
+@*<h1>@nombre</h1>*@
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h1>Bienvenido usuario, @(User.Identity.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "Guest")</h1>
+}
 
 <div class="container-fluid">
     <div class="col-md-12">

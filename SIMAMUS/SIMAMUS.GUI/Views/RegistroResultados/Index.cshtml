@@ -1,0 +1,87 @@
+﻿@model IEnumerable<SIMAMUS.GUI.Models.RegistroResultados>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaRegistro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaEstudio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hallazgos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Conclusiones)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Medico.IdMedico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Persona.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Radiologo.IdRadiologo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegionEstudio.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoConsulta.NombreConsulta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.NombreUsuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaRegistro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaEstudio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hallazgos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Conclusiones)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Medico.IdMedico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Persona.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Radiologo.IdRadiologo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegionEstudio.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoConsulta.NombreConsulta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.NombreUsuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdRegistro }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdRegistro }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdRegistro })
+        </td>
+    </tr>
+}
+
+</table>

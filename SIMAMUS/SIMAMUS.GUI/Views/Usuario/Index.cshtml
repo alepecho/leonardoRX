@@ -6,7 +6,7 @@
 
 <h2>Login</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index", "Usuario", new { returnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -21,7 +21,7 @@
     <div class="form-horizontal">
         @Html.Label("Contraseña", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Contrasenna, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.PasswordFor(model => model.Contrasenna, new { htmlAttributes = new { @class = "form-control"} })
             @Html.ValidationMessageFor(model => model.Contrasenna, "", new { @class = "text-danger" })
         </div>
     </div>
