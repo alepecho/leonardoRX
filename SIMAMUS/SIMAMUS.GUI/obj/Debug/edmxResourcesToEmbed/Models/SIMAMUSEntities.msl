@@ -43,7 +43,6 @@
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="ApellidoUno" ColumnName="ApellidoUno" />
           <ScalarProperty Name="ApellidoDos" ColumnName="ApellidoDos" />
-          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
           <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
           <ScalarProperty Name="Telefono" ColumnName="Telefono" />
           <ScalarProperty Name="Direccion" ColumnName="Direccion" />

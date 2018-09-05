@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SIMAMUS.GUI.Models.Persona>
+
+
+<div class="container">
+    @Html.TextBox("Search")<input type="submit" id="SearchBtn" value="Search" />
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function (){
+        $("#SearchBtn").click(function() {
+            var SearchValue = $("#Search").val();
+            setData.html("");
+            $.ajax({
+                type: "post",
+                url: "/RegistroResultados/Cedula?SearchValue=" + SearchValue,
+                contentType: "html",
+                success: function (result) {
+                    if (result.length == 0) {
+                        setData.append(' <tr style="color:red"><td colspan="3">No se encontraron datos</td></tr> ')
+                    }
+                    else {
+                        $.each(result, function (index, value) {
+                            var Data = "<tr>" +
+                                "<td>" + value.Nombre + " " + value.Telefono + "<td>" + "</tr>"
+                            setData.append(Data);
+                        });
+                    }
+                }
+            });
+        });
+    });
+</script>

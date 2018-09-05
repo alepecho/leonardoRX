@@ -140,6 +140,22 @@ namespace SIMAMUS.GUI.Controllers
             return RedirectToAction("Index");
         }
 
+        public JsonResult Cedula(string SearchValue)
+        {
+            List<Persona> reg = new List<Persona>();
+
+            try
+            {
+                int id = Convert.ToInt32(SearchValue);
+                reg = db.Persona.Where(x => x.IdPersona == id).ToList();
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("{0} No se encuentra el ID ", SearchValue);
+            }
+            return Json(reg,JsonRequestBehavior.AllowGet);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -147,6 +163,11 @@ namespace SIMAMUS.GUI.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Consulta()
+        {
+            return View();
         }
     }
 }

@@ -45,7 +45,6 @@
     <Property Name="Nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ApellidoUno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ApellidoDos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Cedula" Type="Int32" Nullable="false" />
     <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Telefono" Type="Int32" Nullable="false" />
     <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />

@@ -10,18 +10,18 @@ using SIMAMUS.GUI.Models;
 
 namespace SIMAMUS.GUI.Controllers
 {
-    public class PersonaController : Controller
+    public class PersonasController : Controller
     {
         private SIMAMUSEntities db = new SIMAMUSEntities();
 
-        // GET: Persona
+        // GET: Personas
         public ActionResult Index()
         {
             var persona = db.Persona.Include(p => p.CentroSalud).Include(p => p.Sector).Include(p => p.Sexo);
             return View(persona.ToList());
         }
 
-        // GET: Persona/Details/5
+        // GET: Personas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,7 +36,7 @@ namespace SIMAMUS.GUI.Controllers
             return View(persona);
         }
 
-        // GET: Persona/Create
+        // GET: Personas/Create
         public ActionResult Create()
         {
             ViewBag.IdCentro = new SelectList(db.CentroSalud, "IdCentro", "NombreCentro");
@@ -45,12 +45,12 @@ namespace SIMAMUS.GUI.Controllers
             return View();
         }
 
-        // POST: Persona/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Personas/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdPersona,Nombre,ApellidoUno,ApellidoDos,Cedula,FechaNacimiento,Telefono,Direccion,IdSexo,IdCentro,IdSector")] Persona persona)
+        public ActionResult Create([Bind(Include = "IdPersona,Nombre,ApellidoUno,ApellidoDos,FechaNacimiento,Telefono,Direccion,IdSexo,IdCentro,IdSector")] Persona persona)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace SIMAMUS.GUI.Controllers
             return View(persona);
         }
 
-        // GET: Persona/Edit/5
+        // GET: Personas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,12 +83,12 @@ namespace SIMAMUS.GUI.Controllers
             return View(persona);
         }
 
-        // POST: Persona/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Personas/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdPersona,Nombre,ApellidoUno,ApellidoDos,Cedula,FechaNacimiento,Telefono,Direccion,IdSexo,IdCentro,IdSector")] Persona persona)
+        public ActionResult Edit([Bind(Include = "IdPersona,Nombre,ApellidoUno,ApellidoDos,FechaNacimiento,Telefono,Direccion,IdSexo,IdCentro,IdSector")] Persona persona)
         {
             if (ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace SIMAMUS.GUI.Controllers
             return View(persona);
         }
 
-        // GET: Persona/Delete/5
+        // GET: Personas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -117,7 +117,7 @@ namespace SIMAMUS.GUI.Controllers
             return View(persona);
         }
 
-        // POST: Persona/Delete/5
+        // POST: Personas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
