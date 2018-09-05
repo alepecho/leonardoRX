@@ -16,14 +16,14 @@ namespace SIMAMUS.GUI.Controllers
         private SIMAMUSEntities db = new SIMAMUSEntities();
 
         // GET: Usuario
-        public ActionResult Index()
+        public ActionResult Login()
         {
             return View();
         }
 
         //[ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Index(Usuario model, string returnUrl/*[Bind(Include = "NombreUsuario,Contrasenna")] Usuario usuario*/)
+        public ActionResult Login(Usuario model, string returnUrl/*[Bind(Include = "NombreUsuario,Contrasenna")] Usuario usuario*/)
         {
             /*List<Usuario> iUsuarios = db.Usuario.ToList();
 
@@ -71,7 +71,7 @@ namespace SIMAMUS.GUI.Controllers
         public ActionResult Salir()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Usuario");
+            return RedirectToAction("Login", "Usuario");
         }
 
         public ActionResult IndexError()

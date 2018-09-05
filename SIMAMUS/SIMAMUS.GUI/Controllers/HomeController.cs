@@ -11,6 +11,28 @@ namespace SIMAMUS.GUI.Controllers
     {
         private SIMAMUSEntities db = new SIMAMUSEntities();
 
+        public ActionResult Menu()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                string nombreUsr = User.Identity.Name;
+                Usuario usr = db.Usuario.Where(x => x.NombreUsuario == nombreUsr).FirstOrDefault();
+                switch (usr.IdNivel)
+                {
+                    case 1:
+                        return RedirectToAction("Index", "Home");
+                    case 2:
+                        return RedirectToAction("Index2", "Home");
+                    default:
+                        return RedirectToAction("Index", "Usuario");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Usuario");
+            }
+        }
+
         [Authorize(Roles ="1")]
         public ActionResult Index()
         {
