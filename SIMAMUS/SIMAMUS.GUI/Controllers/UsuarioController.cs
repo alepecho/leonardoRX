@@ -36,11 +36,12 @@ namespace SIMAMUS.GUI.Controllers
                 }
             }*/
 
-            var dataItem = db.Usuario.Where(x => x.NombreUsuario == model.NombreUsuario && x.Contrasenna == model.Contrasenna).First();
+            var dataItem = db.Usuario.Where(x => x.NombreUsuario == model.NombreUsuario && x.Contrasenna == model.Contrasenna).FirstOrDefault();
+            
             if (dataItem != null)
             {
                 FormsAuthentication.SetAuthCookie(dataItem.NombreUsuario, false);
-                if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/") 
+                if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                     && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
                 {
                     return Redirect(returnUrl);
@@ -57,11 +58,12 @@ namespace SIMAMUS.GUI.Controllers
                     }
                 }
             }
-            else{
+            else
+            {
+                //ViewBag.Mensaje = "Usuario o contraseña invalidos.";
                 ModelState.AddModelError("", "Usuario o contraseña invalidos");
                 return View();
             }
-            //return RedirectToAction("IndexError", "Usuario");
         }
 
 
