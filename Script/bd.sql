@@ -16,11 +16,10 @@ CREATE TABLE Sector(
 );
 
 CREATE TABLE Persona(
-	IdPersona int identity(1,1) primary key,
+	IdPersona int primary key,
 	Nombre varchar(40) not null,
 	ApellidoUno varchar(50) not null,
 	ApellidoDos varchar(50) not null,
-	Cedula int unique not null,
 	FechaNacimiento date not null,
 	Telefono int not null,
 	Direccion varchar(250) not null,
@@ -37,16 +36,6 @@ CREATE TABLE NivelUsuario(
 	Descripcion varchar(50) not null
 );
 
-CREATE TABLE Especialidad(
-	IdEspecialidad int identity(1,1) primary key,
-	NombreEspecialidad varchar(50) not null
-);
-
-CREATE TABLE TipoConsulta(
-	IdTipoConsulta int identity(1,1) primary key,
-	NombreConsulta varchar(25) unique not null
-);
-
 CREATE TABLE Usuario(
 	IdUsuario int identity(1,1) primary key,
 	NombreUsuario varchar(20) unique  not null,
@@ -55,6 +44,11 @@ CREATE TABLE Usuario(
 	IdPersona int not null,
 	FOREIGN KEY (IdNivel) REFERENCES NivelUsuario(IdNivel),
 	FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona)
+);
+
+CREATE TABLE Especialidad(
+	IdEspecialidad int identity(1,1) primary key,
+	NombreEspecialidad varchar(50) not null
 );
 
 CREATE TABLE Medico(
@@ -77,6 +71,11 @@ CREATE TABLE RegionEstudio(
 	IdRegion int identity(1,1) primary key,
 	CodRegion int unique not null,
 	Nombre varchar(50) not null
+);
+
+CREATE TABLE TipoConsulta(
+	IdTipoConsulta int identity(1,1) primary key,
+	NombreConsulta varchar(25) unique not null
 );
 
 CREATE TABLE RegistroResultados(
