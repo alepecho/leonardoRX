@@ -139,22 +139,21 @@ namespace SIMAMUS.GUI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        //public JsonResult Cedula(string SearchValue)
+        //{
+        //    List<Persona> reg = new List<Persona>();
 
-        public JsonResult Cedula(string SearchValue)
-        {
-            List<Persona> reg = new List<Persona>();
-
-            try
-            {
-                int id = Convert.ToInt32(SearchValue);
-                reg = db.Persona.Where(x => x.IdPersona == id).ToList();
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("{0} No se encuentra el ID ", SearchValue);
-            }
-            return Json(reg,JsonRequestBehavior.AllowGet);
-        }
+        //    try
+        //    {
+        //        int id = Convert.ToInt32(SearchValue);
+        //        reg = db.Persona.Where(x => x.IdPersona == id || SearchValue == null).ToList();
+        //    }
+        //    catch (FormatException)
+        //    {
+        //        Console.WriteLine("{0} No se encuentra el ID ", SearchValue);
+        //    }
+        //    return Json(reg,JsonRequestBehavior.AllowGet);
+        //}
 
         protected override void Dispose(bool disposing)
         {
@@ -165,9 +164,10 @@ namespace SIMAMUS.GUI.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult Consulta()
+        public ActionResult Consulta(string SearchValue)
         {
-            return View();
+            int id = Convert.ToInt32(SearchValue);
+            return View(db.Persona.Where(x => x.IdPersona == id || SearchValue == null).ToList());
         }
     }
 }
