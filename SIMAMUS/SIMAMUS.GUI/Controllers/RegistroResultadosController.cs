@@ -166,8 +166,15 @@ namespace SIMAMUS.GUI.Controllers
 
         public ActionResult Consulta(string SearchValue)
         {
-            int id = Convert.ToInt32(SearchValue);
-            return View(db.Persona.Where(x => x.IdPersona == id || SearchValue == null).ToList());
+            if (SearchValue == null || SearchValue.Equals(""))
+            {
+                return View();
+            }
+            else
+            {
+                int id = Convert.ToInt32(SearchValue);
+                return View(db.Persona.Where(x => x.IdPersona == id || SearchValue == null).ToList());
+            }
         }
     }
 }

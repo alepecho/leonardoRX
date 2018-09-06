@@ -7,86 +7,33 @@
     @Html.TextBox("SearchValue") <input type="submit" value="Search" />
 
 }
+@if (Model != null)
+{
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Cédulas</th>
-            <th>Nombre</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        @if (Model.Count() == 0)
-        {
-            <tr style="color:red">
-                <td colspan="3"> No se encontro el ID digitado. Por favor regístrelo para continuar!</td>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Cédulas</th>
+                <th>Nombre</th>
             </tr>
-        }
-        else
-        {
-            foreach (var item in Model)
+        </thead>
+        <tbody>
+            @if (Model.Count() == 0)
             {
-                <tr>
-                    <td>@item.IdPersona</td>
-                    <td>@item.Nombre</td>
+                <tr style="color:red">
+                    <td colspan="3"> No se encontro el ID digitado. Por favor regístrelo para continuar!</td>
                 </tr>
             }
-        }
-
-    </tbody>
-</table>
-
-@*@model IEnumerable<SIMAMUS.GUI.Models.Persona>
-
-
-    <div class="container">
-        @Html.TextBox("Search")  <input type="submit" id="SearchBtn" value="Search"/>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Cédulas</th>
-                    <th>Nombre</th>
-                </tr>
-            </thead>
-            <tbody id="CedulasB">
-                @foreach (var item in Model)
+            else
+            {
+                foreach (var item in Model)
                 {
                     <tr>
                         <td>@item.IdPersona</td>
                         <td>@item.Nombre</td>
                     </tr>
                 }
-            </tbody>
-        </table>
-    </div>
-
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#SearchBtn").click(function () {
-                var SearchValue = $("#Search").val();
-                var setData = $("#CedulasB");
-                setData.html("");
-                $.ajax({
-                    type: "post",
-                    url:"/RegistroResultados/Cedula?SearchValue=" + SearchValue,
-                    contentType: "html",
-                    success: function (result) {
-                        if (result.lenght == 0) {
-                            setData.append(' <tr style="color:red"><td colspan="3">No se encontro ningún id, debe registrarlo primero</td></tr> ')
-                        }
-                        else {
-                            $.each(result, function (consulta,value) {
-                                var Data = "<tr>" +
-                                    "<td>" + value.IdPersona + "</td>" +
-                                    "<td>" + value.Nombre + "</td>" +
-                                    "</tr>";
-                                setData.append(Data);
-                            });
-                        }
-                    }
-                });
-            });
-        });
-    </script>*@
+            }
+        </tbody>
+    </table>
+}
