@@ -37,10 +37,12 @@ namespace SIMAMUS.GUI.Controllers
         }
 
         // GET: RegistroResultados/Create
-        public ActionResult Create()
+        public ActionResult Create(int id, string nombre)
         {
+            ViewBag.nombrePersona = nombre;
+
             ViewBag.IdMedico = new SelectList(db.Medico, "IdMedico", "IdMedico");
-            ViewBag.IdPersona = new SelectList(db.Persona, "IdPersona", "Nombre");
+            ViewBag.IdPersona = id;
             ViewBag.IdRadiologo = new SelectList(db.Radiologo, "IdRadiologo", "IdRadiologo");
             ViewBag.IdRegion = new SelectList(db.RegionEstudio, "IdRegion", "Nombre");
             ViewBag.IdTipoConsulta = new SelectList(db.TipoConsulta, "IdTipoConsulta", "NombreConsulta");

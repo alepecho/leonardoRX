@@ -4,8 +4,11 @@
 
 @using (Html.BeginForm("Consulta", "RegistroResultados", FormMethod.Get))
 {
-    @Html.TextBox("SearchValue") <input type="submit" value="Search" />
-
+       <div class="form-inline">
+           @Html.TextBox("SearchValue", "", new { @class = "form-control",@placeholder="Cédula" })
+           <input type="submit" value="Buscar" class="btn btn-primary"  />
+       </div>
+    
 }
 @if (Model != null)
 {
@@ -33,7 +36,7 @@
                     <td>@item.IdPersona</td>
                     <td>@item.Nombre @item.ApellidoUno @item.ApellidoDos</td>
                     <td>@item.IdCentro</td>
-                    <td>@Html.ActionLink("Crear Reporte", "Create", new { id = item.IdPersona })</td>
+                    <td>@Html.ActionLink("Crear Reporte", "Create", new { id = item.IdPersona, nombre = item.Nombre + " " + item.ApellidoUno + " " + item.ApellidoDos })</td>
                 </tr>
                 }
             }
