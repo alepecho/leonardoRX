@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SIMAMUS.GUI.Models.Radiologo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodRadiologo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.NombreUsuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodRadiologo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.NombreUsuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdRadiologo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdRadiologo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdRadiologo })
+        </td>
+    </tr>
+}
+
+</table>

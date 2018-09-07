@@ -1,0 +1,27 @@
+﻿@model SIMAMUS.GUI.Models.TipoConsulta
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TipoConsulta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreConsulta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreConsulta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdTipoConsulta }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
