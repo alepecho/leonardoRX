@@ -37,8 +37,7 @@ CREATE TABLE NivelUsuario(
 );
 
 CREATE TABLE Usuario(
-	IdUsuario int identity(1,1) primary key,
-	NombreUsuario varchar(20) unique  not null,
+	NombreUsuario varchar(20) primary key,
 	Contrasenna varchar(20) not null,
 	IdNivel int not null,
 	IdPersona int not null,
@@ -55,16 +54,16 @@ CREATE TABLE Medico(
 	IdMedico int identity(1,1) primary key,
 	CodMedico int unique not null,
 	IdEspecialidad int not null,
-	IdUsuario int not null,
+	IdUsuario varchar(20) not null,
 	FOREIGN KEY (IdEspecialidad) REFERENCES Especialidad(IdEspecialidad),
-	FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
+	FOREIGN KEY (IdUsuario) REFERENCES Usuario(NombreUsuario)
 );
 
 CREATE TABLE Radiologo(
 	IdRadiologo int identity(1,1) primary key,
 	CodRadiologo int unique not null,
-	IdUsuario int not null,
-	FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
+	IdUsuario varchar(20) not null,
+	FOREIGN KEY (IdUsuario) REFERENCES Usuario(NombreUsuario)
 );
 
 CREATE TABLE RegionEstudio(
@@ -88,13 +87,13 @@ CREATE TABLE RegistroResultados(
 	IdMedico int not null,
 	IdRadiologo int not null,
 	IdRegion int not null,
-	IdUsuario int not null,
+	IdUsuario varchar(20) not null,
 	IdTipoConsulta int not null,
 	FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona),
 	FOREIGN KEY (IdMedico) REFERENCES Medico(IdMedico),
 	FOREIGN KEY (IdRadiologo) REFERENCES Radiologo(IdRadiologo),
 	FOREIGN KEY (IdRegion) REFERENCES RegionEstudio(IdRegion),
-	FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
+	FOREIGN KEY (IdUsuario) REFERENCES Usuario(NombreUsuario),
 	FOREIGN KEY (IdTipoConsulta) REFERENCES TipoConsulta(IdTipoConsulta)
 );
 
