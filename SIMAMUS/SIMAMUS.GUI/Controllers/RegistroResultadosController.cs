@@ -61,7 +61,7 @@ namespace SIMAMUS.GUI.Controllers
         {
             registroResultados.CedulaPaciente = IdPersona;
             registroResultados.NombreUsuario = IdUsuario;
-
+            registroResultados.fechaRegistro = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.RegistroResultados.Add(registroResultados);
@@ -91,7 +91,7 @@ namespace SIMAMUS.GUI.Controllers
                 return HttpNotFound();
             }
             ViewBag.CodigoMedico = new SelectList(db.Medico, "CodigoMedico", "NombreUsuario", registroResultados.CodigoMedico);
-            ViewBag.CedulaPaciente = new SelectList(db.Persona, "Cedula", "Nombre", registroResultados.CedulaPaciente);
+            ViewBag.CedulaPaciente = new SelectList(db.Persona, "Cedula", "Cedula", registroResultados.CedulaPaciente);
             ViewBag.CodigoRadiologo = new SelectList(db.Radiologo, "CodigoRadiologo", "NombreUsuario", registroResultados.CodigoRadiologo);
             ViewBag.IdRegion = new SelectList(db.RegionEstudio, "CodigoRegion", "Nombre", registroResultados.IdRegion);
             ViewBag.IdTipoConsulta = new SelectList(db.TipoConsulta, "IdTipoConsulta", "NombreConsulta", registroResultados.IdTipoConsulta);

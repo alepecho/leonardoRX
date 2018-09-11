@@ -51,7 +51,7 @@
             @Html.DisplayFor(modelItem => item.fechaRegistro)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.fechaEstudio)
+            @Html.DisplayFor(modelItem => item.fechaEstudio.Day)/@Html.DisplayFor(modelItem => item.fechaEstudio.Month)/@Html.DisplayFor(modelItem => item.fechaEstudio.Year)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Hallazgos)

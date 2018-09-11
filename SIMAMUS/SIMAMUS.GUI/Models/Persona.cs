@@ -17,8 +17,8 @@ namespace SIMAMUS.GUI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Persona()
         {
-            this.RegistroResultados = new HashSet<RegistroResultados>();
             this.Usuario = new HashSet<Usuario>();
+            this.RegistroResultados = new HashSet<RegistroResultados>();
         }
     
         public int Cedula { get; set; }
@@ -34,8 +34,8 @@ namespace SIMAMUS.GUI.Models
         public virtual Sector Sector { get; set; }
         public virtual Sexo Sexo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RegistroResultados> RegistroResultados { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuario> Usuario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RegistroResultados> RegistroResultados { get; set; }
     }
 }

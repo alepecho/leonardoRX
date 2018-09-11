@@ -10,7 +10,7 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(new { IdUsuario = user, IdPersona = id }))
 {
     @Html.AntiForgeryToken()
 
@@ -40,28 +40,25 @@
         </div>
     </div>
 
-
-
     <div class="form-group">
         @Html.LabelFor(model => model.fechaRegistro, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.fechaRegistro, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.fechaRegistro, "", new { @class = "text-danger" })
+            @Html.Label(System.DateTime.Now.ToShortDateString(), new { @style = "font-size:large"})
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.fechaEstudio, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.fechaEstudio, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.fechaEstudio, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.fechaEstudio, new { htmlAttributes = new { @class = "form-control", @type = "datetime-local" } })
+            @Html.ValidationMessageFor(model => model.fechaEstudio, "", new { @class = "text-danger"})
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Hallazgos, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Hallazgos, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.TextAreaFor(model => model.Hallazgos, 5,10, new { @class = "form-control"})
             @Html.ValidationMessageFor(model => model.Hallazgos, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -69,7 +66,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Conclusiones, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Conclusiones, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.TextAreaFor(model => model.Conclusiones, 5, 10, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Conclusiones, "", new { @class = "text-danger" })
         </div>
     </div>
