@@ -22,11 +22,10 @@ namespace SIMAMUS.GUI.Models
             this.RegistroResultados = new HashSet<RegistroResultados>();
         }
     
-        public int IdUsuario { get; set; }
         public string NombreUsuario { get; set; }
         public string Contrasenna { get; set; }
         public int IdNivel { get; set; }
-        public int IdPersona { get; set; }
+        public int Cedula { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Medico> Medico { get; set; }

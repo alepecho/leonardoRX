@@ -40,7 +40,7 @@ namespace SIMAMUS.GUI.MyRoleProvider
         {
             SIMAMUSEntities db = new SIMAMUSEntities();
             int data = db.Usuario.Where(x => x.NombreUsuario == username).FirstOrDefault().IdNivel;
-            string[] result = {Convert.ToString(data) };
+            string[] result = { Convert.ToString(data) };
             return result;
         }
 

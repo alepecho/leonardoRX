@@ -20,10 +20,9 @@ namespace SIMAMUS.GUI.Models
             this.RegistroResultados = new HashSet<RegistroResultados>();
         }
     
-        public int IdMedico { get; set; }
-        public int CodMedico { get; set; }
+        public int CodigoMedico { get; set; }
         public int IdEspecialidad { get; set; }
-        public int IdUsuario { get; set; }
+        public string NombreUsuario { get; set; }
     
         public virtual Especialidad Especialidad { get; set; }
         public virtual Usuario Usuario { get; set; }

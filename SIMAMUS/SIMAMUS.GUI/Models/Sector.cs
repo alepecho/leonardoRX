@@ -20,10 +20,11 @@ namespace SIMAMUS.GUI.Models
             this.Persona = new HashSet<Persona>();
         }
     
-        public int IdSector { get; set; }
+        public int CodigoSector { get; set; }
+        public int UnidadProgramatica { get; set; }
         public string Nombre { get; set; }
-        public int CodSector { get; set; }
     
+        public virtual CentroSalud CentroSalud { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Persona> Persona { get; set; }
     }

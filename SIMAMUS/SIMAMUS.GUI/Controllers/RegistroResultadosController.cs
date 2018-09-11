@@ -37,26 +37,31 @@ namespace SIMAMUS.GUI.Controllers
         }
 
         // GET: RegistroResultados/Create
-        public ActionResult Create(int id, string nombre)
+        public ActionResult Create(int id, string nombre, string idU)
         {
+            Usuario usu = db.Usuario.Find(idU);
+
             ViewBag.nombrePersona = nombre;
 
-            ViewBag.IdMedico = new SelectList(db.Medico, "IdMedico", "IdMedico");
-            ViewBag.IdPersona = id;
-            ViewBag.IdRadiologo = new SelectList(db.Radiologo, "IdRadiologo", "IdRadiologo");
-            ViewBag.IdRegion = new SelectList(db.RegionEstudio, "IdRegion", "Nombre");
+            ViewBag.CodigoMedico = new SelectList(db.Medico, "CodigoMedico", "NombreUsuario");
+            ViewBag.CedulaPaciente = id;
+            ViewBag.CodigoRadiologo = new SelectList(db.Radiologo, "CodigoRadiologo", "NombreUsuario");
+            ViewBag.IdRegion = new SelectList(db.RegionEstudio, "CodigoRegion", "Nombre");
             ViewBag.IdTipoConsulta = new SelectList(db.TipoConsulta, "IdTipoConsulta", "NombreConsulta");
-            ViewBag.IdUsuario = new SelectList(db.Usuario, "IdUsuario", "NombreUsuario");
+            ViewBag.NombreUsuario = usu.NombreUsuario;
             return View();
-        }
+        }  
 
         // POST: RegistroResultados/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdRegistro,fechaRegistro,fechaEstudio,Hallazgos,Conclusiones,IdPersona,IdMedico,IdRadiologo,IdRegion,IdUsuario,IdTipoConsulta")] RegistroResultados registroResultados)
+        public ActionResult Create([Bind(Include = "IdRegistro,fechaRegistro,fechaEstudio,Hallazgos,Conclusiones,CedulaPaciente,CodigoMedico,CodigoRadiologo,IdRegion,NombreUsuario,IdTipoConsulta")] RegistroResultados registroResultados, string IdUsuario, int IdPersona)
         {
+            registroResultados.CedulaPaciente = IdPersona;
+            registroResultados.NombreUsuario = IdUsuario;
+
             if (ModelState.IsValid)
             {
                 db.RegistroResultados.Add(registroResultados);
@@ -64,12 +69,12 @@ namespace SIMAMUS.GUI.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdMedico = new SelectList(db.Medico, "IdMedico", "IdMedico", registroResultados.IdMedico);
-            ViewBag.IdPersona = new SelectList(db.Persona, "IdPersona", "Nombre", registroResultados.IdPersona);
-            ViewBag.IdRadiologo = new SelectList(db.Radiologo, "IdRadiologo", "IdRadiologo", registroResultados.IdRadiologo);
-            ViewBag.IdRegion = new SelectList(db.RegionEstudio, "IdRegion", "Nombre", registroResultados.IdRegion);
+            ViewBag.CodigoMedico = new SelectList(db.Medico, "CodigoMedico", "NombreUsuario", registroResultados.CodigoMedico);
+            ViewBag.CodigoRadiologo = new SelectList(db.Radiologo, "CodigoRadiologo", "NombreUsuario", registroResultados.CodigoRadiologo);
+            ViewBag.IdRegion = new SelectList(db.RegionEstudio, "CodigoRegion", "Nombre", registroResultados.IdRegion);
             ViewBag.IdTipoConsulta = new SelectList(db.TipoConsulta, "IdTipoConsulta", "NombreConsulta", registroResultados.IdTipoConsulta);
-            ViewBag.IdUsuario = new SelectList(db.Usuario, "IdUsuario", "NombreUsuario", registroResultados.IdUsuario);
+            ViewBag.NombreUsuario = IdUsuario;
+            ViewBag.CedulaPaciente = IdPersona;
             return View(registroResultados);
         }
 
@@ -85,21 +90,21 @@ namespace SIMAMUS.GUI.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdMedico = new SelectList(db.Medico, "IdMedico", "IdMedico", registroResultados.IdMedico);
-            ViewBag.IdPersona = new SelectList(db.Persona, "IdPersona", "Nombre", registroResultados.IdPersona);
-            ViewBag.IdRadiologo = new SelectList(db.Radiologo, "IdRadiologo", "IdRadiologo", registroResultados.IdRadiologo);
-            ViewBag.IdRegion = new SelectList(db.RegionEstudio, "IdRegion", "Nombre", registroResultados.IdRegion);
+            ViewBag.CodigoMedico = new SelectList(db.Medico, "CodigoMedico", "NombreUsuario", registroResultados.CodigoMedico);
+            ViewBag.CedulaPaciente = new SelectList(db.Persona, "Cedula", "Nombre", registroResultados.CedulaPaciente);
+            ViewBag.CodigoRadiologo = new SelectList(db.Radiologo, "CodigoRadiologo", "NombreUsuario", registroResultados.CodigoRadiologo);
+            ViewBag.IdRegion = new SelectList(db.RegionEstudio, "CodigoRegion", "Nombre", registroResultados.IdRegion);
             ViewBag.IdTipoConsulta = new SelectList(db.TipoConsulta, "IdTipoConsulta", "NombreConsulta", registroResultados.IdTipoConsulta);
-            ViewBag.IdUsuario = new SelectList(db.Usuario, "IdUsuario", "NombreUsuario", registroResultados.IdUsuario);
+            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "Contrasenna", registroResultados.NombreUsuario);
             return View(registroResultados);
         }
 
         // POST: RegistroResultados/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdRegistro,fechaRegistro,fechaEstudio,Hallazgos,Conclusiones,IdPersona,IdMedico,IdRadiologo,IdRegion,IdUsuario,IdTipoConsulta")] RegistroResultados registroResultados)
+        public ActionResult Edit([Bind(Include = "IdRegistro,fechaRegistro,fechaEstudio,Hallazgos,Conclusiones,CedulaPaciente,CodigoMedico,CodigoRadiologo,IdRegion,NombreUsuario,IdTipoConsulta")] RegistroResultados registroResultados)
         {
             if (ModelState.IsValid)
             {
@@ -107,12 +112,12 @@ namespace SIMAMUS.GUI.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdMedico = new SelectList(db.Medico, "IdMedico", "IdMedico", registroResultados.IdMedico);
-            ViewBag.IdPersona = new SelectList(db.Persona, "IdPersona", "Nombre", registroResultados.IdPersona);
-            ViewBag.IdRadiologo = new SelectList(db.Radiologo, "IdRadiologo", "IdRadiologo", registroResultados.IdRadiologo);
-            ViewBag.IdRegion = new SelectList(db.RegionEstudio, "IdRegion", "Nombre", registroResultados.IdRegion);
+            ViewBag.CodigoMedico = new SelectList(db.Medico, "CodigoMedico", "NombreUsuario", registroResultados.CodigoMedico);
+            ViewBag.CedulaPaciente = new SelectList(db.Persona, "Cedula", "Nombre", registroResultados.CedulaPaciente);
+            ViewBag.CodigoRadiologo = new SelectList(db.Radiologo, "CodigoRadiologo", "NombreUsuario", registroResultados.CodigoRadiologo);
+            ViewBag.IdRegion = new SelectList(db.RegionEstudio, "CodigoRegion", "Nombre", registroResultados.IdRegion);
             ViewBag.IdTipoConsulta = new SelectList(db.TipoConsulta, "IdTipoConsulta", "NombreConsulta", registroResultados.IdTipoConsulta);
-            ViewBag.IdUsuario = new SelectList(db.Usuario, "IdUsuario", "NombreUsuario", registroResultados.IdUsuario);
+            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "Contrasenna", registroResultados.NombreUsuario);
             return View(registroResultados);
         }
 
@@ -141,21 +146,6 @@ namespace SIMAMUS.GUI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        //public JsonResult Cedula(string SearchValue)
-        //{
-        //    List<Persona> reg = new List<Persona>();
-
-        //    try
-        //    {
-        //        int id = Convert.ToInt32(SearchValue);
-        //        reg = db.Persona.Where(x => x.IdPersona == id || SearchValue == null).ToList();
-        //    }
-        //    catch (FormatException)
-        //    {
-        //        Console.WriteLine("{0} No se encuentra el ID ", SearchValue);
-        //    }
-        //    return Json(reg,JsonRequestBehavior.AllowGet);
-        //}
 
         protected override void Dispose(bool disposing)
         {
@@ -175,7 +165,7 @@ namespace SIMAMUS.GUI.Controllers
             else
             {
                 int id = Convert.ToInt32(SearchValue);
-                return View(db.Persona.Where(x => x.IdPersona == id || SearchValue == null).ToList());
+                return View(db.Persona.Where(x => x.Cedula == id || SearchValue == null).ToList());
             }
         }
     }

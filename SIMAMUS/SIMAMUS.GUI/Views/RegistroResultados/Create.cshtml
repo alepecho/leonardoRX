@@ -2,8 +2,9 @@
 
 @{
     ViewBag.Title = "Create";
-
-    int id = ViewBag.IdPersona;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int id = ViewBag.cedulaPaciente;
+    string user = ViewBag.NombreUsuario;
     string nombre = ViewBag.nombrePersona;
 }
 
@@ -18,25 +19,28 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+
     <div class="form-group">
-        @Html.LabelFor(model => model.IdPersona, "Persona: ", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-5">
-            @Html.Label(Convert.ToString(id) + " - " + @nombre, htmlAttributes: new { @style = "font-size:x-large", @class = "text-danger" })
-            @Html.ValidationMessageFor(model => model.IdPersona, "", new { @class = "text-danger" })
+        @Html.LabelFor(model => model.CedulaPaciente, "Cédula: ", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.Label(Convert.ToString(id), htmlAttributes: new { @style = "font-size:x-large", @class = "text-danger" }) 
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.IdUsuario, "IdUsuario", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.Label("Nombre: ", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @*@if (User.Identity.IsAuthenticated)
-                {
-                    @(User.Identity.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "Guest")
-                }*@
-            @Html.Label(User.Identity.Name, htmlAttributes: new { @style = "font-size:large"})
-            @Html.ValidationMessageFor(model => model.IdUsuario, "", new { @class = "text-danger" })
+            @Html.Label(@nombre, htmlAttributes: new { @style = "font-size:x-large", @class = "text-danger" })
         </div>
     </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.NombreUsuario, "Usuario Actual", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.Label(user, htmlAttributes: new { @style = "font-size:x-large", @class = "text-danger" })
+        </div>
+    </div>
+
+
 
     <div class="form-group">
         @Html.LabelFor(model => model.fechaRegistro, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -71,18 +75,18 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.IdMedico, "IdMedico", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.CodigoMedico, "CodigoMedico", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("IdMedico", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.IdMedico, "", new { @class = "text-danger" })
+            @Html.DropDownList("CodigoMedico", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CodigoMedico, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.IdRadiologo, "IdRadiologo", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.CodigoRadiologo, "CodigoRadiologo", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("IdRadiologo", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.IdRadiologo, "", new { @class = "text-danger" })
+            @Html.DropDownList("CodigoRadiologo", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CodigoRadiologo, "", new { @class = "text-danger" })
         </div>
     </div>
 

@@ -2,13 +2,15 @@
 
 <br /> <br />
 
+
+
 @using (Html.BeginForm("Consulta", "RegistroResultados", FormMethod.Get))
 {
-       <div class="form-inline">
-           @Html.TextBox("SearchValue", "", new { @class = "form-control",@placeholder="Cédula" })
-           <input type="submit" value="Buscar" class="btn btn-primary"  />
-       </div>
-    
+    <div class="form-inline">
+        @Html.TextBox("SearchValue", "", new { @class = "form-control", @placeholder = "Cédula" })
+        <input type="submit" value="Buscar" class="btn btn-primary" />
+    </div>
+
 }
 @if (Model != null)
 {
@@ -32,12 +34,13 @@
             {
                 foreach (var item in Model)
                 {
-                <tr>
-                    <td>@item.IdPersona</td>
-                    <td>@item.Nombre @item.ApellidoUno @item.ApellidoDos</td>
-                    <td>@item.IdCentro</td>
-                    <td>@Html.ActionLink("Crear Reporte", "Create", new { id = item.IdPersona, nombre = item.Nombre + " " + item.ApellidoUno + " " + item.ApellidoDos })</td>
-                </tr>
+                    <tr>
+                        <td>@item.Cedula</td>
+                        <td>@item.Nombre @item.ApellidoUno @item.ApellidoDos</td>
+                        <td>@item.CodigoSector</td>
+
+                        <td>@Html.ActionLink("Crear Reporte", "Create", new { id = item.Cedula, nombre = item.Nombre + " " + item.ApellidoUno + " " + item.ApellidoDos, idU = User.Identity.Name })</td>
+                    </tr>
                 }
             }
         </tbody>

@@ -20,9 +20,8 @@ namespace SIMAMUS.GUI.Models
             this.RegistroResultados = new HashSet<RegistroResultados>();
         }
     
-        public int IdRadiologo { get; set; }
-        public int CodRadiologo { get; set; }
-        public int IdUsuario { get; set; }
+        public int CodigoRadiologo { get; set; }
+        public string NombreUsuario { get; set; }
     
         public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

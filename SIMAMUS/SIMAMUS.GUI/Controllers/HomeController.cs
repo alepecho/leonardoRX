@@ -9,6 +9,7 @@ namespace SIMAMUS.GUI.Controllers
 {
     public class HomeController : Controller
     {
+
         private SIMAMUSEntities db = new SIMAMUSEntities();
 
         public ActionResult Menu()
@@ -33,30 +34,17 @@ namespace SIMAMUS.GUI.Controllers
             }
         }
 
-        [Authorize(Roles ="1")]
+        [Authorize(Roles = "1")]
         public ActionResult Index()
         {
-            /*if (Session["usuario"] == null)
-            {
-                return RedirectToAction("Index", "Usuario");
-            }*/
-            /*int idUsuario = (int)Session["usuario"];
-            Usuario usr = db.Usuario.Where(x => x.IdUsuario == idUsuario).First();
-            ViewBag.Usuario = usr;*/
             return View();
         }
+
 
         [Authorize(Roles = "2")]
         public ActionResult Index2()
         {
-            /*if (Session["usuario"] == null)
-            {
-                return RedirectToAction("Index", "Usuario");
-            }*/
-            /*int idUsuario = (int)Session["usuario"];
-            Usuario usr = db.Usuario.Where(x => x.IdUsuario == idUsuario).First();
-            ViewBag.Usuario = usr;*/
-            return View();
+           return View();
         }
         public ActionResult About()
         {

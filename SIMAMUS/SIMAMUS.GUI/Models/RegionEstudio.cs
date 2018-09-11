@@ -20,8 +20,7 @@ namespace SIMAMUS.GUI.Models
             this.RegistroResultados = new HashSet<RegistroResultados>();
         }
     
-        public int IdRegion { get; set; }
-        public int CodRegion { get; set; }
+        public int CodigoRegion { get; set; }
         public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

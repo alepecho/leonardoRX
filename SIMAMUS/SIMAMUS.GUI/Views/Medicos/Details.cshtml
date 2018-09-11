@@ -1,0 +1,35 @@
+﻿@model SIMAMUS.GUI.Models.Medico
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Medico</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Especialidad.NombreEspecialidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Especialidad.NombreEspecialidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.Contrasenna)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.Contrasenna)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CodigoMedico }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

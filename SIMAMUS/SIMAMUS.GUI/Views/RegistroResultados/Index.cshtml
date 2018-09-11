@@ -2,12 +2,13 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Crear nuevo", "Consulta")
+    @Html.ActionLink("Create New", "Consulta")
 </p>
 <table class="table">
     <tr>
@@ -24,13 +25,13 @@
             @Html.DisplayNameFor(model => model.Conclusiones)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Medico.IdMedico)
+            @Html.DisplayNameFor(model => model.Medico.NombreUsuario)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Persona.Nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Radiologo.IdRadiologo)
+            @Html.DisplayNameFor(model => model.Radiologo.NombreUsuario)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RegionEstudio.Nombre)
@@ -39,7 +40,7 @@
             @Html.DisplayNameFor(model => model.TipoConsulta.NombreConsulta)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Usuario.NombreUsuario)
+            @Html.DisplayNameFor(model => model.Usuario.Contrasenna)
         </th>
         <th></th>
     </tr>
@@ -59,13 +60,13 @@
             @Html.DisplayFor(modelItem => item.Conclusiones)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Medico.IdMedico)
+            @Html.DisplayFor(modelItem => item.Medico.NombreUsuario)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Persona.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Radiologo.IdRadiologo)
+            @Html.DisplayFor(modelItem => item.Radiologo.NombreUsuario)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RegionEstudio.Nombre)
@@ -74,7 +75,7 @@
             @Html.DisplayFor(modelItem => item.TipoConsulta.NombreConsulta)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Usuario.NombreUsuario)
+            @Html.DisplayFor(modelItem => item.Usuario.Contrasenna)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.IdRegistro }) |

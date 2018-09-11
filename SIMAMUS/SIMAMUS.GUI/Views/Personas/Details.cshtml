@@ -60,14 +60,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CentroSalud.NombreCentro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CentroSalud.NombreCentro)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Sector.Nombre)
         </dt>
 
@@ -86,6 +78,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdPersona }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Cedula }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

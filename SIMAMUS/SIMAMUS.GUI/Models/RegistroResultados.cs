@@ -19,11 +19,11 @@ namespace SIMAMUS.GUI.Models
         public System.DateTime fechaEstudio { get; set; }
         public string Hallazgos { get; set; }
         public string Conclusiones { get; set; }
-        public int IdPersona { get; set; }
-        public int IdMedico { get; set; }
-        public int IdRadiologo { get; set; }
+        public int CedulaPaciente { get; set; }
+        public int CodigoMedico { get; set; }
+        public int CodigoRadiologo { get; set; }
         public int IdRegion { get; set; }
-        public int IdUsuario { get; set; }
+        public string NombreUsuario { get; set; }
         public int IdTipoConsulta { get; set; }
     
         public virtual Medico Medico { get; set; }

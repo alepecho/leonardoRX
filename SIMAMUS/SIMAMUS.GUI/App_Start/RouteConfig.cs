@@ -14,10 +14,10 @@ namespace SIMAMUS.GUI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Usuario", action = "Login", id = UrlParameter.Optional}
-            );
+                 name: "Default",
+                 url: "{controller}/{action}/{id}",
+                 defaults: new { controller = "Usuarios", action = "Login", id = UrlParameter.Optional }
+             );
         }
     }
 }

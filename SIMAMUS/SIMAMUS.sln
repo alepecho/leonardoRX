@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.28010.2016
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIMAMUS.GUI", "SIMAMUS.GUI\SIMAMUS.GUI.csproj", "{B37503F3-D04B-49A9-A546-6736DCBDC312}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIMAMUS.GUI", "SIMAMUS.GUI\SIMAMUS.GUI.csproj", "{DE86A79F-897D-4183-A137-E91FAB18343C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B37503F3-D04B-49A9-A546-6736DCBDC312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B37503F3-D04B-49A9-A546-6736DCBDC312}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B37503F3-D04B-49A9-A546-6736DCBDC312}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B37503F3-D04B-49A9-A546-6736DCBDC312}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE86A79F-897D-4183-A137-E91FAB18343C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE86A79F-897D-4183-A137-E91FAB18343C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE86A79F-897D-4183-A137-E91FAB18343C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE86A79F-897D-4183-A137-E91FAB18343C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {91075E6D-E919-477F-8C18-95079F366B29}
+		SolutionGuid = {83683594-C0CD-4097-BE33-A53D2977EEA0}
 	EndGlobalSection
 EndGlobal

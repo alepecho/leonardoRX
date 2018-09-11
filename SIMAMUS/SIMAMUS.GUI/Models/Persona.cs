@@ -21,7 +21,7 @@ namespace SIMAMUS.GUI.Models
             this.Usuario = new HashSet<Usuario>();
         }
     
-        public int IdPersona { get; set; }
+        public int Cedula { get; set; }
         public string Nombre { get; set; }
         public string ApellidoUno { get; set; }
         public string ApellidoDos { get; set; }
@@ -29,10 +29,8 @@ namespace SIMAMUS.GUI.Models
         public int Telefono { get; set; }
         public string Direccion { get; set; }
         public int IdSexo { get; set; }
-        public int IdCentro { get; set; }
-        public int IdSector { get; set; }
+        public int CodigoSector { get; set; }
     
-        public virtual CentroSalud CentroSalud { get; set; }
         public virtual Sector Sector { get; set; }
         public virtual Sexo Sexo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

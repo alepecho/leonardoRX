@@ -17,14 +17,13 @@ namespace SIMAMUS.GUI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CentroSalud()
         {
-            this.Persona = new HashSet<Persona>();
+            this.Sector = new HashSet<Sector>();
         }
     
-        public int IdCentro { get; set; }
-        public int UP { get; set; }
+        public int UnidadProgramatica { get; set; }
         public string NombreCentro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Persona> Persona { get; set; }
+        public virtual ICollection<Sector> Sector { get; set; }
     }
 }

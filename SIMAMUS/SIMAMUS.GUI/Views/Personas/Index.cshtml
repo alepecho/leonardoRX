@@ -31,9 +31,6 @@
             @Html.DisplayNameFor(model => model.Direccion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CentroSalud.NombreCentro)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Sector.Nombre)
         </th>
         <th>
@@ -63,18 +60,15 @@
             @Html.DisplayFor(modelItem => item.Direccion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CentroSalud.NombreCentro)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Sector.Nombre)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Sexo.Descripcion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdPersona }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdPersona }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdPersona })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Cedula }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Cedula }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Cedula })
         </td>
     </tr>
 }

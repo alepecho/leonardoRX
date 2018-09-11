@@ -17,7 +17,7 @@ namespace SIMAMUS.GUI.Controllers
         // GET: Personas
         public ActionResult Index()
         {
-            var persona = db.Persona.Include(p => p.CentroSalud).Include(p => p.Sector).Include(p => p.Sexo);
+            var persona = db.Persona.Include(p => p.Sector).Include(p => p.Sexo);
             return View(persona.ToList());
         }
 
@@ -39,8 +39,7 @@ namespace SIMAMUS.GUI.Controllers
         // GET: Personas/Create
         public ActionResult Create()
         {
-            ViewBag.IdCentro = new SelectList(db.CentroSalud, "IdCentro", "NombreCentro");
-            ViewBag.IdSector = new SelectList(db.Sector, "IdSector", "Nombre");
+            ViewBag.CodigoSector = new SelectList(db.Sector, "CodigoSector", "Nombre");
             ViewBag.IdSexo = new SelectList(db.Sexo, "IdSexo", "Descripcion");
             return View();
         }
@@ -50,7 +49,7 @@ namespace SIMAMUS.GUI.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdPersona,Nombre,ApellidoUno,ApellidoDos,FechaNacimiento,Telefono,Direccion,IdSexo,IdCentro,IdSector")] Persona persona)
+        public ActionResult Create([Bind(Include = "Cedula,Nombre,ApellidoUno,ApellidoDos,FechaNacimiento,Telefono,Direccion,IdSexo,CodigoSector")] Persona persona)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +58,7 @@ namespace SIMAMUS.GUI.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdCentro = new SelectList(db.CentroSalud, "IdCentro", "NombreCentro", persona.IdCentro);
-            ViewBag.IdSector = new SelectList(db.Sector, "IdSector", "Nombre", persona.IdSector);
+            ViewBag.CodigoSector = new SelectList(db.Sector, "CodigoSector", "Nombre", persona.CodigoSector);
             ViewBag.IdSexo = new SelectList(db.Sexo, "IdSexo", "Descripcion", persona.IdSexo);
             return View(persona);
         }
@@ -77,8 +75,7 @@ namespace SIMAMUS.GUI.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdCentro = new SelectList(db.CentroSalud, "IdCentro", "NombreCentro", persona.IdCentro);
-            ViewBag.IdSector = new SelectList(db.Sector, "IdSector", "Nombre", persona.IdSector);
+            ViewBag.CodigoSector = new SelectList(db.Sector, "CodigoSector", "Nombre", persona.CodigoSector);
             ViewBag.IdSexo = new SelectList(db.Sexo, "IdSexo", "Descripcion", persona.IdSexo);
             return View(persona);
         }
@@ -88,7 +85,7 @@ namespace SIMAMUS.GUI.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdPersona,Nombre,ApellidoUno,ApellidoDos,FechaNacimiento,Telefono,Direccion,IdSexo,IdCentro,IdSector")] Persona persona)
+        public ActionResult Edit([Bind(Include = "Cedula,Nombre,ApellidoUno,ApellidoDos,FechaNacimiento,Telefono,Direccion,IdSexo,CodigoSector")] Persona persona)
         {
             if (ModelState.IsValid)
             {
@@ -96,8 +93,7 @@ namespace SIMAMUS.GUI.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdCentro = new SelectList(db.CentroSalud, "IdCentro", "NombreCentro", persona.IdCentro);
-            ViewBag.IdSector = new SelectList(db.Sector, "IdSector", "Nombre", persona.IdSector);
+            ViewBag.CodigoSector = new SelectList(db.Sector, "CodigoSector", "Nombre", persona.CodigoSector);
             ViewBag.IdSexo = new SelectList(db.Sexo, "IdSexo", "Descripcion", persona.IdSexo);
             return View(persona);
         }
