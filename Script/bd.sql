@@ -4,19 +4,19 @@ CREATE TABLE Sexo(
 );
 
 CREATE TABLE CentroSalud(
-	IdCentro int identity(1,1) primary key,
-	UP int unique not null,
+	UnidadProgramatica int primary key,
 	NombreCentro varchar(100) not null
 );
 
 CREATE TABLE Sector(
-	IdSector int identity(1,1) primary key,
+	CodigoSector int primary key,
+	UnidadProgramatica int not null,
 	Nombre varchar(50) not null,
-	CodSector int unique not null
+	FOREIGN KEY (UnidadProgramatica) REFERENCES CentroSalud(UnidadProgramatica),
 );
 
 CREATE TABLE Persona(
-	IdPersona int primary key,
+	Cedula int primary key,
 	Nombre varchar(40) not null,
 	ApellidoUno varchar(50) not null,
 	ApellidoDos varchar(50) not null,
@@ -24,11 +24,9 @@ CREATE TABLE Persona(
 	Telefono int not null,
 	Direccion varchar(250) not null,
 	IdSexo int not null,
-	IdCentro int not null,
-	IdSector int not null,
+	CodigoSector int not null,
 	FOREIGN KEY (IdSexo) REFERENCES Sexo(IdSexo),
-	FOREIGN KEY (IdCentro) REFERENCES CentroSalud(IdCentro),
-	FOREIGN KEY (IdSector) REFERENCES Sector(IdSector)
+	FOREIGN KEY (CodigoSector) REFERENCES Sector(CodigoSector)
 );
 
 CREATE TABLE NivelUsuario(
@@ -40,9 +38,9 @@ CREATE TABLE Usuario(
 	NombreUsuario varchar(20) primary key,
 	Contrasenna varchar(20) not null,
 	IdNivel int not null,
-	IdPersona int not null,
+	Cedula int not null,
 	FOREIGN KEY (IdNivel) REFERENCES NivelUsuario(IdNivel),
-	FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona)
+	FOREIGN KEY (Cedula) REFERENCES Persona(Cedula)
 );
 
 CREATE TABLE Especialidad(
@@ -51,24 +49,21 @@ CREATE TABLE Especialidad(
 );
 
 CREATE TABLE Medico(
-	IdMedico int identity(1,1) primary key,
-	CodMedico int unique not null,
+	CodigoMedico int primary key,
 	IdEspecialidad int not null,
-	IdUsuario varchar(20) not null,
+	NombreUsuario varchar(20) not null,
 	FOREIGN KEY (IdEspecialidad) REFERENCES Especialidad(IdEspecialidad),
-	FOREIGN KEY (IdUsuario) REFERENCES Usuario(NombreUsuario)
+	FOREIGN KEY (NombreUsuario) REFERENCES Usuario(NombreUsuario)
 );
 
 CREATE TABLE Radiologo(
-	IdRadiologo int identity(1,1) primary key,
-	CodRadiologo int unique not null,
-	IdUsuario varchar(20) not null,
-	FOREIGN KEY (IdUsuario) REFERENCES Usuario(NombreUsuario)
+	CodigoRadiologo int primary key,
+	NombreUsuario varchar(20) not null,
+	FOREIGN KEY (NombreUsuario) REFERENCES Usuario(NombreUsuario)
 );
 
 CREATE TABLE RegionEstudio(
-	IdRegion int identity(1,1) primary key,
-	CodRegion int unique not null,
+	CodigoRegion int primary key,
 	Nombre varchar(50) not null
 );
 
@@ -83,18 +78,16 @@ CREATE TABLE RegistroResultados(
 	fechaEstudio date not null,
 	Hallazgos varchar(1000) not null,
 	Conclusiones varchar(1000) not null,
-	IdPersona int not null,
-	IdMedico int not null,
-	IdRadiologo int not null,
+	CedulaPaciente int not null,
+	CodigoMedico int not null,
+	CodigoRadiologo int not null,
 	IdRegion int not null,
-	IdUsuario varchar(20) not null,
+	NombreUsuario varchar(20) not null,
 	IdTipoConsulta int not null,
-	FOREIGN KEY (IdPersona) REFERENCES Persona(IdPersona),
-	FOREIGN KEY (IdMedico) REFERENCES Medico(IdMedico),
-	FOREIGN KEY (IdRadiologo) REFERENCES Radiologo(IdRadiologo),
-	FOREIGN KEY (IdRegion) REFERENCES RegionEstudio(IdRegion),
-	FOREIGN KEY (IdUsuario) REFERENCES Usuario(NombreUsuario),
+	FOREIGN KEY (CedulaPaciente) REFERENCES Persona(Cedula),
+	FOREIGN KEY (CodigoMedico) REFERENCES Medico(CodigoMedico),
+	FOREIGN KEY (CodigoRadiologo) REFERENCES Radiologo(CodigoRadiologo),
+	FOREIGN KEY (IdRegion) REFERENCES RegionEstudio(CodigoRegion),
+	FOREIGN KEY (NombreUsuario) REFERENCES Usuario(NombreUsuario),
 	FOREIGN KEY (IdTipoConsulta) REFERENCES TipoConsulta(IdTipoConsulta)
 );
-
-ALTER AUTHORIZATION ON DATABASE::SIMAMUS TO [LEO-PC\lbren];
