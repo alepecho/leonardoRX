@@ -1,8 +1,23 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index2";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{
+    ViewBag.Title = "Home Page";
+    SIMAMUS.GUI.Models.Usuario usr = ViewBag.Usuario;
+    //string nombre = "Bienvenid@, " + usr.NombreUsuario;
+}
 
-<h2>Index2</h2>
+@if (User.Identity.IsAuthenticated)
+{
+    <h1>Bienvenido usuario, @(User.Identity.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "Guest")</h1>
+}
 
+<div class="container-fluid">
+    <div class="col-md-12">
+        <br />
+        <div class="col-md-3">
+            @Html.ActionLink("Persona", "Index", "Personas", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+        </div>
+    </div>
+</div>
