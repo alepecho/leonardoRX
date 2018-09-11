@@ -74,8 +74,8 @@ CREATE TABLE TipoConsulta(
 
 CREATE TABLE RegistroResultados(
 	IdRegistro int identity(1,1) primary key,
-	fechaRegistro date not null,
-	fechaEstudio date not null,
+	fechaRegistro datetime not null,
+	fechaEstudio datetime not null,
 	Hallazgos varchar(1000) not null,
 	Conclusiones varchar(1000) not null,
 	CedulaPaciente int not null,
