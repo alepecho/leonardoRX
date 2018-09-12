@@ -4,15 +4,16 @@
     ViewBag.Title = "Home Page";
 }
 
-<p>
-    @Html.ActionLink("Create New", "Consulta")
-</p>
+<br /> <br />
+       
+
 @using (Html.BeginForm(null, null, FormMethod.Get))
 {
     <label for="ced">Cédula: </label>
     <div class="form-inline">
-    <input type="search" name="ced" id="ced" class="form-control" placeholder="Cédula"/>
-    <input type="submit" value="Filtrar" class="btn btn-primary" />
+        <input type="search" name="ced" id="ced" class="form-control" placeholder="Cédula" />
+        <input type="submit" value="Filtrar" class="btn btn-primary"/>
+        @Html.ActionLink("Crear nuevo registro", "Consulta", null, new { @class = "btn btn-success", @style = "float:right" })
     </div>
 }
 <h4>Resultados</h4>
