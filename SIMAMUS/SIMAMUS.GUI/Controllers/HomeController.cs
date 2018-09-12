@@ -24,13 +24,17 @@ namespace SIMAMUS.GUI.Controllers
                         return RedirectToAction("Index", "Home");
                     case 2:
                         return RedirectToAction("Index2", "Home");
+                    case 3:
+                        return RedirectToAction("Index3", "Home");
+                    case 4:
+                        return RedirectToAction("Deasdfasdf","RegistroR"); //TODO
                     default:
-                        return RedirectToAction("Index", "Usuario");
+                        return RedirectToAction("Login", "Usuarios");
                 }
             }
             else
             {
-                return RedirectToAction("Index", "Usuario");
+                return RedirectToAction("Index", "Usuarios");
             }
         }
 
@@ -46,6 +50,13 @@ namespace SIMAMUS.GUI.Controllers
         {
            return View();
         }
+
+        [Authorize(Roles = "3")]
+        public ActionResult Index3()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

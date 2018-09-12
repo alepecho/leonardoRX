@@ -1,7 +1,6 @@
 ﻿@{
     ViewBag.Title = "Home Page";
     SIMAMUS.GUI.Models.Usuario usr = ViewBag.Usuario;
-    //string nombre = "Bienvenid@, " + usr.NombreUsuario;
 }
 
 @if (User.Identity.IsAuthenticated)
@@ -10,52 +9,93 @@
 }
 
 <div class="container-fluid">
-    <div class="col-md-12">
-        <br />
+
+    <hr /><hr /><br />
+
+    <div class="row">
         <div class="col-md-3">
-            @Html.ActionLink("Persona", "Index", "Personas", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+            @Html.ActionLink("Centros de Sauld", "Index", "CentroSaluds", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
         </div>
+        <div class="col-md-1"></div>
         <div class="col-md-3">
-            @Html.ActionLink("Centro de Salud", "Index", "CentroSalud", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+            @Html.ActionLink("Gestion de Personas", "Index", "Personas", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
         </div>
+        <div class="col-md-1"></div>
         <div class="col-md-3">
-            @Html.ActionLink("Especialidad", "Index", "Especialidad", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
-        </div>
-    </div>
-    <div class="col-md-12">
-        <br />
-        <div class="col-md-3">
-            @Html.ActionLink("Medico", "Index", "Medico", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
-        </div>
-        <div class="col-md-3">
-            @Html.ActionLink("Nivel del Usuario", "Index", "NivelUsuario", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
-        </div>
-        <div class="col-md-3">
-            @Html.ActionLink("Radiologo", "Index", "Radiologo", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
-        </div>
-        <div class="col-md-3">
-            @Html.ActionLink("Region Estudio", "Index", "Region", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+            @Html.ActionLink("Resultados", "Index", "RegistroResultados", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
         </div>
     </div>
-    <div class="col-md-12">
-        <br />
+
+    <br /><br />
+
+    <div class="row">
         <div class="col-md-3">
-            @Html.ActionLink("Registo de Resultados", "Index", "RegistroResultados", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+            @Html.ActionLink("Gestion de Especialedades", "Index", "Especialidads", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
         </div>
+        <div class="col-md-1"></div>
         <div class="col-md-3">
-            @Html.ActionLink("Sector", "Index", "Sector", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+            @Html.ActionLink("Gestion de Radiologos", "Index", "Radiologo", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
         </div>
+        <div class="col-md-1"></div>
         <div class="col-md-3">
-            @Html.ActionLink("Sexo", "Index", "Sexo", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
-        </div>
-        <div class="col-md-3">
-            @Html.ActionLink("Tipo de Consulta", "Index", "TipoConsulta", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
-        </div>
-    </div>
-    <div class="col-md-12">
-        <br />
-        <div class="col-md-3">
-            @Html.ActionLink("Usuario", "Index", "Usuario", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+            @Html.ActionLink("Tipos de Consulta", "Index", "TipoConsultas", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
         </div>
     </div>
+
+    <br /><br />
+
+    <div class="row">
+        <div class="col-md-3">
+            @Html.ActionLink("Gestion de Generos", "Index", "Sexoes", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            @Html.ActionLink("Gestion de Usuarios", "Index", "Usuarios", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            @*
+                aqui iria otro boton
+            *@
+        </div>
+    </div>
+
+    <br /><br />
+
+    <div class="row">
+        <div class="col-md-3">
+            @Html.ActionLink("Gestion de Medicos", "Index", "Medicos", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            @Html.ActionLink("Niveles de Usuario", "Index", "NivelUsuarios", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            @*
+                aqui iria otro boton
+            *@
+        </div>
+    </div>
+
+    <br /><br />
+
+    <div class="row">
+        <div class="col-md-3">
+            @Html.ActionLink("Gestion de Sectores", "Index", "Sectors", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            @Html.ActionLink("Regiones de Estudio", "Index", "RegionEstudios", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            @*
+                aqui iria otro boton
+            *@
+        </div>
+    </div>
+
+    <br /><br /><hr />
+
 </div>

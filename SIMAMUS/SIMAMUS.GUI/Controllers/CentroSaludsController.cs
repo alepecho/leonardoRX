@@ -15,12 +15,14 @@ namespace SIMAMUS.GUI.Controllers
         private SIMAMUSEntities db = new SIMAMUSEntities();
 
         // GET: CentroSaluds
+        [Authorize(Roles ="1")]
         public ActionResult Index()
         {
             return View(db.CentroSalud.ToList());
         }
 
         // GET: CentroSaluds/Details/5
+        [Authorize(Roles = "1")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace SIMAMUS.GUI.Controllers
         }
 
         // GET: CentroSaluds/Create
+        [Authorize(Roles = "1")]
         public ActionResult Create()
         {
             return View();

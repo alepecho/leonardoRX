@@ -18,7 +18,7 @@ namespace SIMAMUS.GUI.Controllers
         // GET: Usuarios
         public ActionResult Index()
         {
-            return View();
+            return View(db.Usuario.ToList());
         }
 
         public ActionResult Login()
@@ -33,7 +33,7 @@ namespace SIMAMUS.GUI.Controllers
 
             var dataItem = db.Usuario.Where(x => x.NombreUsuario == model.NombreUsuario && x.Contrasenna == model.Contrasenna).FirstOrDefault();
 
-            if (dataItem != null)
+            if (dataItem != null && dataItem.Contrasenna == model.Contrasenna && dataItem.NombreUsuario == model.NombreUsuario)
             {
                 FormsAuthentication.SetAuthCookie(dataItem.NombreUsuario, false);
                 if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
@@ -47,9 +47,21 @@ namespace SIMAMUS.GUI.Controllers
                     {
                         return RedirectToAction("Index", "Home");
                     }
-                    else
+                    else if(dataItem.IdNivel == 2)
                     {
                         return RedirectToAction("Index2", "Home");
+                    }
+                    else if (dataItem.IdNivel == 3)
+                    {
+                        return RedirectToAction("Index3", "Home");
+                    }
+                    else if (dataItem.IdNivel == 4)
+                    {
+                        return RedirectToAction("Index2", "Home");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Login","Usuario");
                     }
                 }
             }
@@ -84,6 +96,7 @@ namespace SIMAMUS.GUI.Controllers
             return View(usuario);
         }
 
+        [Authorize(Roles= "1")]
         // GET: Usuarios/Create
         public ActionResult Create()
         {
