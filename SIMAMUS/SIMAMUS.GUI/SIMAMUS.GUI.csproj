@@ -166,6 +166,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BaseModelo.cs" />
     <Compile Include="Models\CentroSalud.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -222,6 +223,7 @@
     </Compile>
     <Compile Include="MyRoleProvider\SiteRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\IndexViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -341,6 +343,7 @@
     <Content Include="Views\TipoConsultas\Edit.cshtml" />
     <Content Include="Views\TipoConsultas\Index.cshtml" />
     <Content Include="Views\RegistroResultados\Consulta.cshtml" />
+    <Content Include="Views\Shared\_paginador.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

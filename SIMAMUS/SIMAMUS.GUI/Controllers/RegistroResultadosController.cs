@@ -6,19 +6,40 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using SIMAMUS.GUI.Models;
+using SIMAMUS.GUI.ViewModels;
 
 namespace SIMAMUS.GUI.Controllers
 {
     public class RegistroResultadosController : Controller
     {
         private SIMAMUSEntities db = new SIMAMUSEntities();
+        
 
         // GET: RegistroResultados
-        public ActionResult Index()
+        public ActionResult Index(int? ced, int pagina = 1)
         {
-            var registroResultados = db.RegistroResultados.Include(r => r.Medico).Include(r => r.Persona).Include(r => r.Radiologo).Include(r => r.RegionEstudio).Include(r => r.TipoConsulta).Include(r => r.Usuario);
-            return View(registroResultados.ToList());
+            var cantidadRegistrosPorPagina = 20; // parámetro
+            using (var bd = new SIMAMUSEntities())
+            {
+                Func<RegistroResultados, bool> predicado = x => !ced.HasValue || ced.Value == x.CedulaPaciente;
+
+                var personas = bd.RegistroResultados.Where(x=>x.CedulaPaciente == ced || ced==null).OrderByDescending(x => x.IdRegistro)
+                    .Skip((pagina - 1) * cantidadRegistrosPorPagina)
+                    .Take(cantidadRegistrosPorPagina).ToList();
+                var totalDeRegistros = db.RegistroResultados.Where(x => x.CedulaPaciente == ced || ced == null).Count();
+
+                var modelo = new IndexViewModels();
+                modelo.Registros = personas;
+                modelo.PaginaActual = pagina;
+                modelo.TotalDeRegistros = totalDeRegistros;
+                modelo.RegistrosPorPagina = cantidadRegistrosPorPagina;
+                modelo.ValoresQueryString = new RouteValueDictionary();
+                modelo.ValoresQueryString["ced"] = ced;
+
+                return View(modelo);
+            }
         }
 
         // GET: RegistroResultados/Details/5
@@ -168,5 +189,6 @@ namespace SIMAMUS.GUI.Controllers
                 return View(db.Persona.Where(x => x.Cedula == id || SearchValue == null).ToList());
             }
         }
+        
     }
 }
