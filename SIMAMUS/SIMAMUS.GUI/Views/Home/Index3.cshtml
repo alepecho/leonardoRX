@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    SIMAMUS.GUI.Models.Usuario usr = ViewBag.Usuario;
+    Layout = "~/Views/Shared/_LayoutTecnicos.cshtml";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h1>Bienvenido usuario, @(User.Identity.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "Guest")</h1>
+}
+
+<div class="container-fluid">
+
+    <hr /><hr /><br /><br />
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            @Html.ActionLink("Gestion de Especialidades", "Index", "Especialidads", null, htmlAttributes: new { @class = "btn btn-primary btn-block btn-lg" })
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <br /><br />
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            @Html.ActionLink("Gestion de Especialidades", "Index", "Especialidads", null, htmlAttributes: new { @class = "btn btn-primary btn-block btn-lg" })
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <br /><br />
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            @Html.ActionLink("Gestion de Especialidades", "Index", "Especialidads", null, htmlAttributes: new { @class = "btn btn-primary btn-block btn-lg" })
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <br /><br />
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            @Html.ActionLink("Gestion de Especialidades", "Index", "Especialidads", null, htmlAttributes: new { @class = "btn btn-primary btn-block btn-lg" })
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <br /><br />
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            @Html.ActionLink("Gestion de Especialidades", "Index", "Especialidads", null, htmlAttributes: new { @class = "btn btn-primary btn-block btn-lg" })
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <br /><br /><hr />
+
+</div>
