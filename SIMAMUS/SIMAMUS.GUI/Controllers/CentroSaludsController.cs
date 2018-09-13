@@ -13,7 +13,10 @@ namespace SIMAMUS.GUI.Controllers
     public class CentroSaludsController : Controller
     {
         private SIMAMUSEntities db = new SIMAMUSEntities();
+        // parte de rol 1
 
+
+        #region rol Super Administrador
         // GET: CentroSaluds
         [Authorize(Roles ="1")]
         public ActionResult Index()
@@ -126,5 +129,36 @@ namespace SIMAMUS.GUI.Controllers
             }
             base.Dispose(disposing);
         }
+
+        #endregion
+
+
+        #region rol Administrador
+
+        [Authorize(Roles = "1,2")]
+        public ActionResult IndexAdministrador()
+        {
+            return View(db.CentroSalud.ToList());
+        }
+
+        // GET: CentroSaluds/Details/5
+        [Authorize(Roles = "1,2")]
+        public ActionResult DetailsAdministrador(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CentroSalud centroSalud = db.CentroSalud.Find(id);
+            if (centroSalud == null)
+            {
+                return HttpNotFound();
+            }
+            return View(centroSalud);
+        }
+
+        #endregion
+
+
     }
 }

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SIMAMUS.GUI.Models.CentroSalud>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Informacion General de Centros de Salud</h2>
+
+<p>
+    Cualquier inquietud, consulta con el CGI
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Unidad Programatica
+        </th>
+        <th>
+            Nombre del centro
+        </th>
+        <th>
+            Cantidad de Sectores
+        </th>
+        <th>
+            Acciones
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnidadProgramatica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCentro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sector.Count)
+            </td>
+            <td>
+                @Html.ActionLink("Detalles", "DetailsAdministrador", new { id = item.UnidadProgramatica })
+            </td>
+        </tr>
+    }
+
+</table>

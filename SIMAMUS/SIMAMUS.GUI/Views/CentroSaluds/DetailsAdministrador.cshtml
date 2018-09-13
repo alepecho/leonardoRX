@@ -1,0 +1,26 @@
+﻿@model SIMAMUS.GUI.Models.CentroSalud
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CentroSalud</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreCentro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreCentro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Regresar a al lista.", "IndexAdministrador")
+</p>
