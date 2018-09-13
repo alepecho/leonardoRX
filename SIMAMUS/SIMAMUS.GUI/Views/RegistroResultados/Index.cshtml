@@ -5,139 +5,59 @@
 }
 
 <br /> <br />
-       
+
 
 @using (Html.BeginForm(null, null, FormMethod.Get))
 {
     <label for="ced">Cédula: </label>
     <div class="form-inline">
-        <input type="search" name="ced" id="ced" class="form-control" placeholder="Cédula" />
-        <input type="submit" value="Filtrar" class="btn btn-primary"/>
-        @Html.ActionLink("Crear nuevo registro", "Consulta", null, new { @class = "btn btn-success", @style = "float:right" })
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-filter"></i></span>
+            <input type="search" name="ced" id="ced" class="form-control" placeholder="Cédula" @*data-toggle="tooltip" data-placement="top" title="Filtrar los registros por cédula"*@ />
+            <button type="submit" value="Filtrar" class="btn btn-primary">
+                Filtrar registros
+            </button>
+            @Html.ActionLink("Crear nuevo registro", "Consulta", null, new { @class = "btn btn-success", @style = "float:right" })
+        </div>
     </div>
 }
 <h4>Resultados</h4>
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Id Registro</th>
-            <th>Cédula</th>
-            <th>Código del médico</th>
-            <th>Fecha de estudio</th>
-            <th>Fecha de Registro</th>
-            <th>Acciones disponibles</th>
+            <th><p align="center">Id Registro</p></th>
+            <th><p align="center">Cédula</p></th>
+            <th><p align="center">Código del médico</p></th>
+            <th><p align="center">Fecha de estudio</p></th>
+            <th><p align="center">Fecha de Registro</p></th>
+            <th><p align="center">Acciones disponibles</p> </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var registro in Model.Registros)
         {
-        <tr>
-            <td>@registro.IdRegistro</td>
-            <td>@registro.CedulaPaciente</td>
-            <td>@registro.CodigoMedico</td>
-            <td>@registro.fechaEstudio.Day/@registro.fechaEstudio.Month/@registro.fechaEstudio.Year</td>
-            <td>@registro.fechaRegistro</td>
-            <td>
-                @Html.ActionLink("Editar Registro", "Edit", new { id = registro.IdRegistro }) |
-                @Html.ActionLink("Ver Detalles", "Details", new { id = registro.IdRegistro }) |
-                @Html.ActionLink("Eliminar Registro", "Delete", new { id = registro.IdRegistro })
-            </td>
-        </tr>
+            <tr>
+                <td><p align="center">@registro.IdRegistro</p></td>
+                <td><p align="center">@registro.CedulaPaciente</p></td>
+                <td><p align="center">@registro.CodigoMedico</p></td>
+                <td><p align="center">@registro.fechaEstudio.Day/@registro.fechaEstudio.Month/@registro.fechaEstudio.Year</p></td>
+                <td><p align="center">@registro.fechaRegistro</p></td>
+                <td>
+                    <p align="center">
+                        @Html.ActionLink("Editar Registro", "Edit", new { id = registro.IdRegistro }) |
+                        @Html.ActionLink("Ver Detalles", "Details", new { id = registro.IdRegistro }) |
+                        @Html.ActionLink("Eliminar Registro", "Delete", new { id = registro.IdRegistro })
+                    </p>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
 @{Html.RenderPartial("_paginador", Model);}
 
 
-
-@*@model IEnumerable<SIMAMUS.GUI.Models.RegistroResultados>
-
-    @{
-        ViewBag.Title = "Index";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
-
-    <h2>Index</h2>
-
-    <p>
-        @Html.ActionLink("Create New", "Consulta")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.fechaRegistro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fechaEstudio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hallazgos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Conclusiones)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Medico.NombreUsuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Persona.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Radiologo.NombreUsuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RegionEstudio.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoConsulta.NombreConsulta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario.Contrasenna)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.fechaRegistro)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.fechaEstudio.Day)/@Html.DisplayFor(modelItem => item.fechaEstudio.Month)/@Html.DisplayFor(modelItem => item.fechaEstudio.Year)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Hallazgos)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Conclusiones)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Medico.NombreUsuario)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Persona.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Radiologo.NombreUsuario)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RegionEstudio.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TipoConsulta.NombreConsulta)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Usuario.Contrasenna)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IdRegistro }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IdRegistro }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdRegistro })
-                </td>
-            </tr>
-        }
-    </table>*@
-
-
-
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
