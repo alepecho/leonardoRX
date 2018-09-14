@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SIMAMUS.GUI.Models.Medico>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Especialidad.NombreEspecialidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.Contrasenna)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Especialidad.NombreEspecialidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.Contrasenna)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CodigoMedico }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CodigoMedico }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CodigoMedico })
+        </td>
+    </tr>
+}
+
+</table>
