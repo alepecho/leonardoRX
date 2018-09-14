@@ -39,6 +39,7 @@ CREATE TABLE Usuario(
 	Contrasenna varchar(20) not null,
 	IdNivel int not null,
 	Cedula int not null,
+	Activo bit not null,
 	FOREIGN KEY (IdNivel) REFERENCES NivelUsuario(IdNivel),
 	FOREIGN KEY (Cedula) REFERENCES Persona(Cedula)
 );
@@ -52,6 +53,7 @@ CREATE TABLE Medico(
 	CodigoMedico int primary key,
 	IdEspecialidad int not null,
 	NombreUsuario varchar(20) not null,
+	Activo bit not null,
 	FOREIGN KEY (IdEspecialidad) REFERENCES Especialidad(IdEspecialidad),
 	FOREIGN KEY (NombreUsuario) REFERENCES Usuario(NombreUsuario)
 );
@@ -59,6 +61,7 @@ CREATE TABLE Medico(
 CREATE TABLE Radiologo(
 	CodigoRadiologo int primary key,
 	NombreUsuario varchar(20) not null,
+	Activo bit not null,
 	FOREIGN KEY (NombreUsuario) REFERENCES Usuario(NombreUsuario)
 );
 
@@ -70,6 +73,11 @@ CREATE TABLE RegionEstudio(
 CREATE TABLE TipoConsulta(
 	IdTipoConsulta int identity(1,1) primary key,
 	NombreConsulta varchar(25) unique not null
+);
+
+CREATE TABLE TipoExamen(
+	IdTipoExamen int identity(1,1) primary key,
+	Descripcion varchar(30)
 );
 
 CREATE TABLE RegistroResultados(
@@ -84,10 +92,50 @@ CREATE TABLE RegistroResultados(
 	IdRegion int not null,
 	NombreUsuario varchar(20) not null,
 	IdTipoConsulta int not null,
+	IdTipoExamen int not null,
+	UltimoUsuarioModificar varchar(30),
 	FOREIGN KEY (CedulaPaciente) REFERENCES Persona(Cedula),
 	FOREIGN KEY (CodigoMedico) REFERENCES Medico(CodigoMedico),
 	FOREIGN KEY (CodigoRadiologo) REFERENCES Radiologo(CodigoRadiologo),
 	FOREIGN KEY (IdRegion) REFERENCES RegionEstudio(CodigoRegion),
 	FOREIGN KEY (NombreUsuario) REFERENCES Usuario(NombreUsuario),
-	FOREIGN KEY (IdTipoConsulta) REFERENCES TipoConsulta(IdTipoConsulta)
+	FOREIGN KEY (IdTipoConsulta) REFERENCES TipoConsulta(IdTipoConsulta),
+	FOREIGN KEY (IdTipoExamen) REFERENCES TipoExamen(IdTipoExamen)
 );
+
+
+/*
+connection string para local:
+data source=LEO-PC\SQL_SERVER_LEO;initial catalog=SIMAMUS;user id=Admin;password=Admin;
+*/
+
+
+/* inserts */
+INSERT INTO Sexo values('Masculino')
+INSERT INTO Sexo values('Femenino')
+
+INSERT INTO CentroSalud values(10, 'GOICOECHEA 2')
+
+INSERT INTO Sector values(1, 10, 'Pilar Jimenez')
+
+INSERT INTO Persona values(123, 'Pollito', 'Gallo', 'Pinto', '2018/05/05', 88888888, 'En el gallinero de Tibas', 1, 1)
+
+INSERT INTO NivelUsuario values('SuperAdministrador')
+
+INSERT INTO Usuario values('pollito', 'pollo', 1, 123, 1)
+
+INSERT INTO Usuario values('pollita', 'polla', 1, 123, 1)
+
+INSERT INTO Especialidad values('Especial')
+
+INSERT INTO Medico values(1, 1, 'pollita', 1)
+
+Insert INTO Radiologo values(1, 'pollita', 1)
+
+Insert INTO RegionEstudio values(1, 'espalda')
+
+Insert INTO TipoConsulta values('query')
+
+Insert INTO TipoExamen values('Ultrasonido')
+
+Insert INTO TipoExamen values('Mamografia')

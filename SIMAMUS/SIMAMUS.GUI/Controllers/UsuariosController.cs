@@ -61,7 +61,7 @@ namespace SIMAMUS.GUI.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Login","Usuario");
+                        return RedirectToAction("Login","Usuarios");
                     }
                 }
             }

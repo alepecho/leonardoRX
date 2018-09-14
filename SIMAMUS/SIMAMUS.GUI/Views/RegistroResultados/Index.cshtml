@@ -30,26 +30,28 @@
             <th><p align="center">Código del médico</p></th>
             <th><p align="center">Fecha de estudio</p></th>
             <th><p align="center">Fecha de Registro</p></th>
+            <th><p align="center">Tipo de examen</p></th>
             <th><p align="center">Acciones disponibles</p> </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var registro in Model.Registros)
         {
-            <tr>
-                <td><p align="center">@registro.IdRegistro</p></td>
-                <td><p align="center">@registro.CedulaPaciente</p></td>
-                <td><p align="center">@registro.CodigoMedico</p></td>
-                <td><p align="center">@registro.fechaEstudio.Day/@registro.fechaEstudio.Month/@registro.fechaEstudio.Year</p></td>
-                <td><p align="center">@registro.fechaRegistro</p></td>
-                <td>
-                    <p align="center">
-                        @Html.ActionLink("Editar Registro", "Edit", new { id = registro.IdRegistro }) |
-                        @Html.ActionLink("Ver Detalles", "Details", new { id = registro.IdRegistro }) |
-                        @Html.ActionLink("Eliminar Registro", "Delete", new { id = registro.IdRegistro })
-                    </p>
-                </td>
-            </tr>
+        <tr>
+            <td><p align="center">@registro.IdRegistro</p></td>
+            <td><p align="center">@registro.CedulaPaciente</p></td>
+            <td><p align="center">@registro.CodigoMedico</p></td>
+            <td><p align="center">@registro.fechaEstudio.Day/@registro.fechaEstudio.Month/@registro.fechaEstudio.Year</p></td>
+            <td><p align="center">@registro.fechaRegistro</p></td>
+            <td><p align="center">@registro.IdTipoExamen</p></td>
+            <td>
+                <p align="center">
+                    @Html.ActionLink("Editar Registro", "Edit", new { id = registro.IdRegistro }) |
+                    @Html.ActionLink("Ver Detalles", "Details", new { id = registro.IdRegistro }) |
+                    @Html.ActionLink("Eliminar Registro", "Delete", new { id = registro.IdRegistro })
+                </p>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

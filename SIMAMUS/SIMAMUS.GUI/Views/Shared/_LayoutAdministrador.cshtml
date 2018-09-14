@@ -23,13 +23,13 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Menu Principal", "Menu", "Home")</li>
-                    <li>@Html.ActionLink("Medicos", "Index", "Medicos")</li>
-                    <li>@Html.ActionLink("Personas", "Index", "Personas")</li>
-                    <li>@Html.ActionLink("Regiones de Estudio", "Index", "RegionEstudios")</li>
+                    <li>@Html.ActionLink("Medicos", "IndexAdministrador", "Medicos")</li>
+                    <li>@Html.ActionLink("Personas", "IndexAdministrador", "Personas")</li>
+                    <li>@Html.ActionLink("Regiones de Estudio", "IndexAdministrador", "RegionEstudios")</li>
                     <li>@Html.ActionLink("Resultados","Index","RegistroResultados")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Salir", "Salir", "Usuarios")</li>
+                    <li>@Html.ActionLink("Cerrar Sesion", "Salir", "Usuarios")</li>
                 </ul>
             </div>
         </div>

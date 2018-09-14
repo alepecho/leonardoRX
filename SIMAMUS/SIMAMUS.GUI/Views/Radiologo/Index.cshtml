@@ -24,9 +24,12 @@
             @Html.DisplayFor(modelItem => item.Usuario.Contrasenna)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CodigoRadiologo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CodigoRadiologo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CodigoRadiologo })
+            @Html.DisplayFor(modelItem => item.Activo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.CodigoRadiologo }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CodigoRadiologo }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CodigoRadiologo })
         </td>
     </tr>
 }

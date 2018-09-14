@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
     SIMAMUS.GUI.Models.Usuario usr = ViewBag.Usuario;
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
 @if (User.Identity.IsAuthenticated)
@@ -14,12 +15,11 @@
 
     <div class="row">
         <div class="col-md-3">
-            @Html.ActionLink("Gestion de Especialidades", "Index", "Especialidads", null, htmlAttributes: new { @class = "btn btn-primary btn-block btn-lg" })
+            @Html.ActionLink("Gestion de Especialidades", "IndexAdministrador", "Especialidads", null, htmlAttributes: new { @class = "btn btn-primary btn-block btn-lg" })
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-3">
-            @Html.ActionLink("Gestion de Radiologos", "Index", "Radiologos", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
-
+            @Html.ActionLink("Gestion de Radiologos", "IndexAdministrador", "Radiologo", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-3">
@@ -35,7 +35,7 @@
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-3">
-            @Html.ActionLink("Regiones de Estudio", "Index", "RegionEstudios", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
+            @Html.ActionLink("Regiones de Estudio", "IndexAdministrador", "RegionEstudios", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
 
         </div>
         <div class="col-md-1"></div>
@@ -50,11 +50,11 @@
 
     <div class="row">
         <div class="col-md-3">
-            @Html.ActionLink("Gestion de Medicos", "Index", "Medicos", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
+            @Html.ActionLink("Gestion de Medicos", "IndexAdministrador", "Medicos", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-3">
-            @Html.ActionLink("Resultados", "Index", "RegistroResultados", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
+            @Html.ActionLink("Resultados", "IndexAdministrador", "RegistroResultados", null, htmlAttributes: new { @class = "btn btn-primary btn-lg btn-block" })
 
         </div>
         <div class="col-md-1"></div>

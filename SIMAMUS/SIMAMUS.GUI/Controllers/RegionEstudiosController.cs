@@ -14,13 +14,27 @@ namespace SIMAMUS.GUI.Controllers
     {
         private SIMAMUSEntities db = new SIMAMUSEntities();
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+
+        #region rol SuperAdministrador
+
         // GET: RegionEstudios
+        [Authorize(Roles ="1")]
         public ActionResult Index()
         {
             return View(db.RegionEstudio.ToList());
         }
 
         // GET: RegionEstudios/Details/5
+        [Authorize(Roles = "1")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +50,7 @@ namespace SIMAMUS.GUI.Controllers
         }
 
         // GET: RegionEstudios/Create
+        [Authorize(Roles = "1")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +61,7 @@ namespace SIMAMUS.GUI.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "1")]
         public ActionResult Create([Bind(Include = "CodigoRegion,Nombre")] RegionEstudio regionEstudio)
         {
             if (ModelState.IsValid)
@@ -59,6 +75,7 @@ namespace SIMAMUS.GUI.Controllers
         }
 
         // GET: RegionEstudios/Edit/5
+        [Authorize(Roles = "1")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +95,7 @@ namespace SIMAMUS.GUI.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "1")]
         public ActionResult Edit([Bind(Include = "CodigoRegion,Nombre")] RegionEstudio regionEstudio)
         {
             if (ModelState.IsValid)
@@ -90,6 +108,7 @@ namespace SIMAMUS.GUI.Controllers
         }
 
         // GET: RegionEstudios/Delete/5
+        [Authorize(Roles = "1")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +126,7 @@ namespace SIMAMUS.GUI.Controllers
         // POST: RegionEstudios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "1")]
         public ActionResult DeleteConfirmed(int id)
         {
             RegionEstudio regionEstudio = db.RegionEstudio.Find(id);
@@ -115,13 +135,92 @@ namespace SIMAMUS.GUI.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+        #endregion
+
+        #region rol Administrador
+
+
+        // GET: RegionEstudios
+        [Authorize(Roles = "1,2")]
+        public ActionResult IndexAdministrador()
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            return View(db.RegionEstudio.ToList());
         }
+
+        // GET: RegionEstudios/Details/5
+        [Authorize(Roles = "1,2")]
+        public ActionResult DetailsAdministrador(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            RegionEstudio regionEstudio = db.RegionEstudio.Find(id);
+            if (regionEstudio == null)
+            {
+                return HttpNotFound();
+            }
+            return View(regionEstudio);
+        }
+
+        // GET: RegionEstudios/Create
+        [Authorize(Roles = "1,2")]
+        public ActionResult CreateAdministrador()
+        {
+            return View();
+        }
+
+        // POST: RegionEstudios/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "1,2")]
+        public ActionResult CreateAdministrador([Bind(Include = "CodigoRegion,Nombre")] RegionEstudio regionEstudio)
+        {
+            if (ModelState.IsValid)
+            {
+                db.RegionEstudio.Add(regionEstudio);
+                db.SaveChanges();
+                return RedirectToAction("IndexAdministrador");
+            }
+
+            return View(regionEstudio);
+        }
+
+        // GET: RegionEstudios/Edit/5
+        [Authorize(Roles = "1,2")]
+        public ActionResult EditAdministrador(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            RegionEstudio regionEstudio = db.RegionEstudio.Find(id);
+            if (regionEstudio == null)
+            {
+                return HttpNotFound();
+            }
+            return View(regionEstudio);
+        }
+
+        // POST: RegionEstudios/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "1,2")]
+        public ActionResult EditAdministrador([Bind(Include = "CodigoRegion,Nombre")] RegionEstudio regionEstudio)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(regionEstudio).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("IndexAdministrador");
+            }
+            return View(regionEstudio);
+        }
+
+        #endregion
     }
 }

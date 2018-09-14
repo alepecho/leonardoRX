@@ -151,17 +151,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CentroSaludsController.cs" />
+    <Compile Include="Controllers\DoctoresController.cs" />
     <Compile Include="Controllers\EspecialidadsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicosController.cs" />
     <Compile Include="Controllers\NivelUsuariosController.cs" />
     <Compile Include="Controllers\PersonasController.cs" />
     <Compile Include="Controllers\RadiologoController.cs" />
+    <Compile Include="Controllers\RadiologosController.cs" />
     <Compile Include="Controllers\RegionEstudiosController.cs" />
     <Compile Include="Controllers\RegistroResultadosController.cs" />
     <Compile Include="Controllers\SectorsController.cs" />
     <Compile Include="Controllers\SexoesController.cs" />
     <Compile Include="Controllers\TipoConsultasController.cs" />
+    <Compile Include="Controllers\TipoExamenController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -218,6 +221,9 @@
     <Compile Include="Models\TipoConsulta.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TipoExamen.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -265,7 +271,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -349,6 +357,44 @@
     <Content Include="Views\CentroSaluds\IndexAdministrador.cshtml" />
     <Content Include="Views\CentroSaluds\DetailsAdministrador.cshtml" />
     <Content Include="Views\Shared\_LayoutAdministrador.cshtml" />
+    <Content Include="Views\Especialidads\IndexAdministrador.cshtml" />
+    <Content Include="Views\Especialidads\CreateAdministrador.cshtml" />
+    <Content Include="Views\Especialidads\EditAdministrador.cshtml" />
+    <Content Include="Views\Medicos\IndexAdministrador.cshtml" />
+    <Content Include="Views\Medicos\DetailsAdministrador.cshtml" />
+    <Content Include="Views\Medicos\CreateAdministrador.cshtml" />
+    <Content Include="Views\Medicos\EditAdministrador.cshtml" />
+    <Content Include="Views\Medicos\DeleteAdministrador.cshtml" />
+    <Content Include="Views\Personas\IndexAdministrador.cshtml" />
+    <Content Include="Views\Personas\DetailsAdministrador.cshtml" />
+    <Content Include="Views\Personas\CreateAdministrador.cshtml" />
+    <Content Include="Views\Personas\EditAdministrador.cshtml" />
+    <Content Include="Views\Radiologo\IndexAdministrador.cshtml" />
+    <Content Include="Views\Radiologo\DetailsAdministrador.cshtml" />
+    <Content Include="Views\Radiologo\CreateAdministrador.cshtml" />
+    <Content Include="Views\RegionEstudios\IndexAdministrador.cshtml" />
+    <Content Include="Views\RegionEstudios\DetailsAdministrador.cshtml" />
+    <Content Include="Views\RegionEstudios\CreateAdministrador.cshtml" />
+    <Content Include="Views\RegionEstudios\EditAdministrador.cshtml" />
+    <Content Include="Views\RegistroResultados\IndexAdministrador.cshtml" />
+    <Content Include="Views\RegistroResultados\DetailsAdministrador.cshtml" />
+    <Content Include="Views\RegistroResultados\CreateAdministrador.cshtml" />
+    <Content Include="Views\RegistroResultados\EditAdministrador.cshtml" />
+    <Content Include="Views\TipoExamen\Create.cshtml" />
+    <Content Include="Views\TipoExamen\Delete.cshtml" />
+    <Content Include="Views\TipoExamen\Details.cshtml" />
+    <Content Include="Views\TipoExamen\Edit.cshtml" />
+    <Content Include="Views\TipoExamen\Index.cshtml" />
+    <Content Include="Views\Doctores\Create.cshtml" />
+    <Content Include="Views\Doctores\Delete.cshtml" />
+    <Content Include="Views\Doctores\Details.cshtml" />
+    <Content Include="Views\Doctores\Edit.cshtml" />
+    <Content Include="Views\Doctores\Index.cshtml" />
+    <Content Include="Views\Radiologos\Create.cshtml" />
+    <Content Include="Views\Radiologos\Delete.cshtml" />
+    <Content Include="Views\Radiologos\Details.cshtml" />
+    <Content Include="Views\Radiologos\Edit.cshtml" />
+    <Content Include="Views\Radiologos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

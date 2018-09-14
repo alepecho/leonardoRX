@@ -34,7 +34,7 @@ namespace SIMAMUS.GUI.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Usuarios");
+                return RedirectToAction("Login", "Usuarios");
             }
         }
 
@@ -45,13 +45,13 @@ namespace SIMAMUS.GUI.Controllers
         }
 
 
-        [Authorize(Roles = "2")]
+        [Authorize(Roles = "1,2")]
         public ActionResult Index2()
         {
            return View();
         }
 
-        [Authorize(Roles = "3")]
+        [Authorize(Roles = "1,3")]
         public ActionResult Index3()
         {
             return View();
