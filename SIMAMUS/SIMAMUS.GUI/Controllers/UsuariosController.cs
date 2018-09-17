@@ -185,6 +185,15 @@ namespace SIMAMUS.GUI.Controllers
             return RedirectToAction("Index");
         }
 
+        public String Pass(string nombre)
+        {
+            Random num = new Random();
+            string generado = nombre;
+
+            nombre = nombre.ToUpper() + num.Next(100, 1000);
+            return nombre;
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
