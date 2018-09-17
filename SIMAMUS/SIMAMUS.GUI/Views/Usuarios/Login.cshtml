@@ -13,6 +13,7 @@
     <div class="text-center">
         @using (Html.BeginForm("Login", "Usuarios", new { returnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post))
         {
+
             @Html.AntiForgeryToken()
             <br /><br />
             <div class="col-md-4"></div>
