@@ -393,6 +393,12 @@
     <Content Include="Views\Sexoes\IndexAdministrador.cshtml" />
     <Content Include="Views\Sexoes\DetailsAdministrador.cshtml" />
     <Content Include="Views\Sexoes\CreateAdministrador.cshtml" />
+    <Content Include="Views\TipoConsultas\IndexAdministrador.cshtml" />
+    <Content Include="Views\TipoConsultas\DetailsAdministrador.cshtml" />
+    <Content Include="Views\TipoConsultas\CreateAdministrador.cshtml" />
+    <Content Include="Views\TipoConsultas\EditAdministrador.cshtml" />
+    <Content Include="Views\Shared\_LayoutTecnico.cshtml" />
+    <Content Include="Views\RegistroResultados\IndexTecnico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -157,3 +157,4 @@ C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\obj\Debug\SIMAMUS.GUI
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\obj\Debug\SIMAMUS.GUI.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\obj\Debug\SIMAMUS.GUI.pdb
 C:\Users\Diego\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\obj\Debug\SIMAMUS.GUI.csprojResolveAssemblyReference.cache
+C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\obj\Debug\SIMAMUS.GUI.csprojAssemblyReference.cache
