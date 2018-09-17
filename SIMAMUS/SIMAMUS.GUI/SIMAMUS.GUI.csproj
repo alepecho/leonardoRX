@@ -270,14 +270,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-<<<<<<< HEAD
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-=======
     <Content Include="SIMAMUS.ico" />
     <Content Include="Web.config" />
->>>>>>> fx_Tecnicos
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
