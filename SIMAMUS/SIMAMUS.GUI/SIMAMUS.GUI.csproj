@@ -390,11 +390,9 @@
     <Content Include="Views\Doctores\Details.cshtml" />
     <Content Include="Views\Doctores\Edit.cshtml" />
     <Content Include="Views\Doctores\Index.cshtml" />
-    <Content Include="Views\Radiologos\Create.cshtml" />
-    <Content Include="Views\Radiologos\Delete.cshtml" />
-    <Content Include="Views\Radiologos\Details.cshtml" />
-    <Content Include="Views\Radiologos\Edit.cshtml" />
-    <Content Include="Views\Radiologos\Index.cshtml" />
+    <Content Include="Views\Sexoes\IndexAdministrador.cshtml" />
+    <Content Include="Views\Sexoes\DetailsAdministrador.cshtml" />
+    <Content Include="Views\Sexoes\CreateAdministrador.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

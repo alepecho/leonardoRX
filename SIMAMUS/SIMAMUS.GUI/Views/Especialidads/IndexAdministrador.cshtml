@@ -8,7 +8,7 @@
 <h2>IndexAdministrador</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateAdministrador")
 </p>
 <table class="table">
     <tr>
@@ -18,16 +18,17 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreEspecialidad)
-        </td>
-        <td>
-            @Html.ActionLink("Editar Especialidad", "Edit", new { id=item.IdEspecialidad }) |
-            @Html.ActionLink("Detalles de la Especialidad", "Details", new { id=item.IdEspecialidad })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreEspecialidad)
+            </td>
+            <td>
+                @Html.ActionLink("Editar Especialidad", "EditAdministrador", new { id = item.IdEspecialidad }) |
+                @Html.ActionLink("Detalles de la Especialidad", "Details", new { id = item.IdEspecialidad })
+            </td>
+        </tr>
+    }
 
 </table>

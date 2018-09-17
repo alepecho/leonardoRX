@@ -152,7 +152,6 @@ C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\es\System.Web.Raz
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\es\System.Web.WebPages.resources.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\obj\Debug\SIMAMUS.GUI.csprojAssemblyReference.cache
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\obj\Debug\SIMAMUS.GUI.csproj.CoreCompileInputs.cache
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\obj\Debug\SIMAMUS.GUI.csproj.CopyComplete
 C:\Users\lbren\source\repos\leonardoRX\SIMAMUS\SIMAMUS.GUI\obj\Debug\SIMAMUS.GUI.dll

@@ -32,7 +32,7 @@ namespace SIMAMUS.GUI.Controllers
         }
 
         // GET: Especialidads/Details/5
-        [Authorize(Roles = "1")]
+        [Authorize(Roles = "1,2")]
         public ActionResult Details(int? id)
         {
             if (id == null)
