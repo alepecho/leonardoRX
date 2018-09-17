@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SIMAMUS.GUI.Models.Sexo>
+
+@{
+    ViewBag.Title = "IndexAdministrador";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>IndexAdministrador</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateAdministrador")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditAdministrador", new { id = item.IdSexo }) |
+                @Html.ActionLink("Details", "DetailsAdministrador", new { id = item.IdSexo }) |
+                @Html.ActionLink("Delete", "DeleteAdministrador", new { id = item.IdSexo })
+            </td>
+        </tr>
+    }
+
+</table>

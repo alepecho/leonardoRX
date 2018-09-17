@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMAMUS</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<br />
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                @Html.Label("SIMAMUS", new { @class = "navbar-text ", @style = "margin:0;font-size:xx-large;color:#e4e4e4" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Menu Principal", "Menu", "Home")</li>
+                    <li>@Html.ActionLink("Registros", "IndexTecnico", "RegistroResultados")</li>
+                    <li>@Html.ActionLink("Personas", "IndexTecnico", "Personas")</li>
+                    <li>@Html.ActionLink("Radiologos", "IndexATecnico", "RegionEstudios")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Cerrar Sesion", "Salir", "Usuarios")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr /><br />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Desarrollado por Centro de Gestion en Informatica Area de Salud Goicoechea 2</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
