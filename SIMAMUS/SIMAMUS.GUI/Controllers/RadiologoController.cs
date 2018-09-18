@@ -260,5 +260,94 @@ namespace SIMAMUS.GUI.Controllers
 
         #endregion
 
+        #region rol Tecnico
+        
+        [Authorize(Roles = "1,3")]
+        // GET: Radiologo
+        public ActionResult IndexTecnico()
+        {
+            var radiologo = db.Radiologo.Include(r => r.Usuario);
+            return View(radiologo.ToList());
+        }
+
+        // GET: Radiologo/Details/5
+        [Authorize(Roles = "1,3")]
+        public ActionResult DetailsTecnico(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Radiologo radiologo = db.Radiologo.Find(id);
+            if (radiologo == null)
+            {
+                return HttpNotFound();
+            }
+            return View(radiologo);
+        }
+
+        // GET: Radiologo/Create
+        [Authorize(Roles = "1,3")]
+        public ActionResult CreateTecnico()
+        {
+            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "Contrasenna");
+            return View();
+        }
+
+        // POST: Radiologo/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "1,3")]
+        public ActionResult CreateTecnico([Bind(Include = "CodigoRadiologo,NombreUsuario,Activo")] Radiologo radiologo)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Radiologo.Add(radiologo);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "Contrasenna", radiologo.NombreUsuario);
+            return View(radiologo);
+        }
+
+        // GET: Radiologo/Edit/5
+        [Authorize(Roles = "1,3")]
+        public ActionResult EditTecnico(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Radiologo radiologo = db.Radiologo.Find(id);
+            if (radiologo == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "Contrasenna", radiologo.NombreUsuario);
+            return View(radiologo);
+        }
+
+        // POST: Radiologo/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "1,3")]
+        public ActionResult EditTecnico([Bind(Include = "CodigoRadiologo,NombreUsuario,Activo")] Radiologo radiologo)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(radiologo).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "Contrasenna", radiologo.NombreUsuario);
+            return View(radiologo);
+        }
+        
+        #endregion
     }
 }

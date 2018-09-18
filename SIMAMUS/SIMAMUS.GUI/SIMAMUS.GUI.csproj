@@ -158,7 +158,6 @@
     <Compile Include="Controllers\NivelUsuariosController.cs" />
     <Compile Include="Controllers\PersonasController.cs" />
     <Compile Include="Controllers\RadiologoController.cs" />
-    <Compile Include="Controllers\RadiologosController.cs" />
     <Compile Include="Controllers\RegionEstudiosController.cs" />
     <Compile Include="Controllers\RegistroResultadosController.cs" />
     <Compile Include="Controllers\SectorsController.cs" />
@@ -397,6 +396,14 @@
     <Content Include="Views\TipoConsultas\EditAdministrador.cshtml" />
     <Content Include="Views\Shared\_LayoutTecnico.cshtml" />
     <Content Include="Views\RegistroResultados\IndexTecnico.cshtml" />
+    <Content Include="Views\Personas\IndexTecnico.cshtml" />
+    <Content Include="Views\Personas\DetailsTecnico.cshtml" />
+    <Content Include="Views\Personas\CreateTecnico.cshtml" />
+    <Content Include="Views\Personas\EditTecnico.cshtml" />
+    <Content Include="Views\Radiologo\IndexTecnico.cshtml" />
+    <Content Include="Views\Radiologo\DetailsTecnico.cshtml" />
+    <Content Include="Views\Radiologo\CreateTecnico.cshtml" />
+    <Content Include="Views\Radiologo\EditTecnico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

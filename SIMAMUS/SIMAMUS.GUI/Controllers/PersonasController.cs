@@ -233,5 +233,100 @@ namespace SIMAMUS.GUI.Controllers
 
         #endregion
 
+
+        #region rol Tecnico
+
+
+        // GET: Personas
+        [Authorize(Roles = ("1,3"))]
+        public ActionResult IndexTecnico()
+        {
+            var persona = db.Persona.Include(p => p.Sector).Include(p => p.Sexo);
+            return View(persona.ToList());
+        }
+
+        // GET: Personas/Details/5
+        [Authorize(Roles = ("1,3"))]
+        public ActionResult DetailsTecnico(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Persona persona = db.Persona.Find(id);
+            if (persona == null)
+            {
+                return HttpNotFound();
+            }
+            return View(persona);
+        }
+
+        // GET: Personas/Create
+        [Authorize(Roles = ("1,3"))]
+        public ActionResult CreateTecnico()
+        {
+            ViewBag.CodigoSector = new SelectList(db.Sector, "CodigoSector", "Nombre");
+            ViewBag.IdSexo = new SelectList(db.Sexo, "IdSexo", "Descripcion");
+            return View();
+        }
+
+        // POST: Personas/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = ("1,3"))]
+        public ActionResult CreateTecnico([Bind(Include = "Cedula,Nombre,ApellidoUno,ApellidoDos,FechaNacimiento,Telefono,Direccion,IdSexo,CodigoSector")] Persona persona)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Persona.Add(persona);
+                db.SaveChanges();
+                return RedirectToAction("IndexAdministrador");
+            }
+
+            ViewBag.CodigoSector = new SelectList(db.Sector, "CodigoSector", "Nombre", persona.CodigoSector);
+            ViewBag.IdSexo = new SelectList(db.Sexo, "IdSexo", "Descripcion", persona.IdSexo);
+            return View(persona);
+        }
+
+        // GET: Personas/Edit/5
+        [Authorize(Roles = ("1,3"))]
+        public ActionResult EditTecnico(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Persona persona = db.Persona.Find(id);
+            if (persona == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.CodigoSector = new SelectList(db.Sector, "CodigoSector", "Nombre", persona.CodigoSector);
+            ViewBag.IdSexo = new SelectList(db.Sexo, "IdSexo", "Descripcion", persona.IdSexo);
+            return View(persona);
+        }
+
+        // POST: Personas/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = ("1,3"))]
+        public ActionResult EditTecnico([Bind(Include = "Cedula,Nombre,ApellidoUno,ApellidoDos,FechaNacimiento,Telefono,Direccion,IdSexo,CodigoSector")] Persona persona)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(persona).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("IndexAdministrador");
+            }
+            ViewBag.CodigoSector = new SelectList(db.Sector, "CodigoSector", "Nombre", persona.CodigoSector);
+            ViewBag.IdSexo = new SelectList(db.Sexo, "IdSexo", "Descripcion", persona.IdSexo);
+            return View(persona);
+        }
+
+        #endregion
     }
 }

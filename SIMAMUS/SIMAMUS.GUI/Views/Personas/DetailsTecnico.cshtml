@@ -1,0 +1,83 @@
+﻿@model SIMAMUS.GUI.Models.Persona
+
+@{
+    ViewBag.Title = "DetailsTecnico";
+    Layout = "~/Views/Shared/_LayoutTecnico.cshtml";
+}
+
+<h2>DetailsTecnico</h2>
+
+<div>
+    <h4>Persona</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApellidoUno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApellidoUno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApellidoDos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApellidoDos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sector.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sector.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexo.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexo.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditTecnico", new { id = Model.Cedula }) |
+    @Html.ActionLink("Back to List", "IndexTecnico")
+</p>

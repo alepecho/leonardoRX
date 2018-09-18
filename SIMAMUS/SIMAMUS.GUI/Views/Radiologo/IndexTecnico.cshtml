@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SIMAMUS.GUI.Models.Radiologo>
+
+@{
+    ViewBag.Title = "IndexTecnico";
+    Layout = "~/Views/Shared/_LayoutTecnico.cshtml";
+}
+
+<h2>IndexTecnico</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateTecnico")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.Contrasenna)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.Contrasenna)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditTecnico", new { id=item.CodigoRadiologo }) |
+            @Html.ActionLink("Details", "DetailsTecnico", new { id=item.CodigoRadiologo }) |
+            @Html.ActionLink("Delete", "DeleteTecnico", new { id=item.CodigoRadiologo })
+        </td>
+    </tr>
+}
+
+</table>
