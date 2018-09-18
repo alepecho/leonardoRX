@@ -26,6 +26,7 @@ namespace SIMAMUS.GUI.Models
         public string Contrasenna { get; set; }
         public int IdNivel { get; set; }
         public int Cedula { get; set; }
+        public bool Activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Medico> Medico { get; set; }

@@ -16,22 +16,24 @@
         <EntityTypeShape EntityType="SIMAMUSModel.Sexo" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SIMAMUSModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SIMAMUSModel.TipoConsulta" Width="1.5" PointX="9.75" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIMAMUSModel.Usuario" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
         <AssociationConnector Association="SIMAMUSModel.FK__Sector__UnidadPr__4A4E069C" ManuallyRouted="false" />
         <AssociationConnector Association="SIMAMUSModel.FK__Medico__IdEspeci__6225902D" ManuallyRouted="false" />
-        <AssociationConnector Association="SIMAMUSModel.FK__Medico__NombreUs__6319B466" ManuallyRouted="false" />
-        <AssociationConnector Association="SIMAMUSModel.FK__Usuario__IdNivel__589C25F3" ManuallyRouted="false" />
         <AssociationConnector Association="SIMAMUSModel.FK__Persona__CodigoS__5006DFF2" ManuallyRouted="false" />
         <AssociationConnector Association="SIMAMUSModel.FK__Persona__IdSexo__4F12BBB9" ManuallyRouted="false" />
-        <AssociationConnector Association="SIMAMUSModel.FK__Usuario__Cedula__59904A2C" ManuallyRouted="false" />
-        <AssociationConnector Association="SIMAMUSModel.FK__Radiologo__Nombr__67DE6983" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SIMAMUSModel.RegistroResultados" Width="1.5" PointX="12" PointY="4.625" />
         <AssociationConnector Association="SIMAMUSModel.FK__RegistroR__Codig__047AA831" />
         <AssociationConnector Association="SIMAMUSModel.FK__RegistroR__Cedul__038683F8" />
         <AssociationConnector Association="SIMAMUSModel.FK__RegistroR__Codig__056ECC6A" />
         <AssociationConnector Association="SIMAMUSModel.FK__RegistroR__IdReg__0662F0A3" />
         <AssociationConnector Association="SIMAMUSModel.FK__RegistroR__IdTip__084B3915" />
-        <AssociationConnector Association="SIMAMUSModel.FK__RegistroR__Nombr__075714DC" />
+        <EntityTypeShape EntityType="SIMAMUSModel.TipoExamen" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SIMAMUSModel.Usuario" Width="1.5" PointX="7.5" PointY="5.625" />
+        <AssociationConnector Association="SIMAMUSModel.FK__Medico__NombreUs__2D7CBDC4" />
+        <AssociationConnector Association="SIMAMUSModel.FK__Usuario__IdNivel__22FF2F51" />
+        <AssociationConnector Association="SIMAMUSModel.FK__Usuario__Cedula__23F3538A" />
+        <AssociationConnector Association="SIMAMUSModel.FK__Radiologo__Nombr__324172E1" />
+        <AssociationConnector Association="SIMAMUSModel.FK__RegistroR__IdTip__5F141958" />
+        <AssociationConnector Association="SIMAMUSModel.FK__RegistroR__Nombr__5D2BD0E6" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

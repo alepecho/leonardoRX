@@ -36,7 +36,8 @@ namespace SIMAMUS.GUI.Models
         public virtual DbSet<Sexo> Sexo { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TipoConsulta> TipoConsulta { get; set; }
-        public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<RegistroResultados> RegistroResultados { get; set; }
+        public virtual DbSet<TipoExamen> TipoExamen { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
     }
 }

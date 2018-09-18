@@ -25,12 +25,15 @@ namespace SIMAMUS.GUI.Models
         public int IdRegion { get; set; }
         public string NombreUsuario { get; set; }
         public int IdTipoConsulta { get; set; }
+        public int IdTipoExamen { get; set; }
+        public string UltimoUsuarioModificar { get; set; }
     
         public virtual Medico Medico { get; set; }
         public virtual Persona Persona { get; set; }
         public virtual Radiologo Radiologo { get; set; }
         public virtual RegionEstudio RegionEstudio { get; set; }
         public virtual TipoConsulta TipoConsulta { get; set; }
+        public virtual TipoExamen TipoExamen { get; set; }
         public virtual Usuario Usuario { get; set; }
     }
 }

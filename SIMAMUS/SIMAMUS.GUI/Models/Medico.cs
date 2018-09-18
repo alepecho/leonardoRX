@@ -23,10 +23,11 @@ namespace SIMAMUS.GUI.Models
         public int CodigoMedico { get; set; }
         public int IdEspecialidad { get; set; }
         public string NombreUsuario { get; set; }
+        public bool Activo { get; set; }
     
         public virtual Especialidad Especialidad { get; set; }
-        public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegistroResultados> RegistroResultados { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }
