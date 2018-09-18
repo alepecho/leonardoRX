@@ -102,6 +102,7 @@ namespace SIMAMUS.GUI.Controllers
         {
             ViewBag.IdNivel = new SelectList(db.NivelUsuario, "IdNivel", "Descripcion");
             ViewBag.Cedula = new SelectList(db.Persona, "Cedula", "Nombre");
+            ViewBag.Contrasenna = GenerarContra();
             return View();
         }
 
@@ -110,8 +111,10 @@ namespace SIMAMUS.GUI.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NombreUsuario,Contrasenna,IdNivel,Cedula")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "NombreUsuario,Contrasenna,IdNivel,Cedula")] Usuario usuario, string clave)
         {
+            usuario.Contrasenna = clave;
+            usuario.Activo = true;
             if (ModelState.IsValid)
             {
                 db.Usuario.Add(usuario);
@@ -185,13 +188,14 @@ namespace SIMAMUS.GUI.Controllers
             return RedirectToAction("Index");
         }
 
-        public String Pass(string nombre)
+        private string GenerarContra()
         {
-            Random num = new Random();
-            string generado = nombre;
-
-            nombre = nombre.ToUpper() + num.Next(100, 1000);
-            return nombre;
+            int longitud = 6;
+            Guid miGuid = Guid.NewGuid();
+            string token = Convert.ToBase64String(miGuid.ToByteArray());
+            token = token.Replace("=", "").Replace("+", "").Replace("/", "");
+            token = token.Substring(0, longitud);
+            return token;
         }
 
         protected override void Dispose(bool disposing)

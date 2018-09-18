@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SIMAMUSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SIMAMUSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CentroSalud">
           <Key>
             <PropertyRef Name="UnidadProgramatica" />
@@ -387,7 +387,8 @@
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SIMAMUSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -397,7 +398,7 @@
           </Key>
           <Property Name="UnidadProgramatica" Type="Int32" Nullable="false" />
           <Property Name="NombreCentro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Sector" Relationship="Self.FK__Sector__UnidadPr__4A4E069C" FromRole="CentroSalud" ToRole="Sector" />
+          <NavigationProperty Name="Sector" Relationship="Self.FK__Sector__UnidadPr__14B10FFA" FromRole="CentroSalud" ToRole="Sector" />
         </EntityType>
         <EntityType Name="Especialidad">
           <Key>
@@ -405,7 +406,19 @@
           </Key>
           <Property Name="IdEspecialidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombreEspecialidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Medico" Relationship="SIMAMUSModel.FK__Medico__IdEspeci__2C88998B" FromRole="Especialidad" ToRole="Medico" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK__Medico__IdEspeci__2C88998B" FromRole="Especialidad" ToRole="Medico" />
+        </EntityType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="CodigoMedico" />
+          </Key>
+          <Property Name="CodigoMedico" Type="Int32" Nullable="false" />
+          <Property Name="IdEspecialidad" Type="Int32" Nullable="false" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Especialidad" Relationship="Self.FK__Medico__IdEspeci__2C88998B" FromRole="Medico" ToRole="Especialidad" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Medico__NombreUs__2D7CBDC4" FromRole="Medico" ToRole="Usuario" />
+          <NavigationProperty Name="RegistroResultados" Relationship="Self.FK__RegistroR__Codig__5A4F643B" FromRole="Medico" ToRole="RegistroResultados" />
         </EntityType>
         <EntityType Name="NivelUsuario">
           <Key>
@@ -413,7 +426,7 @@
           </Key>
           <Property Name="IdNivel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__IdNivel__589C25F3" FromRole="NivelUsuario" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__IdNivel__22FF2F51" FromRole="NivelUsuario" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Persona">
           <Key>
@@ -428,10 +441,20 @@
           <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdSexo" Type="Int32" Nullable="false" />
           <Property Name="CodigoSector" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Sector" Relationship="Self.FK__Persona__CodigoS__5006DFF2" FromRole="Persona" ToRole="Sector" />
-          <NavigationProperty Name="Sexo" Relationship="Self.FK__Persona__IdSexo__4F12BBB9" FromRole="Persona" ToRole="Sexo" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__Cedula__59904A2C" FromRole="Persona" ToRole="Usuario" />
-          <NavigationProperty Name="RegistroResultados" Relationship="SIMAMUSModel.FK__RegistroR__Cedul__595B4002" FromRole="Persona" ToRole="RegistroResultados" />
+          <NavigationProperty Name="Sector" Relationship="Self.FK__Persona__CodigoS__1A69E950" FromRole="Persona" ToRole="Sector" />
+          <NavigationProperty Name="Sexo" Relationship="Self.FK__Persona__IdSexo__1975C517" FromRole="Persona" ToRole="Sexo" />
+          <NavigationProperty Name="RegistroResultados" Relationship="Self.FK__RegistroR__Cedul__595B4002" FromRole="Persona" ToRole="RegistroResultados" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__Cedula__23F3538A" FromRole="Persona" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Radiologo">
+          <Key>
+            <PropertyRef Name="CodigoRadiologo" />
+          </Key>
+          <Property Name="CodigoRadiologo" Type="Int32" Nullable="false" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Radiologo__Nombr__324172E1" FromRole="Radiologo" ToRole="Usuario" />
+          <NavigationProperty Name="RegistroResultados" Relationship="Self.FK__RegistroR__Codig__5B438874" FromRole="Radiologo" ToRole="RegistroResultados" />
         </EntityType>
         <EntityType Name="RegionEstudio">
           <Key>
@@ -439,7 +462,32 @@
           </Key>
           <Property Name="CodigoRegion" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="RegistroResultados" Relationship="SIMAMUSModel.FK__RegistroR__IdReg__5C37ACAD" FromRole="RegionEstudio" ToRole="RegistroResultados" />
+          <NavigationProperty Name="RegistroResultados" Relationship="Self.FK__RegistroR__IdReg__5C37ACAD" FromRole="RegionEstudio" ToRole="RegistroResultados" />
+        </EntityType>
+        <EntityType Name="RegistroResultados">
+          <Key>
+            <PropertyRef Name="IdRegistro" />
+          </Key>
+          <Property Name="IdRegistro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fechaEstudio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Hallazgos" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Conclusiones" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CedulaPaciente" Type="Int32" Nullable="false" />
+          <Property Name="CodigoMedico" Type="Int32" Nullable="false" />
+          <Property Name="CodigoRadiologo" Type="Int32" Nullable="false" />
+          <Property Name="IdRegion" Type="Int32" Nullable="false" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdTipoConsulta" Type="Int32" Nullable="false" />
+          <Property Name="IdTipoExamen" Type="Int32" Nullable="false" />
+          <Property Name="UltimoUsuarioModificar" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK__RegistroR__Codig__5A4F643B" FromRole="RegistroResultados" ToRole="Medico" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__RegistroR__Cedul__595B4002" FromRole="RegistroResultados" ToRole="Persona" />
+          <NavigationProperty Name="Radiologo" Relationship="Self.FK__RegistroR__Codig__5B438874" FromRole="RegistroResultados" ToRole="Radiologo" />
+          <NavigationProperty Name="RegionEstudio" Relationship="Self.FK__RegistroR__IdReg__5C37ACAD" FromRole="RegistroResultados" ToRole="RegionEstudio" />
+          <NavigationProperty Name="TipoConsulta" Relationship="Self.FK__RegistroR__IdTip__5E1FF51F" FromRole="RegistroResultados" ToRole="TipoConsulta" />
+          <NavigationProperty Name="TipoExamen" Relationship="Self.FK__RegistroR__IdTip__5F141958" FromRole="RegistroResultados" ToRole="TipoExamen" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__RegistroR__Nombr__5D2BD0E6" FromRole="RegistroResultados" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Sector">
           <Key>
@@ -448,8 +496,8 @@
           <Property Name="CodigoSector" Type="Int32" Nullable="false" />
           <Property Name="UnidadProgramatica" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CentroSalud" Relationship="Self.FK__Sector__UnidadPr__4A4E069C" FromRole="Sector" ToRole="CentroSalud" />
-          <NavigationProperty Name="Persona" Relationship="Self.FK__Persona__CodigoS__5006DFF2" FromRole="Sector" ToRole="Persona" />
+          <NavigationProperty Name="CentroSalud" Relationship="Self.FK__Sector__UnidadPr__14B10FFA" FromRole="Sector" ToRole="CentroSalud" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Persona__CodigoS__1A69E950" FromRole="Sector" ToRole="Persona" />
         </EntityType>
         <EntityType Name="Sexo">
           <Key>
@@ -457,7 +505,7 @@
           </Key>
           <Property Name="IdSexo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Persona" Relationship="Self.FK__Persona__IdSexo__4F12BBB9" FromRole="Sexo" ToRole="Persona" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Persona__IdSexo__1975C517" FromRole="Sexo" ToRole="Persona" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -475,7 +523,15 @@
           </Key>
           <Property Name="IdTipoConsulta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombreConsulta" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="RegistroResultados" Relationship="SIMAMUSModel.FK__RegistroR__IdTip__5E1FF51F" FromRole="TipoConsulta" ToRole="RegistroResultados" />
+          <NavigationProperty Name="RegistroResultados" Relationship="Self.FK__RegistroR__IdTip__5E1FF51F" FromRole="TipoConsulta" ToRole="RegistroResultados" />
+        </EntityType>
+        <EntityType Name="TipoExamen">
+          <Key>
+            <PropertyRef Name="IdTipoExamen" />
+          </Key>
+          <Property Name="IdTipoExamen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RegistroResultados" Relationship="Self.FK__RegistroR__IdTip__5F141958" FromRole="TipoExamen" ToRole="RegistroResultados" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -485,14 +541,14 @@
           <Property Name="Contrasenna" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdNivel" Type="Int32" Nullable="false" />
           <Property Name="Cedula" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="NivelUsuario" Relationship="Self.FK__Usuario__IdNivel__589C25F3" FromRole="Usuario" ToRole="NivelUsuario" />
-          <NavigationProperty Name="Persona" Relationship="Self.FK__Usuario__Cedula__59904A2C" FromRole="Usuario" ToRole="Persona" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Medico" Relationship="SIMAMUSModel.FK__Medico__NombreUs__2D7CBDC4" FromRole="Usuario" ToRole="Medico" />
-          <NavigationProperty Name="Radiologo" Relationship="SIMAMUSModel.FK__Radiologo__Nombr__324172E1" FromRole="Usuario" ToRole="Radiologo" />
-          <NavigationProperty Name="RegistroResultados" Relationship="SIMAMUSModel.FK__RegistroR__Nombr__5D2BD0E6" FromRole="Usuario" ToRole="RegistroResultados" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK__Medico__NombreUs__2D7CBDC4" FromRole="Usuario" ToRole="Medico" />
+          <NavigationProperty Name="NivelUsuario" Relationship="Self.FK__Usuario__IdNivel__22FF2F51" FromRole="Usuario" ToRole="NivelUsuario" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Usuario__Cedula__23F3538A" FromRole="Usuario" ToRole="Persona" />
+          <NavigationProperty Name="Radiologo" Relationship="Self.FK__Radiologo__Nombr__324172E1" FromRole="Usuario" ToRole="Radiologo" />
+          <NavigationProperty Name="RegistroResultados" Relationship="Self.FK__RegistroR__Nombr__5D2BD0E6" FromRole="Usuario" ToRole="RegistroResultados" />
         </EntityType>
-        <Association Name="FK__Sector__UnidadPr__4A4E069C">
+        <Association Name="FK__Sector__UnidadPr__14B10FFA">
           <End Role="CentroSalud" Type="Self.CentroSalud" Multiplicity="1" />
           <End Role="Sector" Type="Self.Sector" Multiplicity="*" />
           <ReferentialConstraint>
@@ -504,7 +560,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuario__IdNivel__589C25F3">
+        <Association Name="FK__Medico__IdEspeci__2C88998B">
+          <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidad">
+              <PropertyRef Name="IdEspecialidad" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="IdEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medico__NombreUs__2D7CBDC4">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="NombreUsuario" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="NombreUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RegistroR__Codig__5A4F643B">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
+          <End Role="RegistroResultados" Type="Self.RegistroResultados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="CodigoMedico" />
+            </Principal>
+            <Dependent Role="RegistroResultados">
+              <PropertyRef Name="CodigoMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__IdNivel__22FF2F51">
           <End Role="NivelUsuario" Type="Self.NivelUsuario" Multiplicity="1" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -516,7 +608,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Persona__CodigoS__5006DFF2">
+        <Association Name="FK__Persona__CodigoS__1A69E950">
           <End Role="Sector" Type="Self.Sector" Multiplicity="1" />
           <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
           <ReferentialConstraint>
@@ -528,7 +620,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Persona__IdSexo__4F12BBB9">
+        <Association Name="FK__Persona__IdSexo__1975C517">
           <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
           <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
           <ReferentialConstraint>
@@ -540,7 +632,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuario__Cedula__59904A2C">
+        <Association Name="FK__RegistroR__Cedul__595B4002">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="RegistroResultados" Type="Self.RegistroResultados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Cedula" />
+            </Principal>
+            <Dependent Role="RegistroResultados">
+              <PropertyRef Name="CedulaPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__Cedula__23F3538A">
           <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -552,139 +656,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SIMAMUSEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CentroSalud" EntityType="Self.CentroSalud" />
-          <EntitySet Name="Especialidad" EntityType="Self.Especialidad" />
-          <EntitySet Name="NivelUsuario" EntityType="Self.NivelUsuario" />
-          <EntitySet Name="Persona" EntityType="Self.Persona" />
-          <EntitySet Name="RegionEstudio" EntityType="Self.RegionEstudio" />
-          <EntitySet Name="Sector" EntityType="Self.Sector" />
-          <EntitySet Name="Sexo" EntityType="Self.Sexo" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="TipoConsulta" EntityType="Self.TipoConsulta" />
-          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
-          <AssociationSet Name="FK__Sector__UnidadPr__4A4E069C" Association="Self.FK__Sector__UnidadPr__4A4E069C">
-            <End Role="CentroSalud" EntitySet="CentroSalud" />
-            <End Role="Sector" EntitySet="Sector" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Usuario__IdNivel__589C25F3" Association="Self.FK__Usuario__IdNivel__589C25F3">
-            <End Role="NivelUsuario" EntitySet="NivelUsuario" />
-            <End Role="Usuario" EntitySet="Usuario" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Persona__CodigoS__5006DFF2" Association="Self.FK__Persona__CodigoS__5006DFF2">
-            <End Role="Sector" EntitySet="Sector" />
-            <End Role="Persona" EntitySet="Persona" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Persona__IdSexo__4F12BBB9" Association="Self.FK__Persona__IdSexo__4F12BBB9">
-            <End Role="Sexo" EntitySet="Sexo" />
-            <End Role="Persona" EntitySet="Persona" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Usuario__Cedula__59904A2C" Association="Self.FK__Usuario__Cedula__59904A2C">
-            <End Role="Persona" EntitySet="Persona" />
-            <End Role="Usuario" EntitySet="Usuario" />
-          </AssociationSet>
-          <EntitySet Name="TipoExamen" EntityType="SIMAMUSModel.TipoExamen" />
-          <EntitySet Name="Medico" EntityType="SIMAMUSModel.Medico" />
-          <EntitySet Name="Radiologo" EntityType="SIMAMUSModel.Radiologo" />
-          <AssociationSet Name="FK__Medico__IdEspeci__2C88998B" Association="SIMAMUSModel.FK__Medico__IdEspeci__2C88998B">
-            <End Role="Especialidad" EntitySet="Especialidad" />
-            <End Role="Medico" EntitySet="Medico" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Medico__NombreUs__2D7CBDC4" Association="SIMAMUSModel.FK__Medico__NombreUs__2D7CBDC4">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Medico" EntitySet="Medico" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Radiologo__Nombr__324172E1" Association="SIMAMUSModel.FK__Radiologo__Nombr__324172E1">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Radiologo" EntitySet="Radiologo" />
-          </AssociationSet>
-          <EntitySet Name="RegistroResultados" EntityType="SIMAMUSModel.RegistroResultados" />
-          <AssociationSet Name="FK__RegistroR__Codig__5A4F643B" Association="SIMAMUSModel.FK__RegistroR__Codig__5A4F643B">
-            <End Role="Medico" EntitySet="Medico" />
-            <End Role="RegistroResultados" EntitySet="RegistroResultados" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RegistroR__Cedul__595B4002" Association="SIMAMUSModel.FK__RegistroR__Cedul__595B4002">
-            <End Role="Persona" EntitySet="Persona" />
-            <End Role="RegistroResultados" EntitySet="RegistroResultados" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RegistroR__Codig__5B438874" Association="SIMAMUSModel.FK__RegistroR__Codig__5B438874">
-            <End Role="Radiologo" EntitySet="Radiologo" />
-            <End Role="RegistroResultados" EntitySet="RegistroResultados" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RegistroR__IdReg__5C37ACAD" Association="SIMAMUSModel.FK__RegistroR__IdReg__5C37ACAD">
-            <End Role="RegionEstudio" EntitySet="RegionEstudio" />
-            <End Role="RegistroResultados" EntitySet="RegistroResultados" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RegistroR__IdTip__5E1FF51F" Association="SIMAMUSModel.FK__RegistroR__IdTip__5E1FF51F">
-            <End Role="TipoConsulta" EntitySet="TipoConsulta" />
-            <End Role="RegistroResultados" EntitySet="RegistroResultados" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RegistroR__IdTip__5F141958" Association="SIMAMUSModel.FK__RegistroR__IdTip__5F141958">
-            <End Role="TipoExamen" EntitySet="TipoExamen" />
-            <End Role="RegistroResultados" EntitySet="RegistroResultados" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RegistroR__Nombr__5D2BD0E6" Association="SIMAMUSModel.FK__RegistroR__Nombr__5D2BD0E6">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="RegistroResultados" EntitySet="RegistroResultados" />
-          </AssociationSet>
-          </EntityContainer>
-        <EntityType Name="TipoExamen">
-          <Key>
-            <PropertyRef Name="IdTipoExamen" />
-          </Key>
-          <Property Name="IdTipoExamen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="RegistroResultados" Relationship="SIMAMUSModel.FK__RegistroR__IdTip__5F141958" FromRole="TipoExamen" ToRole="RegistroResultados" />
-        </EntityType>
-        <EntityType Name="Medico">
-          <Key>
-            <PropertyRef Name="CodigoMedico" />
-          </Key>
-          <Property Name="CodigoMedico" Type="Int32" Nullable="false" />
-          <Property Name="IdEspecialidad" Type="Int32" Nullable="false" />
-          <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Activo" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Especialidad" Relationship="SIMAMUSModel.FK__Medico__IdEspeci__2C88998B" FromRole="Medico" ToRole="Especialidad" />
-          <NavigationProperty Name="Usuario" Relationship="SIMAMUSModel.FK__Medico__NombreUs__2D7CBDC4" FromRole="Medico" ToRole="Usuario" />
-          <NavigationProperty Name="RegistroResultados" Relationship="SIMAMUSModel.FK__RegistroR__Codig__5A4F643B" FromRole="Medico" ToRole="RegistroResultados" />
-        </EntityType>
-        <EntityType Name="Radiologo">
-          <Key>
-            <PropertyRef Name="CodigoRadiologo" />
-          </Key>
-          <Property Name="CodigoRadiologo" Type="Int32" Nullable="false" />
-          <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Activo" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Usuario" Relationship="SIMAMUSModel.FK__Radiologo__Nombr__324172E1" FromRole="Radiologo" ToRole="Usuario" />
-          <NavigationProperty Name="RegistroResultados" Relationship="SIMAMUSModel.FK__RegistroR__Codig__5B438874" FromRole="Radiologo" ToRole="RegistroResultados" />
-        </EntityType>
-        <Association Name="FK__Medico__IdEspeci__2C88998B">
-          <End Type="SIMAMUSModel.Especialidad" Role="Especialidad" Multiplicity="1" />
-          <End Type="SIMAMUSModel.Medico" Role="Medico" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Especialidad">
-              <PropertyRef Name="IdEspecialidad" />
-            </Principal>
-            <Dependent Role="Medico">
-              <PropertyRef Name="IdEspecialidad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Medico__NombreUs__2D7CBDC4">
-          <End Type="SIMAMUSModel.Usuario" Role="Usuario" Multiplicity="1" />
-          <End Type="SIMAMUSModel.Medico" Role="Medico" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="NombreUsuario" />
-            </Principal>
-            <Dependent Role="Medico">
-              <PropertyRef Name="NombreUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Radiologo__Nombr__324172E1">
-          <End Type="SIMAMUSModel.Usuario" Role="Usuario" Multiplicity="1" />
-          <End Type="SIMAMUSModel.Radiologo" Role="Radiologo" Multiplicity="*" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Radiologo" Type="Self.Radiologo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
               <PropertyRef Name="NombreUsuario" />
@@ -694,58 +668,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="RegistroResultados">
-          <Key>
-            <PropertyRef Name="IdRegistro" />
-          </Key>
-          <Property Name="IdRegistro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="fechaEstudio" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Hallazgos" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="Conclusiones" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="CedulaPaciente" Type="Int32" Nullable="false" />
-          <Property Name="CodigoMedico" Type="Int32" Nullable="false" />
-          <Property Name="CodigoRadiologo" Type="Int32" Nullable="false" />
-          <Property Name="IdRegion" Type="Int32" Nullable="false" />
-          <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="IdTipoConsulta" Type="Int32" Nullable="false" />
-          <Property Name="IdTipoExamen" Type="Int32" Nullable="false" />
-          <Property Name="UltimoUsuarioModificar" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Medico" Relationship="SIMAMUSModel.FK__RegistroR__Codig__5A4F643B" FromRole="RegistroResultados" ToRole="Medico" />
-          <NavigationProperty Name="Persona" Relationship="SIMAMUSModel.FK__RegistroR__Cedul__595B4002" FromRole="RegistroResultados" ToRole="Persona" />
-          <NavigationProperty Name="Radiologo" Relationship="SIMAMUSModel.FK__RegistroR__Codig__5B438874" FromRole="RegistroResultados" ToRole="Radiologo" />
-          <NavigationProperty Name="RegionEstudio" Relationship="SIMAMUSModel.FK__RegistroR__IdReg__5C37ACAD" FromRole="RegistroResultados" ToRole="RegionEstudio" />
-          <NavigationProperty Name="TipoConsulta" Relationship="SIMAMUSModel.FK__RegistroR__IdTip__5E1FF51F" FromRole="RegistroResultados" ToRole="TipoConsulta" />
-          <NavigationProperty Name="TipoExamen" Relationship="SIMAMUSModel.FK__RegistroR__IdTip__5F141958" FromRole="RegistroResultados" ToRole="TipoExamen" />
-          <NavigationProperty Name="Usuario" Relationship="SIMAMUSModel.FK__RegistroR__Nombr__5D2BD0E6" FromRole="RegistroResultados" ToRole="Usuario" />
-        </EntityType>
-        <Association Name="FK__RegistroR__Codig__5A4F643B">
-          <End Type="SIMAMUSModel.Medico" Role="Medico" Multiplicity="1" />
-          <End Type="SIMAMUSModel.RegistroResultados" Role="RegistroResultados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Medico">
-              <PropertyRef Name="CodigoMedico" />
-            </Principal>
-            <Dependent Role="RegistroResultados">
-              <PropertyRef Name="CodigoMedico" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__RegistroR__Cedul__595B4002">
-          <End Type="SIMAMUSModel.Persona" Role="Persona" Multiplicity="1" />
-          <End Type="SIMAMUSModel.RegistroResultados" Role="RegistroResultados" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Persona">
-              <PropertyRef Name="Cedula" />
-            </Principal>
-            <Dependent Role="RegistroResultados">
-              <PropertyRef Name="CedulaPaciente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__RegistroR__Codig__5B438874">
-          <End Type="SIMAMUSModel.Radiologo" Role="Radiologo" Multiplicity="1" />
-          <End Type="SIMAMUSModel.RegistroResultados" Role="RegistroResultados" Multiplicity="*" />
+          <End Role="Radiologo" Type="Self.Radiologo" Multiplicity="1" />
+          <End Role="RegistroResultados" Type="Self.RegistroResultados" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Radiologo">
               <PropertyRef Name="CodigoRadiologo" />
@@ -756,8 +681,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__RegistroR__IdReg__5C37ACAD">
-          <End Type="SIMAMUSModel.RegionEstudio" Role="RegionEstudio" Multiplicity="1" />
-          <End Type="SIMAMUSModel.RegistroResultados" Role="RegistroResultados" Multiplicity="*" />
+          <End Role="RegionEstudio" Type="Self.RegionEstudio" Multiplicity="1" />
+          <End Role="RegistroResultados" Type="Self.RegistroResultados" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="RegionEstudio">
               <PropertyRef Name="CodigoRegion" />
@@ -768,8 +693,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__RegistroR__IdTip__5E1FF51F">
-          <End Type="SIMAMUSModel.TipoConsulta" Role="TipoConsulta" Multiplicity="1" />
-          <End Type="SIMAMUSModel.RegistroResultados" Role="RegistroResultados" Multiplicity="*" />
+          <End Role="TipoConsulta" Type="Self.TipoConsulta" Multiplicity="1" />
+          <End Role="RegistroResultados" Type="Self.RegistroResultados" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TipoConsulta">
               <PropertyRef Name="IdTipoConsulta" />
@@ -780,8 +705,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__RegistroR__IdTip__5F141958">
-          <End Type="SIMAMUSModel.TipoExamen" Role="TipoExamen" Multiplicity="1" />
-          <End Type="SIMAMUSModel.RegistroResultados" Role="RegistroResultados" Multiplicity="*" />
+          <End Role="TipoExamen" Type="Self.TipoExamen" Multiplicity="1" />
+          <End Role="RegistroResultados" Type="Self.RegistroResultados" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TipoExamen">
               <PropertyRef Name="IdTipoExamen" />
@@ -792,8 +717,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__RegistroR__Nombr__5D2BD0E6">
-          <End Type="SIMAMUSModel.Usuario" Role="Usuario" Multiplicity="1" />
-          <End Type="SIMAMUSModel.RegistroResultados" Role="RegistroResultados" Multiplicity="*" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="RegistroResultados" Type="Self.RegistroResultados" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
               <PropertyRef Name="NombreUsuario" />
@@ -803,7 +728,83 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <EntityContainer Name="SIMAMUSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CentroSalud" EntityType="Self.CentroSalud" />
+          <EntitySet Name="Especialidad" EntityType="Self.Especialidad" />
+          <EntitySet Name="Medico" EntityType="Self.Medico" />
+          <EntitySet Name="NivelUsuario" EntityType="Self.NivelUsuario" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" />
+          <EntitySet Name="Radiologo" EntityType="Self.Radiologo" />
+          <EntitySet Name="RegionEstudio" EntityType="Self.RegionEstudio" />
+          <EntitySet Name="RegistroResultados" EntityType="Self.RegistroResultados" />
+          <EntitySet Name="Sector" EntityType="Self.Sector" />
+          <EntitySet Name="Sexo" EntityType="Self.Sexo" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TipoConsulta" EntityType="Self.TipoConsulta" />
+          <EntitySet Name="TipoExamen" EntityType="Self.TipoExamen" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK__Sector__UnidadPr__14B10FFA" Association="Self.FK__Sector__UnidadPr__14B10FFA">
+            <End Role="CentroSalud" EntitySet="CentroSalud" />
+            <End Role="Sector" EntitySet="Sector" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medico__IdEspeci__2C88998B" Association="Self.FK__Medico__IdEspeci__2C88998B">
+            <End Role="Especialidad" EntitySet="Especialidad" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medico__NombreUs__2D7CBDC4" Association="Self.FK__Medico__NombreUs__2D7CBDC4">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegistroR__Codig__5A4F643B" Association="Self.FK__RegistroR__Codig__5A4F643B">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="RegistroResultados" EntitySet="RegistroResultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__IdNivel__22FF2F51" Association="Self.FK__Usuario__IdNivel__22FF2F51">
+            <End Role="NivelUsuario" EntitySet="NivelUsuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Persona__CodigoS__1A69E950" Association="Self.FK__Persona__CodigoS__1A69E950">
+            <End Role="Sector" EntitySet="Sector" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Persona__IdSexo__1975C517" Association="Self.FK__Persona__IdSexo__1975C517">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegistroR__Cedul__595B4002" Association="Self.FK__RegistroR__Cedul__595B4002">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="RegistroResultados" EntitySet="RegistroResultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__Cedula__23F3538A" Association="Self.FK__Usuario__Cedula__23F3538A">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Radiologo__Nombr__324172E1" Association="Self.FK__Radiologo__Nombr__324172E1">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Radiologo" EntitySet="Radiologo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegistroR__Codig__5B438874" Association="Self.FK__RegistroR__Codig__5B438874">
+            <End Role="Radiologo" EntitySet="Radiologo" />
+            <End Role="RegistroResultados" EntitySet="RegistroResultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegistroR__IdReg__5C37ACAD" Association="Self.FK__RegistroR__IdReg__5C37ACAD">
+            <End Role="RegionEstudio" EntitySet="RegionEstudio" />
+            <End Role="RegistroResultados" EntitySet="RegistroResultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegistroR__IdTip__5E1FF51F" Association="Self.FK__RegistroR__IdTip__5E1FF51F">
+            <End Role="TipoConsulta" EntitySet="TipoConsulta" />
+            <End Role="RegistroResultados" EntitySet="RegistroResultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegistroR__IdTip__5F141958" Association="Self.FK__RegistroR__IdTip__5F141958">
+            <End Role="TipoExamen" EntitySet="TipoExamen" />
+            <End Role="RegistroResultados" EntitySet="RegistroResultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RegistroR__Nombr__5D2BD0E6" Association="Self.FK__RegistroR__Nombr__5D2BD0E6">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="RegistroResultados" EntitySet="RegistroResultados" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -822,6 +823,16 @@
               <MappingFragment StoreEntitySet="Especialidad">
                 <ScalarProperty Name="IdEspecialidad" ColumnName="IdEspecialidad" />
                 <ScalarProperty Name="NombreEspecialidad" ColumnName="NombreEspecialidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medico">
+            <EntityTypeMapping TypeName="SIMAMUSModel.Medico">
+              <MappingFragment StoreEntitySet="Medico">
+                <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
+                <ScalarProperty Name="IdEspecialidad" ColumnName="IdEspecialidad" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -848,11 +859,39 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Radiologo">
+            <EntityTypeMapping TypeName="SIMAMUSModel.Radiologo">
+              <MappingFragment StoreEntitySet="Radiologo">
+                <ScalarProperty Name="CodigoRadiologo" ColumnName="CodigoRadiologo" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="RegionEstudio">
             <EntityTypeMapping TypeName="SIMAMUSModel.RegionEstudio">
               <MappingFragment StoreEntitySet="RegionEstudio">
                 <ScalarProperty Name="CodigoRegion" ColumnName="CodigoRegion" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistroResultados">
+            <EntityTypeMapping TypeName="SIMAMUSModel.RegistroResultados">
+              <MappingFragment StoreEntitySet="RegistroResultados">
+                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="fechaEstudio" ColumnName="fechaEstudio" />
+                <ScalarProperty Name="Hallazgos" ColumnName="Hallazgos" />
+                <ScalarProperty Name="Conclusiones" ColumnName="Conclusiones" />
+                <ScalarProperty Name="CedulaPaciente" ColumnName="CedulaPaciente" />
+                <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
+                <ScalarProperty Name="CodigoRadiologo" ColumnName="CodigoRadiologo" />
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="IdTipoConsulta" ColumnName="IdTipoConsulta" />
+                <ScalarProperty Name="IdTipoExamen" ColumnName="IdTipoExamen" />
+                <ScalarProperty Name="UltimoUsuarioModificar" ColumnName="UltimoUsuarioModificar" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -892,60 +931,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TipoExamen">
+            <EntityTypeMapping TypeName="SIMAMUSModel.TipoExamen">
+              <MappingFragment StoreEntitySet="TipoExamen">
+                <ScalarProperty Name="IdTipoExamen" ColumnName="IdTipoExamen" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="SIMAMUSModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
                 <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
                 <ScalarProperty Name="IdNivel" ColumnName="IdNivel" />
                 <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoExamen">
-            <EntityTypeMapping TypeName="SIMAMUSModel.TipoExamen">
-              <MappingFragment StoreEntitySet="TipoExamen">
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdTipoExamen" ColumnName="IdTipoExamen" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Medico">
-            <EntityTypeMapping TypeName="SIMAMUSModel.Medico">
-              <MappingFragment StoreEntitySet="Medico">
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
-                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
-                <ScalarProperty Name="IdEspecialidad" ColumnName="IdEspecialidad" />
-                <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Radiologo">
-            <EntityTypeMapping TypeName="SIMAMUSModel.Radiologo">
-              <MappingFragment StoreEntitySet="Radiologo">
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
-                <ScalarProperty Name="CodigoRadiologo" ColumnName="CodigoRadiologo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RegistroResultados">
-            <EntityTypeMapping TypeName="SIMAMUSModel.RegistroResultados">
-              <MappingFragment StoreEntitySet="RegistroResultados">
-                <ScalarProperty Name="UltimoUsuarioModificar" ColumnName="UltimoUsuarioModificar" />
-                <ScalarProperty Name="IdTipoExamen" ColumnName="IdTipoExamen" />
-                <ScalarProperty Name="IdTipoConsulta" ColumnName="IdTipoConsulta" />
-                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
-                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
-                <ScalarProperty Name="CodigoRadiologo" ColumnName="CodigoRadiologo" />
-                <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
-                <ScalarProperty Name="CedulaPaciente" ColumnName="CedulaPaciente" />
-                <ScalarProperty Name="Conclusiones" ColumnName="Conclusiones" />
-                <ScalarProperty Name="Hallazgos" ColumnName="Hallazgos" />
-                <ScalarProperty Name="fechaEstudio" ColumnName="fechaEstudio" />
-                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
-                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -966,7 +967,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

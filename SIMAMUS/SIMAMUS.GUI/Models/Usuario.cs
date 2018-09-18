@@ -28,10 +28,10 @@ namespace SIMAMUS.GUI.Models
         public int Cedula { get; set; }
         public bool Activo { get; set; }
     
-        public virtual NivelUsuario NivelUsuario { get; set; }
-        public virtual Persona Persona { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Medico> Medico { get; set; }
+        public virtual NivelUsuario NivelUsuario { get; set; }
+        public virtual Persona Persona { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Radiologo> Radiologo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
