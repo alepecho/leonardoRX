@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -151,7 +154,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CentroSaludsController.cs" />
-    <Compile Include="Controllers\DoctoresController.cs" />
     <Compile Include="Controllers\EspecialidadsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicosController.cs" />
@@ -182,6 +184,15 @@
       <DependentUpon>SIMAMUS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Persona.cs">
+      <DependentUpon>SIMAMUS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pro_ReportesParametros_Result.cs">
+      <DependentUpon>SIMAMUS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pro_ReportesP_Result.cs">
+      <DependentUpon>SIMAMUS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pro_Reportes_Result.cs">
       <DependentUpon>SIMAMUS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Radiologo.cs">
@@ -228,6 +239,12 @@
     </Compile>
     <Compile Include="MyRoleProvider\SiteRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporte\Reporte3.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reporte3.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ViewModels\IndexViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -308,7 +325,6 @@
     <Content Include="Views\RegionEstudios\Edit.cshtml" />
     <Content Include="Views\RegionEstudios\Index.cshtml" />
     <Content Include="Views\CentroSaluds\Create.cshtml" />
-    <Content Include="Views\CentroSaluds\Delete.cshtml" />
     <Content Include="Views\CentroSaluds\Details.cshtml" />
     <Content Include="Views\CentroSaluds\Edit.cshtml" />
     <Content Include="Views\CentroSaluds\Index.cshtml" />
@@ -318,7 +334,6 @@
     <Content Include="Views\Radiologo\Edit.cshtml" />
     <Content Include="Views\Radiologo\Index.cshtml" />
     <Content Include="Views\Especialidads\Create.cshtml" />
-    <Content Include="Views\Especialidads\Delete.cshtml" />
     <Content Include="Views\Especialidads\Details.cshtml" />
     <Content Include="Views\Especialidads\Edit.cshtml" />
     <Content Include="Views\Especialidads\Index.cshtml" />
@@ -382,11 +397,6 @@
     <Content Include="Views\TipoExamen\Details.cshtml" />
     <Content Include="Views\TipoExamen\Edit.cshtml" />
     <Content Include="Views\TipoExamen\Index.cshtml" />
-    <Content Include="Views\Doctores\Create.cshtml" />
-    <Content Include="Views\Doctores\Delete.cshtml" />
-    <Content Include="Views\Doctores\Details.cshtml" />
-    <Content Include="Views\Doctores\Edit.cshtml" />
-    <Content Include="Views\Doctores\Index.cshtml" />
     <Content Include="Views\Sexoes\IndexAdministrador.cshtml" />
     <Content Include="Views\Sexoes\DetailsAdministrador.cshtml" />
     <Content Include="Views\Sexoes\CreateAdministrador.cshtml" />
@@ -423,6 +433,13 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reporte\Reporte3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Reporte3.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

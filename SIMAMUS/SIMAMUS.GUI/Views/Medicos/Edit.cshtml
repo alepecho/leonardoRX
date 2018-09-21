@@ -18,7 +18,11 @@
         @Html.HiddenFor(model => model.CodigoMedico)
 
         <div class="form-group">
+<<<<<<< HEAD
             @Html.Label("Especilidad", htmlAttributes: new { @class = "control-label col-md-2" })
+=======
+            @Html.Label("Especilidad", "IdEspecialidad", htmlAttributes: new { @class = "control-label col-md-2" })
+>>>>>>> 936e630ff2be78ee965f552f109acf85cb8c67a9
             <div class="col-md-10">
                 @Html.DropDownList("IdEspecialidad", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdEspecialidad, "", new { @class = "text-danger" })
@@ -26,7 +30,11 @@
         </div>
 
         <div class="form-group">
+<<<<<<< HEAD
             @Html.Label("Usuario", htmlAttributes: new { @class = "control-label col-md-2" })
+=======
+            @Html.Label("Usuario", "NombreUsuario", htmlAttributes: new { @class = "control-label col-md-2" })
+>>>>>>> 936e630ff2be78ee965f552f109acf85cb8c67a9
             <div class="col-md-10">
                 @Html.DropDownList("NombreUsuario", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "text-danger" })

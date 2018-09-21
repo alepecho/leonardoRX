@@ -10,9 +10,8 @@
 namespace SIMAMUS.GUI.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class RegistroResultados
+    public partial class pro_Reportes_Result
     {
         public int IdRegistro { get; set; }
         public System.DateTime fechaRegistro { get; set; }
@@ -20,20 +19,11 @@ namespace SIMAMUS.GUI.Models
         public string Hallazgos { get; set; }
         public string Conclusiones { get; set; }
         public int CedulaPaciente { get; set; }
-        public int CodigoMedico { get; set; }
-        public int CodigoRadiologo { get; set; }
-        public int IdRegion { get; set; }
-        public string NombreUsuario { get; set; }
-        public int IdTipoConsulta { get; set; }
-        public int IdTipoExamen { get; set; }
-        public string UltimoUsuarioModificar { get; set; }
-    
-        public virtual Medico Medico { get; set; }
-        public virtual Persona Persona { get; set; }
-        public virtual Radiologo Radiologo { get; set; }
-        public virtual RegionEstudio RegionEstudio { get; set; }
-        public virtual TipoConsulta TipoConsulta { get; set; }
-        public virtual TipoExamen TipoExamen { get; set; }
-        public virtual Usuario Usuario { get; set; }
+        public string Nombre_del_Paciente { get; set; }
+        public string Nombre_del_Medico { get; set; }
+        public string Nombre_del_Radiologo { get; set; }
+        public string Nombre_del_Funcionario { get; set; }
+        public string NombreConsulta { get; set; }
+        public string Descripcion { get; set; }
     }
 }

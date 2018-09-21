@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 using SIMAMUS.GUI.Models;
 using SIMAMUS.GUI.ViewModels;
 
@@ -35,6 +38,31 @@ namespace SIMAMUS.GUI.Controllers
             {
                 int id = Convert.ToInt32(SearchValue);
                 return View(db.Persona.Where(x => x.Cedula == id || SearchValue == null).ToList());
+            }
+        }
+
+        public ActionResult Reporte(int id)
+        {
+            List<RegistroResultados> registro = new List<RegistroResultados>();
+            RegistroResultados reg = db.RegistroResultados.Find(id);
+            registro.Add(reg);
+
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/Reporte"), "Reporte3.rpt"));
+            rd.SetDataSource(registro);
+
+            //Response.Buffer = false;
+            //Response.ClearContent();
+            //Response.ClearHeaders();
+            try
+            {
+                Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", "Registro de resultado.pdf");
+            }
+            catch
+            {
+                throw;
             }
         }
 
