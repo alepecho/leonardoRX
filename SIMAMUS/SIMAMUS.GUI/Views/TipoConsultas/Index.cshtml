@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Informción general de los tipos de consulta</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -24,9 +24,9 @@
             @Html.DisplayFor(modelItem => item.NombreConsulta)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdTipoConsulta }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdTipoConsulta }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdTipoConsulta })
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdTipoConsulta }) |
+            @Html.ActionLink("Ver Detalles", "Details", new { id=item.IdTipoConsulta }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdTipoConsulta })
         </td>
     </tr>
 }

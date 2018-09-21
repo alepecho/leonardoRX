@@ -5,17 +5,22 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>IndexAdministrador</h2>
+<h2>Informacion General de Especialidades</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateAdministrador")
+    @Html.ActionLink("Registrar nueva especialidad", "CreateAdministrador")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NombreEspecialidad)
+            @Html.DisplayName("Especialidad")
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayName("Cantidad de medicos")
+        </th>
+        <th>
+            @Html.DisplayName("Acciones")
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -23,6 +28,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.NombreEspecialidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medico.Count)
             </td>
             <td>
                 @Html.ActionLink("Editar Especialidad", "EditAdministrador", new { id = item.IdEspecialidad }) |

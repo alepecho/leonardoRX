@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>IndexAdministrador</h2>
+<h2>Información general de los generos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateAdministrador")
+    @Html.ActionLink("Registrar nuevo", "CreateAdministrador")
 </p>
 <table class="table">
     <tr>
@@ -25,9 +25,9 @@
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditAdministrador", new { id = item.IdSexo }) |
-                @Html.ActionLink("Details", "DetailsAdministrador", new { id = item.IdSexo }) |
-                @Html.ActionLink("Delete", "DeleteAdministrador", new { id = item.IdSexo })
+                @Html.ActionLink("Editar", "EditAdministrador", new { id = item.IdSexo }) |
+                @Html.ActionLink("Ver detalles", "DetailsAdministrador", new { id = item.IdSexo }) |
+                @Html.ActionLink("Eliminar", "DeleteAdministrador", new { id = item.IdSexo })
             </td>
         </tr>
     }

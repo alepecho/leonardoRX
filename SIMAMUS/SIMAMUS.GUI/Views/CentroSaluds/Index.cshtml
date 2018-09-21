@@ -1,34 +1,49 @@
 ﻿@model IEnumerable<SIMAMUS.GUI.Models.CentroSalud>
 
 @{
+    /**/
+
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
+<h2>Información General de Centros de Salud</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar un centro", "Create")
 </p>
+<br />
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NombreCentro)
+            Unidad Programática
         </th>
-        <th></th>
+        <th>
+            Nombre del centro
+        </th>
+        <th>
+            Cantidad de Sectores
+        </th>
+        <th>
+            Acciones
+        </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreCentro)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UnidadProgramatica }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UnidadProgramatica }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UnidadProgramatica })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnidadProgramatica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCentro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sector.Count)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.UnidadProgramatica }) |
+                @Html.ActionLink("Ver Detalles", "Details", new { id = item.UnidadProgramatica })
+            </td>
+        </tr>
+    }
 
 </table>

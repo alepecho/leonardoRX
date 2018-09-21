@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Información general sobre los niveles de Usuario</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo Registro", "Create")
 </p>
 <table class="table">
     <tr>
@@ -24,9 +24,9 @@
             @Html.DisplayFor(modelItem => item.Descripcion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdNivel }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdNivel }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdNivel })
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdNivel }) |
+            @Html.ActionLink("Ver detalles", "Details", new { id=item.IdNivel }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdNivel })
         </td>
     </tr>
 }

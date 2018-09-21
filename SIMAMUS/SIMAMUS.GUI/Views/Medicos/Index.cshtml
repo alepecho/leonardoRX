@@ -8,17 +8,19 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Especialidad.NombreEspecialidad)
+            @Html.DisplayName("Especialidad")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Usuario.Contrasenna)
+            @Html.DisplayName("Nombre de Usuario")
         </th>
-        <th></th>
+        <th>
+            Acciones
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -27,12 +29,11 @@
             @Html.DisplayFor(modelItem => item.Especialidad.NombreEspecialidad)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Usuario.Contrasenna)
+            @Html.DisplayFor(modelItem => item.Usuario.NombreUsuario)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CodigoMedico }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CodigoMedico }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CodigoMedico })
+            @Html.ActionLink("Editar", "Edit", new { id=item.CodigoMedico }) |
+            @Html.ActionLink("Ver Detalles", "Details", new { id=item.CodigoMedico }) 
         </td>
     </tr>
 }

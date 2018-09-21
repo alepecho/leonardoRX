@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>IndexAdministrador</h2>
+<h2>Información general sobre radiologos registrador</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateAdministrador")
+    @Html.ActionLink("Registrar", "CreateAdministrador")
 </p>
 <table class="table">
     <tr>
@@ -28,8 +28,8 @@
                 @Html.DisplayFor(modelItem => item.Activo)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditAdministrador", new { id = item.CodigoRadiologo }) |
-                @Html.ActionLink("Details", "DetailsAdministrador", new { id = item.CodigoRadiologo })
+                @Html.ActionLink("Editar", "EditAdministrador", new { id = item.CodigoRadiologo }) |
+                @Html.ActionLink("Ver detalles", "DetailsAdministrador", new { id = item.CodigoRadiologo })
             </td>
         </tr>
     }

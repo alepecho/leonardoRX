@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>DetailsAdministrador</h2>
+<h2>Detalles</h2>
 
 <div>
     <h4>Medico</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Especialidad.NombreEspecialidad)
+            @Html.DisplayName("Especialidad")
         </dt>
 
         <dd>
@@ -20,16 +20,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Usuario.Contrasenna)
+            @Html.DisplayName("Usuario")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Usuario.Contrasenna)
+            @Html.DisplayFor(model => model.Usuario.NombreUsuario)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "EditAdministrador", new { id = Model.CodigoMedico }) |
-    @Html.ActionLink("Back to List", "IndexAdministrador")
+    @Html.ActionLink("Editar", "EditAdministrador", new { id = Model.CodigoMedico }) |
+    @Html.ActionLink("Regresar a la lista", "IndexAdministrador")
 </p>

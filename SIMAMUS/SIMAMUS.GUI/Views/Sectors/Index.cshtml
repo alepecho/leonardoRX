@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Información general de los sectores</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar", "Create")
 </p>
 <table class="table">
     <tr>
@@ -30,9 +30,9 @@
             @Html.DisplayFor(modelItem => item.CentroSalud.NombreCentro)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CodigoSector }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CodigoSector }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CodigoSector })
+            @Html.ActionLink("Editar", "Edit", new { id=item.CodigoSector }) |
+            @Html.ActionLink("Ver detalles", "Details", new { id=item.CodigoSector }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.CodigoSector })
         </td>
     </tr>
 }
