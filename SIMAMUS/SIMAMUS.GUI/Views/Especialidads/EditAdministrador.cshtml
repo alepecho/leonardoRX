@@ -1,11 +1,12 @@
-﻿@model SIMAMUS.GUI.Models.Especialidad
+﻿
+@model SIMAMUS.GUI.Models.Especialidad
 
 @{
     ViewBag.Title = "EditAdministrador";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>EditAdministrador</h2>
+<h2>Editar</h2>
 
 @using (Html.BeginForm())
 {
@@ -18,7 +19,7 @@
         @Html.HiddenFor(model => model.IdEspecialidad)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NombreEspecialidad, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Nombre de especialidad", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NombreEspecialidad, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NombreEspecialidad, "", new { @class = "text-danger" })
@@ -27,12 +28,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Guardar Cambios" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "IndexAdministrador")
+    @Html.ActionLink("Regresar a la lista", "IndexAdministrador")
 </div>

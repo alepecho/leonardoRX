@@ -5,71 +5,69 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>IndexAdministrador</h2>
+<h2>Información General de Personas registradas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateAdministrador")
+    @Html.ActionLink("Registrar", "CreateAdministrador")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.DisplayName("Nombre")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ApellidoUno)
+            @Html.DisplayName("Apellidos")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ApellidoDos)
+            @Html.DisplayName("Fecha Nacimiento")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaNacimiento)
+            @Html.DisplayName("Telefono")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Telefono)
+            @Html.DisplayName("Dirección")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Direccion)
+            @Html.DisplayName("Dirección")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Sector.Nombre)
+            @Html.DisplayName("Sector")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sexo.Descripcion)
-        </th>
-        <th></th>
+        <td>
+            @Html.DisplayName("Genero")
+        </td>
+        <th>Acciones</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApellidoUno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApellidoDos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaNacimiento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefono)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Direccion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sector.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sexo.Descripcion)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditAdministrador", new { id=item.Cedula }) |
-            @Html.ActionLink("Details", "DetailsAdministrador", new { id=item.Cedula })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoUno + item.ApellidoDos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sector.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo.Descripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Cedula }) |
+                @Html.ActionLink("Ver detalles", "Details", new { id = item.Cedula }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Cedula })
+            </td>
+        </tr>
+    }
 </table>

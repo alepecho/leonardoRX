@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutTecnico.cshtml";
 }
 
-<h2>DetailsTecnico</h2>
+<h2>Detalles</h2>
 
 <div>
     <h4>Radiologo</h4>
@@ -30,6 +30,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "EditTecnico", new { id = Model.CodigoRadiologo }) |
-    @Html.ActionLink("Back to List", "IndexTecnico")
+    @Html.ActionLink("Editar", "EditTecnico", new { id = Model.CodigoRadiologo }) |
+    @Html.ActionLink("Regresar a la lista.", "IndexTecnico")
 </p>

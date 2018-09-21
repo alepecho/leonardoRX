@@ -54,7 +54,7 @@ namespace SIMAMUS.GUI.Controllers
         [Authorize(Roles = "1")]
         public ActionResult Create()
         {
-            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "Contrasenna");
+            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "NombreUsuario");
             return View();
         }
 
@@ -66,6 +66,7 @@ namespace SIMAMUS.GUI.Controllers
         [Authorize(Roles = "1")]
         public ActionResult Create([Bind(Include = "CodigoRadiologo,NombreUsuario,Activo")] Radiologo radiologo)
         {
+            radiologo.Activo = true;
             if (ModelState.IsValid)
             {
                 db.Radiologo.Add(radiologo);
@@ -172,7 +173,7 @@ namespace SIMAMUS.GUI.Controllers
         [Authorize(Roles = "1,2")]
         public ActionResult CreateAdministrador()
         {
-            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "Contrasenna");
+            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "NombreUsuario");
             return View();
         }
 
@@ -184,6 +185,7 @@ namespace SIMAMUS.GUI.Controllers
         [Authorize(Roles = "1,2")]
         public ActionResult CreateAdministrador([Bind(Include = "CodigoRadiologo,NombreUsuario,Activo")] Radiologo radiologo)
         {
+            radiologo.Activo = true;
             if (ModelState.IsValid)
             {
                 db.Radiologo.Add(radiologo);
@@ -290,7 +292,7 @@ namespace SIMAMUS.GUI.Controllers
         [Authorize(Roles = "1,3")]
         public ActionResult CreateTecnico()
         {
-            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "Contrasenna");
+            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "NombreUsuario");
             return View();
         }
 
@@ -302,6 +304,7 @@ namespace SIMAMUS.GUI.Controllers
         [Authorize(Roles = "1,3")]
         public ActionResult CreateTecnico([Bind(Include = "CodigoRadiologo,NombreUsuario,Activo")] Radiologo radiologo)
         {
+            radiologo.Activo = true;
             if (ModelState.IsValid)
             {
                 db.Radiologo.Add(radiologo);

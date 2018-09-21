@@ -5,14 +5,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Detalles</h2>
 
 <div>
     <h4>Persona</h4>
+    
     <hr />
+
     <dl class="dl-horizontal">
+
         <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.DisplayName("Cédula")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Nombre")
         </dt>
 
         <dd>
@@ -20,7 +30,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ApellidoUno)
+            @Html.DisplayName("Primer Apellido")
         </dt>
 
         <dd>
@@ -28,7 +38,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ApellidoDos)
+            @Html.DisplayName("Segundo Apellido")
         </dt>
 
         <dd>
@@ -36,7 +46,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FechaNacimiento)
+            @Html.DisplayName("Fecha de nacimiento")
         </dt>
 
         <dd>
@@ -44,7 +54,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Telefono)
+            @Html.DisplayName("Telefono")
         </dt>
 
         <dd>
@@ -52,7 +62,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Direccion)
+            @Html.DisplayName("Dirección")
         </dt>
 
         <dd>
@@ -60,7 +70,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Sector.Nombre)
+            @Html.DisplayName("Sector")
         </dt>
 
         <dd>
@@ -68,7 +78,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Sexo.Descripcion)
+            @Html.DisplayName("Genero")
         </dt>
 
         <dd>
@@ -78,6 +88,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Cedula }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Cedula }) |
+    @Html.ActionLink("Regresar a la lista.", "Index")
 </p>

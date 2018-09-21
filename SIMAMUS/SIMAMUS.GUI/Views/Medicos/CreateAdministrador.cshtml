@@ -5,18 +5,18 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>CreateAdministrador</h2>
+<h2>Registrar</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Medico</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.CodigoMedico, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Codigo de Medico", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CodigoMedico, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CodigoMedico, "", new { @class = "text-danger" })
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdEspecialidad, "IdEspecialidad", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Especialidad", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdEspecialidad", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdEspecialidad, "", new { @class = "text-danger" })
@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NombreUsuario, "NombreUsuario", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Usuario", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("NombreUsuario", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "text-danger" })
@@ -41,12 +41,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Guardar" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "IndexAdministrador")
+    @Html.ActionLink("Regresar a la lista.", "IndexAdministrador")
 </div>

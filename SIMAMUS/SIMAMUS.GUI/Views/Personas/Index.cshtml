@@ -5,38 +5,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Información General de Personas registradas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.DisplayName("Nombre")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ApellidoUno)
+            @Html.DisplayName("Apellidos")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ApellidoDos)
+            @Html.DisplayName("Fecha Nacimiento")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaNacimiento)
+            @Html.DisplayName("Telefono")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Telefono)
+            @Html.DisplayName("Dirección")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Direccion)
+            @Html.DisplayName("Dirección")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Sector.Nombre)
+            @Html.DisplayName("Sector")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sexo.Descripcion)
-        </th>
-        <th></th>
+        <td>
+            @Html.DisplayName("Genero")
+        </td>
+        <th>Acciones</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -45,10 +45,7 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ApellidoUno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApellidoDos)
+            @Html.DisplayFor(modelItem => item.ApellidoUno + item.ApellidoDos)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FechaNacimiento)
@@ -66,9 +63,9 @@
             @Html.DisplayFor(modelItem => item.Sexo.Descripcion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Cedula }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Cedula }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Cedula })
+            @Html.ActionLink("Editar", "Edit", new { id=item.Cedula }) |
+            @Html.ActionLink("Ver detalles", "Details", new { id=item.Cedula }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.Cedula })
         </td>
     </tr>
 }

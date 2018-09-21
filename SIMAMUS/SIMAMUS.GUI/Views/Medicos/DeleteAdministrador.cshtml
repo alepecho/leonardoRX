@@ -5,15 +5,15 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>DeleteAdministrador</h2>
+<h2>Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Esta seguro que desea eliminar al medico?</h3>
 <div>
     <h4>Medico</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Especialidad.NombreEspecialidad)
+            @Html.DisplayName("Especialidad")
         </dt>
 
         <dd>
@@ -21,11 +21,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Usuario.Contrasenna)
+            @Html.DisplayName("Usuario")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Usuario.Contrasenna)
+            @Html.DisplayFor(model => model.Usuario.NombreUsuario)
         </dd>
 
     </dl>
@@ -35,7 +35,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Regresar a la lista", "Index")
         </div>
     }
 </div>

@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_LayoutTecnico.cshtml";
 }
 
-<h2>IndexTecnico</h2>
+<h2>Información general sobre radiologos registrador</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateTecnico")
+    @Html.ActionLink("Registrar", "CreateTecnico")
 </p>
 <table class="table">
     <tr>
@@ -30,9 +30,9 @@
             @Html.DisplayFor(modelItem => item.Usuario.Contrasenna)
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditTecnico", new { id=item.CodigoRadiologo }) |
-            @Html.ActionLink("Details", "DetailsTecnico", new { id=item.CodigoRadiologo }) |
-            @Html.ActionLink("Delete", "DeleteTecnico", new { id=item.CodigoRadiologo })
+            @Html.ActionLink("Editar", "EditTecnico", new { id=item.CodigoRadiologo }) |
+            @Html.ActionLink("Ver detalles", "DetailsTecnico", new { id=item.CodigoRadiologo }) |
+            @Html.ActionLink("Eliminar", "DeleteTecnico", new { id=item.CodigoRadiologo })
         </td>
     </tr>
 }

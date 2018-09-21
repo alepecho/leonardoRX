@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>IndexAdministrador</h2>
+<h2>Informción general de los tipos de consulta</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Registrar", "CreateAdministrador")
 </p>
 <table class="table">
     <tr>
@@ -24,9 +24,8 @@
             @Html.DisplayFor(modelItem => item.NombreConsulta)
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditAdministrador", new { id=item.IdTipoConsulta }) |
-            @Html.ActionLink("Details", "DetailsAdministrador", new { id=item.IdTipoConsulta }) |
-            @Html.ActionLink("Delete", "DeleteAdministrador", new { id=item.IdTipoConsulta })
+            @Html.ActionLink("Editar", "EditAdministrador", new { id=item.IdTipoConsulta }) |
+            @Html.ActionLink("Ver Detalles", "DetailsAdministrador", new { id=item.IdTipoConsulta })
         </td>
     </tr>
 }

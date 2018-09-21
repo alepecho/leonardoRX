@@ -15,8 +15,18 @@ namespace SIMAMUS.GUI.Controllers
         private SIMAMUSEntities db = new SIMAMUSEntities();
         // parte de rol 1
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
+        
         #region rol Super Administrador
+
         // GET: CentroSaluds
         [Authorize(Roles ="1")]
         public ActionResult Index()
@@ -94,42 +104,7 @@ namespace SIMAMUS.GUI.Controllers
             }
             return View(centroSalud);
         }
-
-        // GET: CentroSaluds/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CentroSalud centroSalud = db.CentroSalud.Find(id);
-            if (centroSalud == null)
-            {
-                return HttpNotFound();
-            }
-            return View(centroSalud);
-        }
-
-        // POST: CentroSaluds/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            CentroSalud centroSalud = db.CentroSalud.Find(id);
-            db.CentroSalud.Remove(centroSalud);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
+                
         #endregion
 
 

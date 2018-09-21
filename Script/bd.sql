@@ -40,6 +40,7 @@ CREATE TABLE Usuario(
 	IdNivel int not null,
 	Cedula int not null,
 	Activo bit not null,
+	CambioContra bit not null,
 	FOREIGN KEY (IdNivel) REFERENCES NivelUsuario(IdNivel),
 	FOREIGN KEY (Cedula) REFERENCES Persona(Cedula)
 );
@@ -53,7 +54,6 @@ CREATE TABLE Medico(
 	CodigoMedico int primary key,
 	IdEspecialidad int not null,
 	NombreUsuario varchar(20) not null,
-	Activo bit not null,
 	FOREIGN KEY (IdEspecialidad) REFERENCES Especialidad(IdEspecialidad),
 	FOREIGN KEY (NombreUsuario) REFERENCES Usuario(NombreUsuario)
 );
@@ -61,7 +61,6 @@ CREATE TABLE Medico(
 CREATE TABLE Radiologo(
 	CodigoRadiologo int primary key,
 	NombreUsuario varchar(20) not null,
-	Activo bit not null,
 	FOREIGN KEY (NombreUsuario) REFERENCES Usuario(NombreUsuario)
 );
 
@@ -120,17 +119,19 @@ INSERT INTO Sector values(1, 10, 'Pilar Jimenez')
 
 INSERT INTO Persona values(123, 'Pollito', 'Gallo', 'Pinto', '2018/05/05', 88888888, 'En el gallinero de Tibas', 1, 1)
 
+INSERT INTO Persona values(12345, 'Jorge', 'Luis', 'Pinto', '2018/05/05', 88888888, 'En el gallinero de Tibas', 1, 1)
+
 INSERT INTO NivelUsuario values('SuperAdministrador')
 
-INSERT INTO Usuario values('pollito', 'pollo', 1, 123, 1)
+INSERT INTO Usuario values('pollito', 'pollo', 1, 123, 1, 0)
 
-INSERT INTO Usuario values('pollita', 'polla', 1, 123, 1)
+INSERT INTO Usuario values('pollita', 'polla', 1, 123, 1, 0)
 
 INSERT INTO Especialidad values('Especial')
 
-INSERT INTO Medico values(1, 1, 'pollita', 1)
+INSERT INTO Medico values(1, 1, 'pollita')
 
-Insert INTO Radiologo values(1, 'pollita', 1)
+Insert INTO Radiologo values(1, 'pollita')
 
 Insert INTO RegionEstudio values(1, 'espalda')
 
@@ -139,3 +140,55 @@ Insert INTO TipoConsulta values('query')
 Insert INTO TipoExamen values('Ultrasonido')
 
 Insert INTO TipoExamen values('Mamografia')
+
+
+INSERT INTO RegistroResultados values('2018-02-27','2018-02-27', 'asdfasdf', 'asdfas', 12345, 1,1,1, 'pollita', 1,1, 'pollita')
+
+INSERT INTO RegistroResultados values('2018-02-27','2018-02-27', 'asdfasdf', 'asdfas', 123, 1,1,1, 'pollita', 1,1, 'pollita')
+
+
+--fin de inserts
+
+-- procedure de registroresultados
+
+
+ALTER PROCEDURE [dbo].[pro_Reportes] 
+AS
+BEGIN
+select * 
+from registroresultados
+END
+
+
+
+CREATE PROCEDURE [dbo].[pro_ReportesPrueba] 
+AS
+BEGIN
+
+select rr.IdRegistro as 'codigo', rr.fechaRegistro, rr.fechaEstudio, rr.Hallazgos, rr.Conclusiones, 
+rr.CedulaPaciente as 'cedula',
+pe.Nombre + ' ' + pe.ApellidoUno + ' '  + pe.ApellidoDos as 'Nombre del Paciente',
+peMed.Nombre + ' ' + peMed.ApellidoUno + ' '  + peMed.ApellidoDos as 'Nombre del Medico',
+peRad.Nombre + ' ' + peRad.ApellidoUno + ' '  + peRad.ApellidoDos as 'Nombre del Radiologo',
+peReg.Nombre + ' ' + peReg.ApellidoUno + ' '  + peReg.ApellidoDos as 'Nombre del Funcionario',
+tc.NombreConsulta as 'Tipo de la consulta',
+te.Descripcion as 'Tipo de Examen'
+
+from RegistroResultados rr inner join
+
+persona pe on pe.Cedula = rr.CedulaPaciente inner join
+Medico med on med.CodigoMedico = rr.CodigoMedico inner join
+usuario usuMed on usuMed.NombreUsuario = med.NombreUsuario inner join
+persona peMed on peMed.Cedula = usuMed.Cedula inner join 
+Radiologo rad on rad.CodigoRadiologo = rr.CodigoRadiologo inner join
+usuario usuRad on usuRad.NombreUsuario = rad.NombreUsuario inner join
+persona peRad on peRad.Cedula = usuRad.Cedula inner join
+usuario usuReg on usuReg.NombreUsuario = rr.NombreUsuario inner join
+persona peReg on peReg.Cedula = usuReg.Cedula inner join
+TipoConsulta tc on tc.IdTipoConsulta = rr.IdTipoConsulta inner join
+TipoExamen te on te.IdTipoExamen = rr.IdTipoExamen
+
+END
+
+
+
