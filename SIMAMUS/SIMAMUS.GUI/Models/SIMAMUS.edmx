@@ -67,8 +67,8 @@
             <PropertyRef Name="IdRegistro" />
           </Key>
           <Property Name="IdRegistro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
-          <Property Name="fechaEstudio" Type="datetime" Nullable="false" />
+          <Property Name="fechaRegistro" Type="date" Nullable="false" />
+          <Property Name="fechaEstudio" Type="date" Nullable="false" />
           <Property Name="Hallazgos" Type="varchar" MaxLength="1000" Nullable="false" />
           <Property Name="Conclusiones" Type="varchar" MaxLength="1000" Nullable="false" />
           <Property Name="CedulaPaciente" Type="int" Nullable="false" />
@@ -310,10 +310,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="pro_Reportes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="pro_ReportesP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="pro_ReportesParametros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="IdR" Type="int" Mode="In" />
+        <Function Name="pro_Reportes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="SIMAMUSModelStoreContainer">
           <EntitySet Name="CentroSalud" EntityType="Self.CentroSalud" Schema="dbo" store:Type="Tables" />
@@ -470,8 +468,8 @@
             <PropertyRef Name="IdRegistro" />
           </Key>
           <Property Name="IdRegistro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="fechaEstudio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fechaEstudio" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Hallazgos" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Conclusiones" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CedulaPaciente" Type="Int32" Nullable="false" />
@@ -805,10 +803,8 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="RegistroResultados" EntitySet="RegistroResultados" />
           </AssociationSet>
-          <FunctionImport Name="pro_Reportes" ReturnType="Collection(SIMAMUSModel.pro_Reportes_Result)" />
-          <FunctionImport Name="pro_ReportesP" ReturnType="Collection(SIMAMUSModel.pro_ReportesP_Result)" />
-          <FunctionImport Name="pro_ReportesParametros" ReturnType="Collection(SIMAMUSModel.pro_ReportesParametros_Result)">
-            <Parameter Name="IdR" Mode="In" Type="Int32" />
+          <FunctionImport Name="pro_Reportes" ReturnType="Collection(SIMAMUSModel.pro_Reportes_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="pro_Reportes_Result">
@@ -824,34 +820,6 @@
           <Property Type="String" Name="Nombre_del_Funcionario" Nullable="false" MaxLength="142" />
           <Property Type="String" Name="NombreConsulta" Nullable="false" MaxLength="25" />
           <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="30" />
-        </ComplexType>
-        <ComplexType Name="pro_ReportesP_Result">
-          <Property Type="Int32" Name="IdRegistro" Nullable="false" />
-          <Property Type="DateTime" Name="fechaRegistro" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="fechaEstudio" Nullable="false" Precision="23" />
-          <Property Type="String" Name="Hallazgos" Nullable="false" MaxLength="1000" />
-          <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="20" />
-          <Property Type="Int32" Name="CedulaPaciente" Nullable="false" />
-          <Property Type="String" Name="Conclusiones" Nullable="false" MaxLength="1000" />
-          <Property Type="String" Name="Medico" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="Radiologo" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="Tipo_de_Examen" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="Region_de_estudio" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="NombreConsulta" Nullable="false" MaxLength="25" />
-        </ComplexType>
-        <ComplexType Name="pro_ReportesParametros_Result">
-          <Property Type="Int32" Name="IdRegistro" Nullable="false" />
-          <Property Type="DateTime" Name="fechaRegistro" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="fechaEstudio" Nullable="false" Precision="23" />
-          <Property Type="String" Name="Hallazgos" Nullable="false" MaxLength="1000" />
-          <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="20" />
-          <Property Type="Int32" Name="CedulaPaciente" Nullable="false" />
-          <Property Type="String" Name="Conclusiones" Nullable="false" MaxLength="1000" />
-          <Property Type="String" Name="Medico" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="Radiologo" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="Tipo_de_Examen" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="Region_de_estudio" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="NombreConsulta" Nullable="false" MaxLength="25" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1013,42 +981,6 @@
                 <ScalarProperty Name="Nombre_del_Funcionario" ColumnName="Nombre del Funcionario" />
                 <ScalarProperty Name="NombreConsulta" ColumnName="NombreConsulta" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="pro_ReportesP" FunctionName="SIMAMUSModel.Store.pro_ReportesP">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SIMAMUSModel.pro_ReportesP_Result">
-                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
-                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
-                <ScalarProperty Name="fechaEstudio" ColumnName="fechaEstudio" />
-                <ScalarProperty Name="Hallazgos" ColumnName="Hallazgos" />
-                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
-                <ScalarProperty Name="CedulaPaciente" ColumnName="CedulaPaciente" />
-                <ScalarProperty Name="Conclusiones" ColumnName="Conclusiones" />
-                <ScalarProperty Name="Medico" ColumnName="Medico" />
-                <ScalarProperty Name="Radiologo" ColumnName="Radiologo" />
-                <ScalarProperty Name="Tipo_de_Examen" ColumnName="Tipo de Examen" />
-                <ScalarProperty Name="Region_de_estudio" ColumnName="Region de estudio" />
-                <ScalarProperty Name="NombreConsulta" ColumnName="NombreConsulta" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="pro_ReportesParametros" FunctionName="SIMAMUSModel.Store.pro_ReportesParametros">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SIMAMUSModel.pro_ReportesParametros_Result">
-                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
-                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
-                <ScalarProperty Name="fechaEstudio" ColumnName="fechaEstudio" />
-                <ScalarProperty Name="Hallazgos" ColumnName="Hallazgos" />
-                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
-                <ScalarProperty Name="CedulaPaciente" ColumnName="CedulaPaciente" />
-                <ScalarProperty Name="Conclusiones" ColumnName="Conclusiones" />
-                <ScalarProperty Name="Medico" ColumnName="Medico" />
-                <ScalarProperty Name="Radiologo" ColumnName="Radiologo" />
-                <ScalarProperty Name="Tipo_de_Examen" ColumnName="Tipo de Examen" />
-                <ScalarProperty Name="Region_de_estudio" ColumnName="Region de estudio" />
-                <ScalarProperty Name="NombreConsulta" ColumnName="NombreConsulta" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

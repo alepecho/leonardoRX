@@ -42,23 +42,13 @@ namespace SIMAMUS.GUI.Models
         public virtual DbSet<TipoExamen> TipoExamen { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
     
-        public virtual ObjectResult<pro_Reportes_Result> pro_Reportes()
+        public virtual ObjectResult<pro_Reportes_Result> pro_Reportes(Nullable<int> id)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pro_Reportes_Result>("pro_Reportes");
-        }
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
     
-        public virtual ObjectResult<pro_ReportesP_Result> pro_ReportesP()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pro_ReportesP_Result>("pro_ReportesP");
-        }
-    
-        public virtual ObjectResult<pro_ReportesParametros_Result> pro_ReportesParametros(Nullable<int> idR)
-        {
-            var idRParameter = idR.HasValue ?
-                new ObjectParameter("IdR", idR) :
-                new ObjectParameter("IdR", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pro_ReportesParametros_Result>("pro_ReportesParametros", idRParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pro_Reportes_Result>("pro_Reportes", idParameter);
         }
     }
 }

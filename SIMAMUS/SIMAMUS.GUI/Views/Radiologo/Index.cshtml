@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Información general sobre radiologos registrador</h2>
+<h2>Información general sobre radiologos</h2>
 
 <p>
     @Html.ActionLink("Registrar", "Create")
@@ -13,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Usuario.Contrasenna)
+            @Html.DisplayNameFor(model => model.Usuario.NombreUsuario)
         </th>
         <th></th>
     </tr>
@@ -22,9 +22,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Usuario.Contrasenna)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Activo)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id = item.CodigoRadiologo }) |

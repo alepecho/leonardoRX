@@ -43,17 +43,15 @@ namespace SIMAMUS.GUI.Controllers
 
         public ActionResult Reporte(int id)
         {
-            List<RegistroResultados> registro = new List<RegistroResultados>();
-            RegistroResultados reg = db.RegistroResultados.Find(id);
-            registro.Add(reg);
+            var _resultado = db.pro_Reportes(id);
 
             ReportDocument rd = new ReportDocument();
             rd.Load(Path.Combine(Server.MapPath("~/Reporte"), "Reporte3.rpt"));
-            rd.SetDataSource(registro);
+            rd.SetDataSource(_resultado.ToList());
 
-            //Response.Buffer = false;
-            //Response.ClearContent();
-            //Response.ClearHeaders();
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
             try
             {
                 Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);

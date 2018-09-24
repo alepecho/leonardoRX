@@ -186,12 +186,6 @@
     <Compile Include="Models\Persona.cs">
       <DependentUpon>SIMAMUS.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\pro_ReportesParametros_Result.cs">
-      <DependentUpon>SIMAMUS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\pro_ReportesP_Result.cs">
-      <DependentUpon>SIMAMUS.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\pro_Reportes_Result.cs">
       <DependentUpon>SIMAMUS.tt</DependentUpon>
     </Compile>

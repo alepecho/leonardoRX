@@ -28,21 +28,12 @@
             @Html.DisplayName("Dirección")
         </th>
         <th>
-            @Html.DisplayName("Dirección")
-        </th>
-        <th>
             @Html.DisplayName("Sector")
         </th>
-        <td>
-<<<<<<< HEAD
+        <th>
             @Html.DisplayName("Genero")
-        </td>
+        </th>
         <th>Acciones</th>
-=======
-            @Html.DisplayName("")
-        </td>
-        <th></th>
->>>>>>> 936e630ff2be78ee965f552f109acf85cb8c67a9
     </tr>
 
 @foreach (var item in Model) {
@@ -51,10 +42,10 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ApellidoUno + item.ApellidoDos)
+            @Html.DisplayFor(modelItem => item.ApellidoUno) @Html.DisplayFor(modelItem => item.ApellidoDos)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            @Html.DisplayFor(modelItem => item.FechaNacimiento.Day)/@Html.DisplayFor(modelItem => item.FechaNacimiento.Month)/@Html.DisplayFor(modelItem => item.FechaNacimiento.Year)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Telefono)
