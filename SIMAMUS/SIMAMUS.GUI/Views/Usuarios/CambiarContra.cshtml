@@ -34,7 +34,7 @@
     <div>
         @Html.Label("Contraseña nueva", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.Editor("contraNueva", new { htmlAttributes = new { @class = "form-control" } })
+            @Html.Editor("contraNueva", new { htmlAttributes = new { @class = "form-control" }, @type="password" })
             @Html.ValidationMessageFor(model => model.Contrasenna, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -42,7 +42,7 @@
     <div>
         @Html.Label("Confirmar contraseña nueva", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.Editor("contraNueva2", new { htmlAttributes = new { @class = "form-control" } })
+            @Html.Editor("contraNueva2", new { htmlAttributes = new { @class = "form-control", @type = "password" } })
             @Html.ValidationMessageFor(model => model.Contrasenna, "", new { @class = "text-danger" })
         </div>
     </div>
