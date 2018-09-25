@@ -302,6 +302,7 @@
     <Content Include="Views\Usuarios\Edit.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
     <Content Include="Views\Usuarios\Login.cshtml" />
+    <Content Include="Views\Usuarios\CambiarContra.cshtml" />
     <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\RegistroResultados\Create.cshtml" />
     <Content Include="Views\RegistroResultados\Delete.cshtml" />
@@ -408,7 +409,6 @@
     <Content Include="Views\Radiologo\DetailsTecnico.cshtml" />
     <Content Include="Views\Radiologo\CreateTecnico.cshtml" />
     <Content Include="Views\Radiologo\EditTecnico.cshtml" />
-    <Content Include="Views\Usuarios\CambiarContra.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
