@@ -408,6 +408,7 @@
     <Content Include="Views\Radiologo\DetailsTecnico.cshtml" />
     <Content Include="Views\Radiologo\CreateTecnico.cshtml" />
     <Content Include="Views\Radiologo\EditTecnico.cshtml" />
+    <Content Include="Views\Usuarios\CambiarContra.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
