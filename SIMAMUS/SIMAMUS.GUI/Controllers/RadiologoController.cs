@@ -64,7 +64,7 @@ namespace SIMAMUS.GUI.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "1")]
-        public ActionResult Create([Bind(Include = "CodigoRadiologo,NombreUsuario,Activo")] Radiologo radiologo)
+        public ActionResult Create([Bind(Include = "CodigoRadiologo,NombreUsuario")] Radiologo radiologo)
         {
             if (ModelState.IsValid)
             {
@@ -100,7 +100,7 @@ namespace SIMAMUS.GUI.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "1")]
-        public ActionResult Edit([Bind(Include = "CodigoRadiologo,NombreUsuario,Activo")] Radiologo radiologo)
+        public ActionResult Edit([Bind(Include = "CodigoRadiologo,NombreUsuario")] Radiologo radiologo)
         {
             if (ModelState.IsValid)
             {
@@ -182,7 +182,7 @@ namespace SIMAMUS.GUI.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "1,2")]
-        public ActionResult CreateAdministrador([Bind(Include = "CodigoRadiologo,NombreUsuario,Activo")] Radiologo radiologo)
+        public ActionResult CreateAdministrador([Bind(Include = "CodigoRadiologo,NombreUsuario")] Radiologo radiologo)
         {
             if (ModelState.IsValid)
             {
@@ -218,7 +218,7 @@ namespace SIMAMUS.GUI.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "1,2")]
-        public ActionResult EditAdministrador([Bind(Include = "CodigoRadiologo,NombreUsuario,Activo")] Radiologo radiologo)
+        public ActionResult EditAdministrador([Bind(Include = "CodigoRadiologo,NombreUsuario")] Radiologo radiologo)
         {
             if (ModelState.IsValid)
             {
@@ -300,7 +300,7 @@ namespace SIMAMUS.GUI.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "1,3")]
-        public ActionResult CreateTecnico([Bind(Include = "CodigoRadiologo,NombreUsuario,Activo")] Radiologo radiologo)
+        public ActionResult CreateTecnico([Bind(Include = "CodigoRadiologo,NombreUsuario")] Radiologo radiologo)
         {
             if (ModelState.IsValid)
             {
@@ -336,7 +336,7 @@ namespace SIMAMUS.GUI.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "1,3")]
-        public ActionResult EditTecnico([Bind(Include = "CodigoRadiologo,NombreUsuario,Activo")] Radiologo radiologo)
+        public ActionResult EditTecnico([Bind(Include = "CodigoRadiologo,NombreUsuario")] Radiologo radiologo)
         {
             if (ModelState.IsValid)
             {

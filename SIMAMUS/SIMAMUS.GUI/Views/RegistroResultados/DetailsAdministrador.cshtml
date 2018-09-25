@@ -92,6 +92,11 @@
         </dd>
     </dl>
 </div>
+<div class="clearfix">
+    <span class="float-right">
+        @Html.ActionLink("Descargar reporte", "Reporte", new { id = Model.IdRegistro }, new { @class = "btn btn-info", @style = "float-right" })
+    </span>
+</div>
 <p>
     @Html.ActionLink("Editar", "EditAdministrador", new { id = Model.IdRegistro }) |
     @Html.ActionLink("Regresar a la lista.", "IndexAdministrador")
