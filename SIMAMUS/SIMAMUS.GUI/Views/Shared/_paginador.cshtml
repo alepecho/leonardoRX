@@ -22,9 +22,9 @@
     }
 }
 
-<ul class="pagination">
+<ul class="pager">
     @{Model.ValoresQueryString["pagina"] = 1; }
-    <li>@Html.ActionLink("Primera", null, Model.ValoresQueryString)</li>
+    <li class="previous">@Html.ActionLink("Primera", null, Model.ValoresQueryString)</li>
     @for (int i = Inicial; i <= Final; i++)
     {
         Model.ValoresQueryString["pagina"] = i;
@@ -38,6 +38,6 @@
         }
     }
     @{Model.ValoresQueryString["pagina"] = cantidadPaginas; }
-    <li>@Html.ActionLink("Ultima", null, Model.ValoresQueryString)</li>
+    <li class="next">@Html.ActionLink("Ultima", null, Model.ValoresQueryString)</li>
 </ul>
 

@@ -10,61 +10,64 @@
 <p>
     @Html.ActionLink("Registrar", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Nombre")
-        </th>
-        <th>
-            @Html.DisplayName("Apellidos")
-        </th>
-        <th>
-            @Html.DisplayName("Fecha Nacimiento")
-        </th>
-        <th>
-            @Html.DisplayName("Telefono")
-        </th>
-        <th>
-            @Html.DisplayName("Dirección")
-        </th>
-        <th>
-            @Html.DisplayName("Sector")
-        </th>
-        <th>
-            @Html.DisplayName("Genero")
-        </th>
-        <th>Acciones</th>
-    </tr>
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Nombre")
+            </th>
+            <th>
+                @Html.DisplayName("Apellidos")
+            </th>
+            <th>
+                @Html.DisplayName("Fecha Nacimiento")
+            </th>
+            <th>
+                @Html.DisplayName("Telefono")
+            </th>
+            <th>
+                @Html.DisplayName("Dirección")
+            </th>
+            <th>
+                @Html.DisplayName("Sector")
+            </th>
+            <th>
+                @Html.DisplayName("Genero")
+            </th>
+            <th>Acciones</th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApellidoUno) @Html.DisplayFor(modelItem => item.ApellidoDos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaNacimiento.Day)/@Html.DisplayFor(modelItem => item.FechaNacimiento.Month)/@Html.DisplayFor(modelItem => item.FechaNacimiento.Year)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefono)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Direccion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sector.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sexo.Descripcion)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Cedula }) |
-            @Html.ActionLink("Ver detalles", "Details", new { id=item.Cedula }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.Cedula })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApellidoUno) @Html.DisplayFor(modelItem => item.ApellidoDos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaNacimiento.Day)/@Html.DisplayFor(modelItem => item.FechaNacimiento.Month)/@Html.DisplayFor(modelItem => item.FechaNacimiento.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sector.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sexo.Descripcion)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Cedula }) |
+                    @Html.ActionLink("Ver detalles", "Details", new { id = item.Cedula }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Cedula })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>
