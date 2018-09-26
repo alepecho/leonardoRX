@@ -55,11 +55,11 @@ namespace SIMAMUS.GUI.Controllers
                         }
                         else if (dataItem.IdNivel == 3)
                         {
-                            return RedirectToAction("Index3", "Home");
+                            return RedirectToAction("IndexTecnico", "RegistroResultados");
                         }
                         else if (dataItem.IdNivel == 4)
                         {
-                            return RedirectToAction("Index2", "Home");
+                            return RedirectToAction("IndexConsultor", "RegistroResultados");
                         }
                         else
                         {

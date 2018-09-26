@@ -23,7 +23,6 @@ namespace SIMAMUS.GUI.Controllers
             base.Dispose(disposing);
         }
 
-
         #region rol SuperAdministrador
 
         // GET: Medicos
@@ -264,6 +263,128 @@ namespace SIMAMUS.GUI.Controllers
             db.Medico.Remove(medico);
             db.SaveChanges();
             return RedirectToAction("IndexAdministrador");
+        }
+
+        #endregion
+
+        #region rol Tecnico
+
+        // GET: Medicos
+        [Authorize(Roles = ("1,3"))]
+        public ActionResult IndexTecnico()
+        {
+            var medico = db.Medico.Include(m => m.Especialidad).Include(m => m.Usuario);
+            return View(medico.ToList());
+        }
+
+        // GET: Medicos/Details/5
+        [Authorize(Roles = ("1,3"))]
+        public ActionResult DetailsTecnico(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Medico medico = db.Medico.Find(id);
+            if (medico == null)
+            {
+                return HttpNotFound();
+            }
+            return View(medico);
+        }
+
+        // GET: Medicos/Create
+        [Authorize(Roles = ("1,3"))]
+        public ActionResult CreateTecnico()
+        {
+            ViewBag.IdEspecialidad = new SelectList(db.Especialidad, "IdEspecialidad", "NombreEspecialidad");
+            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "Contrasenna");
+            return View();
+        }
+
+        // POST: Medicos/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = ("1,3"))]
+        public ActionResult CreateTecnico([Bind(Include = "CodigoMedico,IdEspecialidad,NombreUsuario")] Medico medico)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Medico.Add(medico);
+                db.SaveChanges();
+                return RedirectToAction("IndexTecnico");
+            }
+
+            ViewBag.IdEspecialidad = new SelectList(db.Especialidad, "IdEspecialidad", "NombreEspecialidad", medico.IdEspecialidad);
+            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "Contrasenna", medico.NombreUsuario);
+            return View(medico);
+        }
+
+        // GET: Medicos/Edit/5
+        [Authorize(Roles = ("1,3"))]
+        public ActionResult EditTecnico(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Medico medico = db.Medico.Find(id);
+            if (medico == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.IdEspecialidad = new SelectList(db.Especialidad, "IdEspecialidad", "NombreEspecialidad", medico.IdEspecialidad);
+            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "Contrasenna", medico.NombreUsuario);
+            return View(medico);
+        }
+
+        // POST: Medicos/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = ("1,3"))]
+        public ActionResult EditTecnico([Bind(Include = "CodigoMedico,IdEspecialidad,NombreUsuario")] Medico medico)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(medico).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("IndexTecnico");
+            }
+            ViewBag.IdEspecialidad = new SelectList(db.Especialidad, "IdEspecialidad", "NombreEspecialidad", medico.IdEspecialidad);
+            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "Contrasenna", medico.NombreUsuario);
+            return View(medico);
+        }
+
+        // GET: Medicos/Delete/5
+        [Authorize(Roles = ("1,3"))]
+        public ActionResult DeleteTecnico(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Medico medico = db.Medico.Find(id);
+            if (medico == null)
+            {
+                return HttpNotFound();
+            }
+            return View(medico);
+        }
+
+        // POST: Medicos/Delete/5
+        [HttpPost, ActionName("DeleteTecnico")]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = ("1,3"))]
+        public ActionResult DeleteConfirmedTecnico(int id)
+        {
+            Medico medico = db.Medico.Find(id);
+            db.Medico.Remove(medico);
+            db.SaveChanges();
+            return RedirectToAction("IndexTecnico");
         }
 
         #endregion

@@ -13,9 +13,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Activo)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Usuario.Contrasenna)
         </th>
         <th></th>
@@ -24,10 +21,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Activo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuario.Contrasenna)
+            @Html.DisplayFor(modelItem => item.Usuario.NombreUsuario)
         </td>
         <td>
             @Html.ActionLink("Editar", "EditTecnico", new { id=item.CodigoRadiologo }) |

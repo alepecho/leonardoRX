@@ -516,5 +516,50 @@ namespace SIMAMUS.GUI.Controllers
         }
         #endregion
 
+        #region Consultor
+
+        [Authorize(Roles = "1,4")]
+        public ActionResult IndexConsultor(int? ced, int pagina = 1)
+        {
+            var cantidadRegistrosPorPagina = 20; // parámetro
+            using (var bd = new SIMAMUSEntities())
+            {
+                Func<RegistroResultados, bool> predicado = x => !ced.HasValue || ced.Value == x.CedulaPaciente;
+
+                var personas = bd.RegistroResultados.Where(x => x.CedulaPaciente == ced || ced == null).OrderByDescending(x => x.IdRegistro)
+                    .Skip((pagina - 1) * cantidadRegistrosPorPagina)
+                    .Take(cantidadRegistrosPorPagina).ToList();
+                var totalDeRegistros = db.RegistroResultados.Where(x => x.CedulaPaciente == ced || ced == null).Count();
+
+                var modelo = new IndexViewModels();
+                modelo.Registros = personas;
+                modelo.PaginaActual = pagina;
+                modelo.TotalDeRegistros = totalDeRegistros;
+                modelo.RegistrosPorPagina = cantidadRegistrosPorPagina;
+                modelo.ValoresQueryString = new RouteValueDictionary();
+                modelo.ValoresQueryString["ced"] = ced;
+
+                return View(modelo);
+            }
+        }
+
+        // GET: RegistroResultados/Details/5
+        [Authorize(Roles = "1,4")]
+        public ActionResult DetailsConsultor(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            RegistroResultados registroResultados = db.RegistroResultados.Find(id);
+            if (registroResultados == null)
+            {
+                return HttpNotFound();
+            }
+            return View(registroResultados);
+        }
+
+        
+        #endregion
     }
 }

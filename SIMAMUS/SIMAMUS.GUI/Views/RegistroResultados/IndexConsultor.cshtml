@@ -1,0 +1,63 @@
+﻿@model SIMAMUS.GUI.ViewModels.IndexViewModels
+
+@{
+    ViewBag.Title = "IndexTecnico";
+    Layout = "~/Views/Shared/_LayoutConsultor.cshtml";
+}
+
+<br /> <br />
+
+@using (Html.BeginForm(null, null, FormMethod.Get))
+{
+    <label for="ced">Cédula: </label>
+    <div class="form-inline">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-filter"></i></span>
+            <input type="search" name="ced" id="ced" class="form-control" placeholder="Cédula" @*data-toggle="tooltip" data-placement="top" title="Filtrar los registros por cédula"*@ />
+            <button type="submit" value="Filtrar" class="btn btn-primary">
+                Filtrar registros
+            </button>
+        </div>
+    </div>
+}
+<h4>Resultados</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th><p align="center">Id Registro</p></th>
+            <th><p align="center">Cédula</p></th>
+            <th><p align="center">Código del médico</p></th>
+            <th><p align="center">Fecha de estudio</p></th>
+            <th><p align="center">Fecha de Registro</p></th>
+            <th><p align="center">Tipo de examen</p></th>
+            <th><p align="center">Acciones disponibles</p> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var registro in Model.Registros)
+        {
+            <tr>
+                <td><p align="center">@registro.IdRegistro</p></td>
+                <td><p align="center">@registro.CedulaPaciente</p></td>
+                <td><p align="center">@registro.CodigoMedico</p></td>
+                <td><p align="center">@registro.fechaEstudio.Day/@registro.fechaEstudio.Month/@registro.fechaEstudio.Year</p></td>
+                <td><p align="center">@registro.fechaRegistro</p></td>
+                <td><p align="center">@registro.IdTipoExamen</p></td>
+
+                <td>
+                    <p align="center">
+                        @Html.ActionLink("Ver Detalles", "DetailsConsultor", new { id = registro.IdRegistro })
+                    </p>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{Html.RenderPartial("_paginador", Model);}
+
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

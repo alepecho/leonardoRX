@@ -28,14 +28,11 @@
             @Html.DisplayName("Dirección")
         </th>
         <th>
-            @Html.DisplayName("Dirección")
-        </th>
-        <th>
             @Html.DisplayName("Sector")
         </th>
-        <td>
+        <th>
             @Html.DisplayName("Genero")
-        </td>
+        </th>
         <th>Acciones</th>
     </tr>
 
@@ -46,7 +43,8 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ApellidoUno + item.ApellidoDos)
+                @Html.DisplayFor(modelItem => item.ApellidoUno)
+                @Html.DisplayFor(modelItem => item.ApellidoDos)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FechaNacimiento)

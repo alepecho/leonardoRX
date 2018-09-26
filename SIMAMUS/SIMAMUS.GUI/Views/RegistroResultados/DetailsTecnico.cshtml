@@ -1,0 +1,103 @@
+﻿@model SIMAMUS.GUI.Models.RegistroResultados
+
+@{
+    ViewBag.Title = "DetailsAdministrador";
+    Layout = "~/Views/Shared/_LayoutConsultor.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>RegistroResultados</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaRegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaRegistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaEstudio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaEstudio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hallazgos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hallazgos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Conclusiones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Conclusiones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medico.NombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Persona.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Persona.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Radiologo.NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Radiologo.NombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegionEstudio.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegionEstudio.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoConsulta.NombreConsulta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoConsulta.NombreConsulta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoExamen.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoExamen.Descripcion)
+        </dd>
+    </dl>
+</div>
+<div class="clearfix">
+    <span class="float-right">
+        @Html.ActionLink("Descargar reporte", "Reporte", new { id = Model.IdRegistro }, new { @class = "btn btn-info", @style = "float-right" })
+    </span>
+</div>
+<p>
+    @Html.ActionLink("Editar", "EditConsultor", new { id = Model.IdRegistro }) |
+    @Html.ActionLink("Regresar a la lista.", "IndexConsultor")
+</p>
