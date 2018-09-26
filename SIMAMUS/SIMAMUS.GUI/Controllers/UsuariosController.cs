@@ -228,6 +228,7 @@ namespace SIMAMUS.GUI.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Login");
                 }
+
                 return View(usuario);
             }
             return RedirectToAction("CambiarContra");
