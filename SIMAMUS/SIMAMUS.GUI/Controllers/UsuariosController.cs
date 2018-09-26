@@ -35,34 +35,42 @@ namespace SIMAMUS.GUI.Controllers
 
             if (dataItem != null && dataItem.Contrasenna == model.Contrasenna && dataItem.NombreUsuario == model.NombreUsuario)
             {
-                FormsAuthentication.SetAuthCookie(dataItem.NombreUsuario, false);
-                if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
-                    && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                if (dataItem.CambioContra)
                 {
-                    return Redirect(returnUrl);
-                }
-                else
-                {
-                    if (dataItem.IdNivel == 1)
+                    FormsAuthentication.SetAuthCookie(dataItem.NombreUsuario, false);
+                    if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+                        && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
                     {
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else if(dataItem.IdNivel == 2)
-                    {
-                        return RedirectToAction("Index2", "Home");
-                    }
-                    else if (dataItem.IdNivel == 3)
-                    {
-                        return RedirectToAction("Index3", "Home");
-                    }
-                    else if (dataItem.IdNivel == 4)
-                    {
-                        return RedirectToAction("Index2", "Home");
+                        return Redirect(returnUrl);
                     }
                     else
                     {
-                        return RedirectToAction("Login","Usuarios");
+                        if (dataItem.IdNivel == 1)
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else if (dataItem.IdNivel == 2)
+                        {
+                            return RedirectToAction("Index2", "Home");
+                        }
+                        else if (dataItem.IdNivel == 3)
+                        {
+                            return RedirectToAction("Index3", "Home");
+                        }
+                        else if (dataItem.IdNivel == 4)
+                        {
+                            return RedirectToAction("Index2", "Home");
+                        }
+                        else
+                        {
+                            return RedirectToAction("Login", "Usuarios");
+                        }
                     }
+                }
+                else
+                {
+                    FormsAuthentication.SetAuthCookie(dataItem.NombreUsuario, false);
+                    return RedirectToAction("CambiarContra");
                 }
             }
             else
@@ -96,7 +104,7 @@ namespace SIMAMUS.GUI.Controllers
             return View(usuario);
         }
 
-        [Authorize(Roles= "1")]
+        [Authorize(Roles = "1")]
         // GET: Usuarios/Create
         public ActionResult Create()
         {
@@ -187,6 +195,44 @@ namespace SIMAMUS.GUI.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult CambiarContra()
+        {
+            if (User.Identity.Name == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Usuario usuario = db.Usuario.Find(User.Identity.Name);
+            if (usuario == null)
+            {
+                return HttpNotFound();
+            }
+            return View(usuario);
+        }
+
+        // POST: Usuarios/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CambiarContra(string contraVieja, string contraNueva, string contraNueva2)
+        {
+            Usuario usuario = db.Usuario.Find(User.Identity.Name);
+            if (usuario.Contrasenna == contraVieja && contraNueva == contraNueva2 && contraVieja != contraNueva && contraNueva.Length > 4 ) //ojo aqui, cambie el length a lo que consideren
+            {
+                usuario.Contrasenna = contraNueva;
+                usuario.CambioContra = true;
+                if (ModelState.IsValid)
+                {
+                    db.Entry(usuario).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Login");
+                }
+                return View(usuario);
+            }
+            return RedirectToAction("CambiarContra");
+        }
+
 
         private string GenerarContra()
         {

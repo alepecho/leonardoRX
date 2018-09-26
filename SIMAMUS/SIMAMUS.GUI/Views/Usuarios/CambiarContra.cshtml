@@ -26,7 +26,7 @@
     <div>
         @Html.Label("Contraseña Antigua", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.Editor("contraVieja", new { htmlAttributes = new { @class = "form-control" } })
+            @Html.Editor("contraVieja", new { htmlAttributes = new { @type="password", @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Contrasenna, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -34,7 +34,7 @@
     <div>
         @Html.Label("Contraseña nueva", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.Editor("contraNueva", new { htmlAttributes = new { @class = "form-control" }, @type="password" })
+            @Html.Editor("contraNueva", new { htmlAttributes = new { @class = "form-control", @type = "password" } })
             @Html.ValidationMessageFor(model => model.Contrasenna, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -46,17 +46,6 @@
             @Html.ValidationMessageFor(model => model.Contrasenna, "", new { @class = "text-danger" })
         </div>
     </div>
-
-    @if (mensajeError.IsEmpty())
-    {
-
-    }
-    else
-    {
-        <div class="alert alert-warning">
-            <strong>@mensajeError</strong>
-        </div>
-    }
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

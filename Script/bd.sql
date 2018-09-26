@@ -152,16 +152,7 @@ INSERT INTO RegistroResultados values('2018-02-27','2018-02-27', 'asdfasdf', 'as
 -- procedure de registroresultados
 
 
-ALTER PROCEDURE [dbo].[pro_Reportes] 
-AS
-BEGIN
-select * 
-from registroresultados
-END
-
-
-
-CREATE PROCEDURE [dbo].[pro_ReportesPrueba] 
+CREATE PROCEDURE pro_ReportesPrueba 
 AS
 BEGIN
 
@@ -189,6 +180,3 @@ TipoConsulta tc on tc.IdTipoConsulta = rr.IdTipoConsulta inner join
 TipoExamen te on te.IdTipoExamen = rr.IdTipoExamen
 
 END
-
-
-
