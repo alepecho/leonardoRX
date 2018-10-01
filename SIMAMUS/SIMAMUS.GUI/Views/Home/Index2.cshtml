@@ -6,7 +6,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <h1>Bienvenido usuario, @(User.Identity.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "Guest")</h1>
+    <h1>Bienvenido @(User.Identity.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "Guest")</h1>
 }
 
 <div class="container-fluid">

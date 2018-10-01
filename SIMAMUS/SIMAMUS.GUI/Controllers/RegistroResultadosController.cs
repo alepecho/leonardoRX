@@ -28,19 +28,6 @@ namespace SIMAMUS.GUI.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult Consulta(string SearchValue)
-        {
-            if (SearchValue == null || SearchValue.Equals(""))
-            {
-                return View();
-            }
-            else
-            {
-                int id = Convert.ToInt32(SearchValue);
-                return View(db.Persona.Where(x => x.Cedula == id || SearchValue == null).ToList());
-            }
-        }
-
         public ActionResult Reporte(int id)
         {
             var _resultado = db.pro_Reportes(id);
@@ -89,6 +76,20 @@ namespace SIMAMUS.GUI.Controllers
                 modelo.ValoresQueryString["ced"] = ced;
 
                 return View(modelo);
+            }
+        }
+
+        [Authorize(Roles = "1")]
+        public ActionResult Consulta(string SearchValue)
+        {
+            if (SearchValue == null || SearchValue.Equals(""))
+            {
+                return View();
+            }
+            else
+            {
+                int id = Convert.ToInt32(SearchValue);
+                return View(db.Persona.Where(x => x.Cedula == id || SearchValue == null).ToList());
             }
         }
 
@@ -266,6 +267,20 @@ namespace SIMAMUS.GUI.Controllers
             }
         }
 
+        [Authorize(Roles = "2")]
+        public ActionResult ConsultaAd(string SearchValue)
+        {
+            if (SearchValue == null || SearchValue.Equals(""))
+            {
+                return View();
+            }
+            else
+            {
+                int id = Convert.ToInt32(SearchValue);
+                return View(db.Persona.Where(x => x.Cedula == id || SearchValue == null).ToList());
+            }
+        }
+
         // GET: RegistroResultados/Details/5
         [Authorize(Roles = "1,2")]
         public ActionResult DetailsAdministrador(int? id)
@@ -405,6 +420,20 @@ namespace SIMAMUS.GUI.Controllers
             }
         }
 
+
+        [Authorize(Roles = "3")]
+        public ActionResult ConsultaTec(string SearchValue)
+        {
+            if (SearchValue == null || SearchValue.Equals(""))
+            {
+                return View();
+            }
+            else
+            {
+                int id = Convert.ToInt32(SearchValue);
+                return View(db.Persona.Where(x => x.Cedula == id || SearchValue == null).ToList());
+            }
+        }
         // GET: RegistroResultados/Details/5
         [Authorize(Roles = "1,3")]
         public ActionResult DetailsTecnico(int? id)

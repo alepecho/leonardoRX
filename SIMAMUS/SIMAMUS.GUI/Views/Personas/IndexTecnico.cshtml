@@ -8,8 +8,19 @@
 <h2>Información General de Personas registradas</h2>
 
 <p>
-    @Html.ActionLink("Registrar", "CreateTecnico")
+    
 </p>
+
+<div class="form-inline">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-filter"></i></span>
+        <input type="search" name="ced" id="myInput" class="form-control" placeholder="Persona" @*data-toggle="tooltip" data-placement="top" title="Filtrar los registros por cédula"*@ />
+        
+        @Html.ActionLink("Registrar Persona", "CreateTecnico", null, new { @class = "btn btn-success", @style = "float:right" })
+    </div>
+</div>
+
+
 <table class="table">
     <tr>
         <th>
@@ -35,37 +46,52 @@
         </th>
         <th>Acciones</th>
     </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApellidoUno)
-                @Html.DisplayFor(modelItem => item.ApellidoDos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaNacimiento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sector.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sexo.Descripcion)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Cedula }) |
-                @Html.ActionLink("Ver detalles", "Details", new { id = item.Cedula }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Cedula })
-            </td>
-        </tr>
-    }
+    <tbody id="tabla">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApellidoUno)
+                    @Html.DisplayFor(modelItem => item.ApellidoDos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sector.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sexo.Descripcion)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Cedula }) |
+                    @Html.ActionLink("Ver detalles", "Details", new { id = item.Cedula }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Cedula })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#tabla tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>

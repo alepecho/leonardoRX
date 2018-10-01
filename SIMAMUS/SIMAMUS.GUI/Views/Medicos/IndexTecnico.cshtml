@@ -1,22 +1,21 @@
 ﻿@model IEnumerable<SIMAMUS.GUI.Models.Medico>
 
 @{
-    ViewBag.Title = "IndexTecnico";
+    ViewBag.Title = "Medicos";
     Layout = "~/Views/Shared/_LayoutTecnico.cshtml";
 }
 
-<h2>IndexTecnico</h2>
+<h2>Médicos</h2>
+@Html.ActionLink("Registrar Médico", "Create",null, new { @class = "btn btn-success", @style = "float:right" }) 
+<br /> <br />  
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Especialidad.NombreEspecialidad)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Usuario.Contrasenna)
+            @Html.DisplayNameFor(model => model.Usuario.NombreUsuario)
         </th>
         <th></th>
     </tr>
@@ -27,7 +26,7 @@
             @Html.DisplayFor(modelItem => item.Especialidad.NombreEspecialidad)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Usuario.Contrasenna)
+            @Html.DisplayFor(modelItem => item.Usuario.NombreUsuario)
         </td>
         <td>
             @Html.ActionLink("Edit", "EditTecnico", new { id=item.CodigoMedico }) |

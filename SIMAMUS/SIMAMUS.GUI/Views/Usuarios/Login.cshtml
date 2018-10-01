@@ -10,6 +10,8 @@
     <div class="text-center">
         <h1>Inicio de Sesión</h1>
     </div>
+
+
     <div class="text-center">
         @using (Html.BeginForm("Login", "Usuarios", new { returnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post))
         {

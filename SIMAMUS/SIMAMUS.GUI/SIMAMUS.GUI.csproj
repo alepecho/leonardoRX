@@ -247,6 +247,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\SIMAMUS-Fondo.png" />
     <Content Include="Models\SIMAMUS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SIMAMUS.edmx</DependentUpon>
@@ -419,6 +420,8 @@
     <Content Include="Views\RegistroResultados\CreateTecnico.cshtml" />
     <Content Include="Views\RegistroResultados\EditTecnico.cshtml" />
     <Content Include="Views\Shared\_LayoutConsultor.cshtml" />
+    <Content Include="Views\RegistroResultados\ConsultaAd.cshtml" />
+    <Content Include="Views\RegistroResultados\ConsultaTec.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
