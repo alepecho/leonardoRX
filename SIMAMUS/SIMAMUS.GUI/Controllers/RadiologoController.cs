@@ -90,7 +90,7 @@ namespace SIMAMUS.GUI.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "Contrasenna", radiologo.NombreUsuario);
+            ViewBag.NombreUsuario = new SelectList(db.Usuario, "NombreUsuario", "NombreUsuario", radiologo.NombreUsuario);
             return View(radiologo);
         }
 
