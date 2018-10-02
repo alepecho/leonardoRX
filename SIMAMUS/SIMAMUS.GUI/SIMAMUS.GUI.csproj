@@ -247,7 +247,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\SIMAMUS-Fondo.png" />
     <Content Include="Models\SIMAMUS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SIMAMUS.edmx</DependentUpon>

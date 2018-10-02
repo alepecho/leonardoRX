@@ -31,6 +31,7 @@ namespace SIMAMUS.GUI.Controllers
         public ActionResult Index()
         {
             var radiologo = db.Radiologo.Include(r => r.Usuario);
+            
             return View(radiologo.ToList());
         }
 
