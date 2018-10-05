@@ -151,19 +151,22 @@ INSERT INTO RegistroResultados values('2018-02-27','2018-02-27', 'asdfasdf', 'as
 
 -- procedure de registroresultados
 
-
-CREATE PROCEDURE pro_ReportesPrueba 
+ALTER PROCEDURE pro_Reportes @Id int
 AS
 BEGIN
 
-select rr.IdRegistro as 'codigo', rr.fechaRegistro, rr.fechaEstudio, rr.Hallazgos, rr.Conclusiones, 
-rr.CedulaPaciente as 'cedula',
+select rr.IdRegistro,
+rr.fechaRegistro,
+rr.fechaEstudio, 
+rr.Hallazgos, 
+rr.Conclusiones, 
+rr.CedulaPaciente,
 pe.Nombre + ' ' + pe.ApellidoUno + ' '  + pe.ApellidoDos as 'Nombre del Paciente',
 peMed.Nombre + ' ' + peMed.ApellidoUno + ' '  + peMed.ApellidoDos as 'Nombre del Medico',
 peRad.Nombre + ' ' + peRad.ApellidoUno + ' '  + peRad.ApellidoDos as 'Nombre del Radiologo',
 peReg.Nombre + ' ' + peReg.ApellidoUno + ' '  + peReg.ApellidoDos as 'Nombre del Funcionario',
-tc.NombreConsulta as 'Tipo de la consulta',
-te.Descripcion as 'Tipo de Examen'
+tc.NombreConsulta,
+te.Descripcion
 
 from RegistroResultados rr inner join
 
@@ -178,5 +181,5 @@ usuario usuReg on usuReg.NombreUsuario = rr.NombreUsuario inner join
 persona peReg on peReg.Cedula = usuReg.Cedula inner join
 TipoConsulta tc on tc.IdTipoConsulta = rr.IdTipoConsulta inner join
 TipoExamen te on te.IdTipoExamen = rr.IdTipoExamen
-
+where rr.IdRegistro = @Id
 END
